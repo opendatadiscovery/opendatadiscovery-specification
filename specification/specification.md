@@ -1,5 +1,7 @@
 # Specification
 
+Version: Draft
+
 ## OpenDataDiscovery scope
 
 OpenDataDiscovery specification is intentionally agnostic about the specifics of particular data sources and data catalogs. It exists to describe the semantics of data discovery process.
