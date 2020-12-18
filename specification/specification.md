@@ -4,6 +4,19 @@
 
 OpenDataDiscovery specification is intentionally agnostic about the specifics of particular data sources and data catalogs. It exists to describe the semantics of data discovery process.
 
+## Discovery process
+
+Metadata discovery process is very simular to metrics/logs/traces gathering process. We might have pull or push model. Both of them is better for their use cases.
+
+### Pull model
+
+Pulling metadata directly from the source seems is the most straightforward way to gather metadata, but it may become a nightmare to develope and maintain a centralized fleet of domain-specific crawlers. OpenDataDiscovery introduces new entity: OpenDataDiscovery Adapater. The main goal of these adapaters are to be source specific and expose only information could be gathered from certain data source.s
+
+### Push model
+
+It supports for individual metadata providers push the information to the central repository via APIs.
+This could be more prefered way for certain use cases. For example Airflow jobs runs and quality check runs.
+
 ## DataModel
 
 Knowledge about data is spread amongst many people and systems. OpenDataDiscovery role is to provide a standard protoocol how metadata can be collected and correlated in as automated fashion as possible.
@@ -41,21 +54,24 @@ message DataSetColumn {
     string name = 1;
     string type = 2;
     boolean is_nullable = 3;
-    string default_value = 4;    
+    string default_value = 4;   
 }
 ```
 
 #### Tables
 
-Example url: postgresql://{host}/{database}/{schema}{tablename}
+Example url
+```postgresql://{host}/{database}/{schema}{tablename}```
 
 #### Files
 
-Example url: url: aws+s3://{bucket}/{path}
+Example url:
+```aws+s3://{bucket}/{path}```
 
 #### FeatureGroups
 
-Example url: url: feast://{host}/{featuregroup}
+Example url:
+```feast://{host}/{featuregroup}```
 
 ###  DataTransformers
 
@@ -90,11 +106,11 @@ message DataConsumer {
 
 #### ML Models
 
-Example url: sagemaker://{account_id}/{model_id}
+Example url: ```sagemaker://{account_id}/{model_id}```
 
 #### BI dashboards
 
-Example url: tableu://{host}/{path}/{dashboard_id}
+Example url: ```tableu://{host}/{path}/{dashboard_id}```
 
 ### DataSetStats
 
@@ -103,7 +119,10 @@ message DataSetStat {
     string dataset_url = 1; // url: aws+glue://{account_id}/{database}/{tablename}
     string description = 2;
     string owner = 3;
-    repeated DataSetColumnStat columns = 4;    
+    repeated DataSetColumnStat columns = 4; 
+    uint64 count_rows = 5;
+    timstamp last_update = 6;
+    uint64 count_duplicates = 7;
 }
 
 message DataSetColumnStat {
@@ -120,12 +139,26 @@ message DataSetColumnStat {
 ### DataSetQualityChecks
 
 ```proto
-message DataSetQualityChecks {
-    string dataset_url = 1; // url: aws+glue://{account_id}/{database}/{tablename}
-    string description = 2;
-    string owner = 3;
-    repeated QualityCheck cheks = 4;
+message DataSetQualityCheck {
+    string url = 1;
+    repeated string dataset_urls = 2; // url: aws+glue://{account_id}/{database}/{tablename}
+    repeated string columns = 3;
+    string test_suite_url = 4;
+    string test_name = 5;
+    string description = 6;
+    string owner = 7;
 }
 
+message DataSetQualityTestSuite {
+    string url = 1;
+    string description_url = 2s;
+}
 
+message DataSetQualityCheckRun {
+    string url = 1;
+    timestamp run_at = 2;
+    string run_by = 3;
+    Status status = 4;
+    string result = 5;
+}
 ```
