@@ -29,12 +29,21 @@ Each entity has a unique url describing a place, system and an identifier in thi
 ###  DataInputs
 
 Is a source of your data, it could be described as a web site url, external s3 bucket or real life data place.
-
-```proto
-message DataInput {
-    string url = 1;
-    string description = 2;    
-}
+```yaml
+DataInput:
+    properties:
+        oddrn:
+            example: //aws/glue/{account_id}/{database}/{tablename}
+            type: string
+        name:
+            type: string
+        owner:
+            example: //aws/iam/{account_id}/user/name
+            type: string
+        description:
+            type: string
+    required:
+        - description
 ```
 
 ### DataSets
@@ -143,19 +152,48 @@ Example url:
 
 ###  DataTransformers
 
-```proto
-message DataTransformer {
-    string url = 1; // url: airflow://{host}/{path}/{job_id}
-    string description = 2;
-    repeated string input_dataset_urls = 3;
-    repeated string output_dataset_urls = 4; 
-    string owner = 5;
-}
+```yaml
+    DataTransformer:
+        type: object
+        properties:
+            oddrn:
+                example: //aws/glue/{account_id}/{database}/{tablename}
+                type: string
+            name:
+                type: string
+            owner:
+                example: //aws/iam/{account_id}/user/name
+                type: string
+            description:
+                type: string
+            sourceCodeUrl:
+                type: string
+            sql:
+                type: string                        
+            inputs:
+                type: array
+                items:
+                type: string            
+            outputs:
+                type: array
+                items:
+                type: string
+            subtype:
+                type: string
+                enum: 
+                - DATATRANSFORMER_JOB
+                - DATATRANSFORMER_EXPERIMENT
+                - DATATRANSFORMER_ML_MODEL_TRAINING
+        required:
+        - description
+        - inputs
+        - outputs
+        - subtype
 ```
 
 #### ETL jobs
 
-Example url: airflow://{host}/{path}/{job_id}  
+Example url: //airflow/{host}/{path}/{dag_id}/{job_id}  
 
 #### ML Training jobs
 
@@ -163,72 +201,33 @@ Example url: kubeflow://{host}/{path}/{job_id}
 
 ### DataConsumers
 
-```proto
-message DataConsumer {
-    string url = 1; // url: seldon://{host}/{path}/{model_id}  
-    string description = 2;
-    repeated string input_dataset_urls = 3;
-    string owner = 4;
-}
+```yaml
+    DataConsumer:
+        type: object
+        properties:
+            description:
+                type: string
+            inputs:
+                type: array
+                items: 
+                    type: string
+            subtype:
+                type: string
+                enum: 
+                - DATACONSUMER_DASHBOARD
+                - DATACONSUMER_ML_MODEL               
+          required:
+            - description
+
 ```
 
 #### ML Models
 
-Example url: ```sagemaker://{account_id}/{model_id}```
+Example url: ```//aws/sagemaker/{account_id}/{model_id}```
 
 #### BI dashboards
 
-Example url: ```tableu://{host}/{path}/{dashboard_id}```
-
-### DataSetStats
-
-```proto
-message DataSetStat {
-    string dataset_url = 1; // url: aws+glue://{account_id}/{database}/{tablename}
-    string description = 2;
-    string owner = 3;
-    repeated DataSetColumnStat columns = 4; 
-    uint64 count_rows = 5;
-    timstamp last_update = 6;
-    uint64 count_duplicates = 7;
-}
-
-message DataSetColumnStat {
-    string name = 1;
-    uint64 count_unqiues = 2;
-    uint64 count_nulls = 3;
-    uint64 count_non_nulls = 4;
-    string max_value = 5;
-    string min_value = 6;
-    string average = 6;
-}
-```
+Example url: ```//tableu/{host}/{path}/{dashboard_id}```
 
 ### DataSetQualityTests
 
-```proto
-message DataSetQualityTest {
-    string url = 1;
-    repeated string dataset_urls = 2; // url: aws+glue://{account_id}/{database}/{tablename}
-    repeated string columns = 3;
-    string test_suite_url = 4;
-    string test_name = 5;
-    string description = 6;
-    string owner = 7;
-    Priority priority = 8;
-    repeated string linked_urls = 9;
-}
-
-message DataSetQualityTestSuite {
-    string url = 1;
-    string description_url = 2;
-}
-
-message DataSetQualityCheckRun {
-    string url = 1;
-    timestamp run_at = 2;
-    string run_by = 3;
-    Status status = 4;
-    string result = 5;
-}
-```
