@@ -1,0 +1,154 @@
+openapi: 3.0.3
+info:
+  title: OpenDataDiscovery API Contract
+  version: 0.0.1
+  description: OpenDataDiscovery API Contract
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+paths:
+  /ingesion/{datasourceOddrn}/datasets:
+    post:
+      description: Provides list of available datasets
+      operationId: getDataSetList
+      tags:
+        - OpenDataDiscovery
+      parameters:
+        - in: path
+          name: datasourceOddrn
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './entities.yaml/#/components/schemas/DataSetList'
+      responses:
+        '200':
+          description: OK                              
+  /ingesion/{datasourceOddrn}/transformers:
+    post:
+      description: Provides list of available transformers
+      operationId: getDataTransformerList
+      tags:
+        - OpenDataDiscovery
+      parameters:
+        - in: path
+          name: datasourceOddrn
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './entities.yaml/#/components/schemas/DataTransformerList'
+      responses:
+        '200':
+          description: OK
+                
+  /ingesion/{datasourceOddrn}/transformers/runs:
+    post:
+      description: Provides list of runs for all transformers
+      operationId: getDataTransformerRunList
+      tags:
+        - OpenDataDiscovery
+      parameters:
+        - in: path
+          name: datasourceOddrn
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './entities.yaml/#/components/schemas/DataTransformerRunList'
+      responses:
+        '200':
+          description: OK
+
+  /ingesion/{datasourceOddrn}/consumers:
+    post:
+      description: Provides list of available consumers
+      operationId: getDataConsumerList
+      tags:
+        - OpenDataDiscovery
+      parameters:
+        - in: path
+          name: datasourceOddrn
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './entities.yaml/#/components/schemas/DataConsumerList'
+      responses:
+        '200':
+          description: OK
+  /ingesion/{datasourceOddrn}/inputs:
+    post:
+      description: Provides list of available inputs
+      operationId: getDataInputList
+      tags:
+        - OpenDataDiscovery
+      parameters:
+        - in: path
+          name: datasourceOddrn
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './entities.yaml/#/components/schemas/DataInputList'
+      responses:
+        '200':
+          description: OK
+
+  /ingesion/{datasourceOddrn}/qualitytests:
+    post:
+      description: Provides list of available data quality tests
+      operationId: getDataQualityTestList
+      tags:
+        - OpenDataDiscovery
+      parameters:
+        - in: path
+          name: datasourceOddrn
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './entities.yaml/#/components/schemas/DataQualityTestList'
+      responses:
+        '200':
+          description: OK
+
+  /ingesion/{datasourceOddrn}/qualitytests/runs:
+    post:
+      description: Provides list of available data quality tests runs
+      operationId: getDataQualityTestRunList
+      tags:
+        - OpenDataDiscovery
+      parameters:
+        - in: path
+          name: datasourceOddrn
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './entities.yaml/#/components/schemas/DataQualityTestRunList'
+      responses:
+        '200':
+          description: OK
+

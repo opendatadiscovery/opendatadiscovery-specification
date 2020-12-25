@@ -43,37 +43,103 @@ DataSet is a collectin of data stored in structured, semi-structued or unstructu
 It might be a table in relational database, parquet file on s3 bucket, hive catalog table and so on.
 DataSets could have subdatasets. For example Hive table is a dataset itself and it consists of DataSets as a folders/files on HDFS/S3.
 
-```proto
-message DataSet {
-    string url = 1; // url: aws+glue://{account_id}/{database}/{tablename}
-    string description = 2;
-    repeated DataSet sub_datasets= 3;
-    string owner = 4;
-    repeated DataSetColumn columns = 5;
-}
+```yaml
+DataSet:
+    type: object
+    properties:
+        oddrn:
+          example: //aws/glue/{account_id}/{database}/{tablename}
+          type: string
+        name:
+          type: string
+        owner:
+          example: //aws/iam/{account_id}/user/name
+          type: string
+        parentOddrn:
+            type: string
+            example: //aws/glue/{account_id}/{database}/{tablename}
+        description:
+            type: string
+        updatedAt:
+            format: date-time
+            type: string
+        subtype:
+            enum:
+                - DATASET_TABLE
+                - DATASET_FILE
+                - DATASET_FEATURE_GROUP
+            type: string
+        fieldList:
+            items:
+            $ref: '#/components/schemas/DataSetField'
+            type: array
+        dataSetList:
+            items:
+            $ref: '#/components/schemas/DataSet'
+            type: array
+    required:
+        - description
 
-message DataSetColumn {
-    string name = 1;
-    string type = 2;
-    boolean is_nullable = 3;
-    string default_value = 4;   
-}
+DataSetField:
+    type: object
+    properties:
+        type:
+            $ref: '#/components/schemas/DataSetFieldType'
+        defaultValue:
+            type: string
+        description:
+            type: string
+        required:
+        - type
+
+DataSetFieldType:
+    type: object
+    properties:
+        name:
+            type: string
+        type:
+            type: string
+        logicalType:
+            type: string
+        isNullable:
+            type: boolean
+        isList:
+            type: boolean
+        isMap:
+            type: boolean
+        keyType:
+            $ref: '#/components/schemas/DataSetFieldType'
+        valueType:
+            $ref: '#/components/schemas/DataSetFieldType'
+        stats:
+            $ref: '#/components/schemas/DataSetFieldStat'
+        fieldList:
+            type: array
+            items:
+            $ref: '#/components/schemas/DataSetFieldType'
+        required:
+        - type
+        - isNullable
+        - isMap
+        - isList
+
 ```
 
 #### Tables
 
-Example url
-```postgresql://{host}/{database}/{schema}{tablename}```
+Example oddrn
+```//postgresql/{host}/{database}/{schema}/{tablename}```
 
 #### Files
 
 Example url:
-```aws+s3://{bucket}/{path}```
+```//aws/s3/{bucket}/{path}```
 
 #### FeatureGroups
 
 Example url:
-```feast://{host}/{featuregroup}```
+
+```//feast/host/{namespace}/{featuregroup}```
 
 ###  DataTransformers
 
@@ -138,10 +204,10 @@ message DataSetColumnStat {
 }
 ```
 
-### DataSetQualityChecks
+### DataSetQualityTests
 
 ```proto
-message DataSetQualityCheck {
+message DataSetQualityTest {
     string url = 1;
     repeated string dataset_urls = 2; // url: aws+glue://{account_id}/{database}/{tablename}
     repeated string columns = 3;
@@ -149,11 +215,13 @@ message DataSetQualityCheck {
     string test_name = 5;
     string description = 6;
     string owner = 7;
+    Priority priority = 8;
+    repeated string linked_urls = 9;
 }
 
 message DataSetQualityTestSuite {
     string url = 1;
-    string description_url = 2s;
+    string description_url = 2;
 }
 
 message DataSetQualityCheckRun {

@@ -1,0 +1,123 @@
+openapi: 3.0.3
+info:
+  title: OpenDataDiscovery Adapter Contract
+  version: 0.0.1
+  description: OpenDataDiscovery Adapter Contract
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+paths:
+  /supported:
+    get:
+      description: Provides list of supported entities
+      operationId: getSupportedEntities
+      tags:
+        - OpenDataDiscovery        
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './entities.yaml/#/components/schemas/SupportedEntityList'
+  /datasets:
+    get:
+      description: Provides list of available datasets
+      operationId: getDataSetList
+      tags:
+        - OpenDataDiscovery        
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './entities.yaml/#/components/schemas/DataSetList'
+  /transformers:
+    get:
+      description: Provides list of available transformers
+      operationId: getDataTransformerList
+      tags:
+        - OpenDataDiscovery
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './entities.yaml/#/components/schemas/DataTransformerList'
+                
+  /transformers/runs:
+    get:
+      description: Provides list of runs for all transformers
+      operationId: getDataTransformerRunList
+      tags:
+        - OpenDataDiscovery
+      parameters:
+        - in: query
+          name: from
+          schema:
+            type: string
+            format: datetime
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './entities.yaml/#/components/schemas/DataTransformerRunList'
+
+  /consumers:
+    get:
+      description: Provides list of available consumers
+      operationId: getDataConsumerList
+      tags:
+        - OpenDataDiscovery
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './entities.yaml/#/components/schemas/DataConsumerList'
+  /inputs:
+    get:
+      description: Provides list of available inputs
+      operationId: getDataInputList
+      tags:
+        - OpenDataDiscovery
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './entities.yaml/#/components/schemas/DataInputList'
+  /qualitytests:
+    get:
+      description: Provides list of available data quality tests
+      operationId: getDataQualityTestList
+      tags:
+        - OpenDataDiscovery
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './entities.yaml/#/components/schemas/DataQualityTestList'
+
+  /qualitytests/runs:
+    get:
+      description: Provides list of available data quality tests runs
+      operationId: getDataQualityTestRunList
+      tags:
+        - OpenDataDiscovery
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './entities.yaml/#/components/schemas/DataQualityTestRunList'

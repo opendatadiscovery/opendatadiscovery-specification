@@ -1,0 +1,433 @@
+components:
+  schemas:
+    BaseObject:
+      type: object
+      properties:
+        oddrn:
+          type: string
+          example: "//aws/glue/{account_id}/{database}/{tablename}"
+        name:
+          type: string
+          example: 
+        owner:
+          type: string
+          example: "//aws/iam/{account_id}/user/name"
+      required:
+        - oddrn
+        - name
+        - owner
+                
+    DataSet:
+      allOf:
+        - $ref: '#/components/schemas/BaseObject'
+        - type: object
+          properties:
+            parentOddrn:
+              type: string
+            description:
+              type: string
+            updatedAt:
+              type: string
+              format: date-time
+            subtype:
+              type: string
+              enum: 
+                - DATASET_TABLE
+                - DATASET_FILE
+                - DATASET_FEATURE_GROUP
+            fieldList:
+              type: array
+              items:
+                $ref: '#/components/schemas/DataSetField'            
+            dataSetList:
+              type: array
+              items:
+                $ref: '#/components/schemas/DataSet'
+          required:
+            - description
+
+    DataSetFieldStat:
+      type: object
+      properties:
+        name:
+          type: string
+        booleanStats:
+          $ref: '#/components/schemas/BooleanFieldStat'
+        longStats:
+          $ref: '#/components/schemas/LongFieldStat'
+        doubleStats:
+          $ref: '#/components/schemas/DoubleFieldStat'
+        stringStats:
+          $ref: '#/components/schemas/StringFieldStat'
+        binaryStats:
+          $ref: '#/components/schemas/BinaryFieldStat'
+        DateStats:
+          $ref: '#/components/schemas/DateFieldStat'
+      required:
+        - name
+    
+    BooleanFieldStat:
+      type: object
+      properties:
+        trueCount:
+          type: integer
+          format: int64 
+        falseCount:
+          type: integer
+          format: int64 
+        nullsCount:
+          type: integer
+          format: int64 
+      required:
+        - trueCount
+        - falseCount
+        - nullsCount
+
+    DoubleFieldStat:
+      type: object
+      properties:
+        lowValue:
+          type: numeric
+        highValue:
+          type: numeric
+        nullsCount:
+          type: integer
+          format: int64
+        uniqueCount:
+          type: integer
+          format: int64
+      required:
+        - lowValue
+        - highValue
+        - nullsCount
+        - uniqueCount
+
+    StringFieldStat:
+      type: object
+      properties:
+        maxLength:
+          type: integer
+        avgLength:
+          type: numeric
+        nullsCount:
+          type: integer
+          format: int64
+        uniqueCount:
+          type: integer
+          format: int64
+      required:
+        - maxLength
+        - avgLength
+        - nullsCount
+        - uniqueCount          
+    
+    BinaryFieldStat:
+      type: object
+      properties:
+        maxLength:
+          type: integer
+        avgLength:
+          type: numeric
+        nullsCount:
+          type: integer
+          format: int64
+        uniqueCount:
+          type: integer
+          format: int64
+      required:
+        - maxLength
+        - avgLength
+        - nullsCount
+        - uniqueCount          
+
+    LongFieldStat:
+      type: object
+      properties:
+        lowValue:
+          type: integer
+          format: int64
+        highValue:
+          type: integer
+          format: int64
+        nullsCount:
+          type: integer
+          format: int64
+        uniqueCount:
+          type: integer
+          format: int64
+      required:
+        - lowValue
+        - highValue
+        - nullsCount
+        - uniqueCount          
+
+    DateFieldStat:
+      type: object
+      properties:
+        lowValue:
+          type: string
+          format: date-time
+        highValue:
+          type: string
+          format: date-time
+        nullsCount:
+          type: integer
+          format: int64
+        uniqueCount:
+          type: integer
+          format: int64
+      required:
+        - lowValue
+        - highValue
+        - nullsCount
+        - uniqueCount          
+
+    DataSetStat:
+      type: object
+      properties:
+        rowsCount: 
+          type: integer
+          format: int64 
+        uniqueRows:
+          type: integer
+          format: int64
+
+    DataSetFieldType:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        logicalType:
+          type: string
+        isNullable:
+          type: boolean
+        isList:
+          type: boolean
+        isMap:
+          type: boolean
+        keyType:
+          $ref: '#/components/schemas/DataSetFieldType'
+        valueType:
+          $ref: '#/components/schemas/DataSetFieldType'
+        stats:
+          $ref: '#/components/schemas/DataSetFieldStat'
+        fieldList:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSetFieldType'
+      required:
+        - type
+        - isNullable
+        - isMap
+        - isList
+
+    DataSetField:
+      allOf:
+        - $ref: '#/components/schemas/BaseObject'
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/DataSetFieldType'
+            defaultValue:
+              type: string
+            description:
+              type: string
+          required:
+            - type
+
+    DataSetList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DataSet'
+
+    DataTransformer:
+      allOf:
+        - $ref: '#/components/schemas/BaseObject'
+        - type: object
+          properties:
+            description:
+              type: string
+            sourceCodeUrl:
+              type: string
+            sql:
+              type: string                        
+            inputs:
+              type: array
+              items:
+                type: string            
+            outputs:
+              type: array
+              items:
+                type: string
+            subtype:
+              type: string
+              enum: 
+                - DATATRANSFORMER_JOB
+                - DATATRANSFORMER_EXPERIMENT
+                - DATATRANSFORMER_ML_MODEL_TRAINING
+          required:
+            - description
+            - inputs
+            - outputs
+            - subtype
+    
+    DataTransformerList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DataTransformer'
+
+    DataConsumer:
+      allOf:
+        - $ref: '#/components/schemas/BaseObject'
+        - type: object
+          properties:
+            description:
+              type: string
+            inputs:
+              type: array
+              items: 
+                type: string
+            subtype:
+              type: string
+              enum: 
+                - DATACONSUMER_DASHBOARD
+                - DATACONSUMER_ML_MODEL               
+          required:
+            - description
+    
+    DataConsumerList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DataConsumer'
+    
+    DataInput:
+      allOf:
+        - $ref: '#/components/schemas/BaseObject'
+        - type: object
+          properties:
+            description:
+              type: string
+          required:
+            - description
+    
+    DataInputList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DataInput'
+    
+    DataQualityTest:
+      allOf:
+        - $ref: '#/components/schemas/BaseObject'
+        - type: object
+          properties:
+            description:
+              type: string
+            datasetList:
+              type: array
+              items:
+                type: string
+            suiteUrl:
+              type: string
+            linkedUrls:
+              $ref: '#/components/schemas/LinkedUrl'
+          required:
+            - description
+
+    DataQualityTestList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DataQualityTest'
+
+    LinkedUrl:
+      type: object
+      properties:
+        name: 
+          type: string
+        url:
+          type: string
+      required:
+        - name
+        - url
+
+    DataTransformerRun:
+      allOf:
+        - $ref: '#/components/schemas/BaseObject'
+        - type: object
+          properties:
+            transformerOddrn:
+              type: string
+            startTime:
+              type: string
+              format: date-time
+            endTime:        
+              type: string
+              format: date-time
+            statusReason:
+              type: string
+            status:
+              type: string
+              enum:
+                - SUCCESS
+                - FAIL
+                - ABORTED
+                - OTHER
+  
+    DataTransformerRunList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DataTransformerRun'
+  
+    DataQualityTestRun:  
+      allOf:
+        - $ref: '#/components/schemas/BaseObject'
+        - type: object
+          properties:
+            dataQualityTestOddrn:
+              type: string
+            startTime:
+              type: string
+              format: date-time
+            endTime:        
+              type: string
+              format: date-time
+            statusReason:
+              type: string
+            status:
+              type: string
+              enum:
+                - SUCCESS
+                - FAIL
+                - ABORTED
+                - OTHER
+    
+    DataQualityTestRunList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DataQualityTestRun'
+
+    SupportedEntityList:
+      type: array
+      items:
+        $ref: '#/components/schemas/SupportedEntity'
+        
+    SupportedEntity:
+      type: object
+      properties:
+        name: 
+          type: string
+          enum: 
+            - ENTITY_DATASET
+            - ENTITY_TRANSFORMER
+            - ENTITY_TRANSFORMER_RUN
+            - ENTITY_CONSUMER
+            - ENTITY_INPUT
+            - ENTITY_QUALITY_TEST
+            - ENTITY_QUALITY_TEST_RUN
+        path:
+          type: string
+          example: "/datasets"
+      required:
+        - name
+        - path
