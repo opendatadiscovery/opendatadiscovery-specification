@@ -49,6 +49,8 @@ components:
                 $ref: '#/components/schemas/DataSet'
           required:
             - description
+            - subtype
+            - fieldList
 
     DataSetFieldStat:
       type: object
@@ -226,6 +228,9 @@ components:
         uniqueRows:
           type: integer
           format: int64
+      required:
+        - rowsCount
+        - uniqueRows
 
     DataSetFieldSchema:
       type: object
@@ -345,6 +350,7 @@ components:
                 - DATACONSUMER_ML_MODEL               
           required:
             - description
+            - subtype
     
     DataConsumerList:
       type: array
@@ -379,10 +385,13 @@ components:
                 type: string
             suiteUrl:
               type: string
-            linkedUrls:
-              $ref: '#/components/schemas/LinkedUrl'
+            linkedUrlList:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LinkedUrl'
           required:
             - description
+            - datasetList
 
     DataQualityTestList:
       type: array
@@ -422,6 +431,12 @@ components:
                 - FAIL
                 - ABORTED
                 - OTHER
+          required:
+            - transformerOddrn
+            - startTime
+            - endTime
+            - status
+
   
     DataTransformerRunList:
       type: array
@@ -450,6 +465,11 @@ components:
                 - FAIL
                 - ABORTED
                 - OTHER
+          required:
+            - dataQualityTestOddrn
+            - startTime
+            - endTime
+            - status
     
     DataQualityTestRunList:
       type: array
