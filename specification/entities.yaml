@@ -12,6 +12,10 @@ components:
         owner:
           type: string
           example: "//aws/iam/{account_id}/user/name"
+        metadata:
+          type: object
+          additionalProperties: 
+            type: string
       required:
         - oddrn
         - name
@@ -51,18 +55,20 @@ components:
       properties:
         name:
           type: string
+        complexStats:
+          $ref: '#/components/schemas/ComplexFieldStat'
         booleanStats:
           $ref: '#/components/schemas/BooleanFieldStat'
-        longStats:
-          $ref: '#/components/schemas/LongFieldStat'
-        doubleStats:
-          $ref: '#/components/schemas/DoubleFieldStat'
+        integerStats:
+          $ref: '#/components/schemas/IntegerFieldStat'
+        numberStats:
+          $ref: '#/components/schemas/NumberFieldStat'
         stringStats:
           $ref: '#/components/schemas/StringFieldStat'
         binaryStats:
           $ref: '#/components/schemas/BinaryFieldStat'
-        DateStats:
-          $ref: '#/components/schemas/DateFieldStat'
+        dateTimeStats:
+          $ref: '#/components/schemas/DateTimeFieldStat'
       required:
         - name
     
@@ -83,13 +89,30 @@ components:
         - falseCount
         - nullsCount
 
-    DoubleFieldStat:
+    ComplexFieldStat:
+      type: object
+      properties:
+        nullsCount:
+          type: integer
+          format: int64
+        uniqueCount:
+          type: integer
+          format: int64
+      required:
+        - nullsCount
+        - uniqueCount
+
+    NumberFieldStat:
       type: object
       properties:
         lowValue:
-          type: numeric
+          type: number
         highValue:
-          type: numeric
+          type: number
+        meanValue:
+          type: number
+        medianValue:
+          type: number
         nullsCount:
           type: integer
           format: int64
@@ -108,7 +131,7 @@ components:
         maxLength:
           type: integer
         avgLength:
-          type: numeric
+          type: number
         nullsCount:
           type: integer
           format: int64
@@ -127,7 +150,7 @@ components:
         maxLength:
           type: integer
         avgLength:
-          type: numeric
+          type: number
         nullsCount:
           type: integer
           format: int64
@@ -140,7 +163,7 @@ components:
         - nullsCount
         - uniqueCount          
 
-    LongFieldStat:
+    IntegerFieldStat:
       type: object
       properties:
         lowValue:
@@ -149,6 +172,12 @@ components:
         highValue:
           type: integer
           format: int64
+        meanValue:
+          type: integer
+          format: int64
+        medianValue:
+          type: integer
+          format: int64         
         nullsCount:
           type: integer
           format: int64
@@ -161,13 +190,19 @@ components:
         - nullsCount
         - uniqueCount          
 
-    DateFieldStat:
+    DateTimeFieldStat:
       type: object
       properties:
         lowValue:
           type: string
           format: date-time
         highValue:
+          type: string
+          format: date-time
+        meanValue:
+          type: string
+          format: date-time
+        medianValue:
           type: string
           format: date-time
         nullsCount:
@@ -192,42 +227,44 @@ components:
           type: integer
           format: int64
 
-    DataSetFieldType:
+    DataSetFieldSchema:
       type: object
       properties:
-        name:
-          type: string
         type:
           type: string
+          enum:
+            - TYPE_STRING
+            - TYPE_NUMBER
+            - TYPE_INTEGER
+            - TYPE_BOOLEAN
+            - TYPE_DATETIME
+            - TYPE_STRUCT
+            - TYPE_BINARY
+            - TYPE_LIST
+            - TYPE_MAP
         logicalType:
           type: string
         isNullable:
           type: boolean
-        isList:
-          type: boolean
-        isMap:
-          type: boolean
-        keyType:
+        key:
           $ref: '#/components/schemas/DataSetFieldType'
-        valueType:
+        value:
           $ref: '#/components/schemas/DataSetFieldType'
-        stats:
-          $ref: '#/components/schemas/DataSetFieldStat'
         fieldList:
           type: array
           items:
-            $ref: '#/components/schemas/DataSetFieldType'
+            $ref: '#/components/schemas/DataSetField'
       required:
         - type
         - isNullable
-        - isMap
-        - isList
 
     DataSetField:
       allOf:
         - $ref: '#/components/schemas/BaseObject'
         - type: object
           properties:
+            name:
+              type: string
             type:
               $ref: '#/components/schemas/DataSetFieldType'
             defaultValue:
@@ -235,7 +272,19 @@ components:
             description:
               type: string
           required:
+            - name
             - type
+
+    DataSetFieldType:
+      type: object
+      properties:
+        schema:
+          $ref: '#/components/schemas/DataSetFieldSchema'
+        stats:
+          $ref: '#/components/schemas/DataSetFieldStat'
+      required:
+        - schema
+
 
     DataSetList:
       type: array

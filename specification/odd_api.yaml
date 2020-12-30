@@ -7,7 +7,7 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 paths:
-  /ingesion/{datasourceOddrn}/datasets:
+  /ingestion/{datasourceOddrn}/datasets:
     post:
       description: Provides list of available datasets
       operationId: getDataSetList
@@ -27,7 +27,7 @@ paths:
       responses:
         '200':
           description: OK                              
-  /ingesion/{datasourceOddrn}/transformers:
+  /ingestion/{datasourceOddrn}/transformers:
     post:
       description: Provides list of available transformers
       operationId: getDataTransformerList
@@ -48,7 +48,7 @@ paths:
         '200':
           description: OK
                 
-  /ingesion/{datasourceOddrn}/transformers/runs:
+  /ingestion/{datasourceOddrn}/transformers/runs:
     post:
       description: Provides list of runs for all transformers
       operationId: getDataTransformerRunList
@@ -69,7 +69,7 @@ paths:
         '200':
           description: OK
 
-  /ingesion/{datasourceOddrn}/consumers:
+  /ingestion/{datasourceOddrn}/consumers:
     post:
       description: Provides list of available consumers
       operationId: getDataConsumerList
@@ -89,7 +89,7 @@ paths:
       responses:
         '200':
           description: OK
-  /ingesion/{datasourceOddrn}/inputs:
+  /ingestion/{datasourceOddrn}/inputs:
     post:
       description: Provides list of available inputs
       operationId: getDataInputList
@@ -110,7 +110,7 @@ paths:
         '200':
           description: OK
 
-  /ingesion/{datasourceOddrn}/qualitytests:
+  /ingestion/{datasourceOddrn}/qualitytests:
     post:
       description: Provides list of available data quality tests
       operationId: getDataQualityTestList
@@ -131,7 +131,7 @@ paths:
         '200':
           description: OK
 
-  /ingesion/{datasourceOddrn}/qualitytests/runs:
+  /ingestion/{datasourceOddrn}/qualitytests/runs:
     post:
       description: Provides list of available data quality tests runs
       operationId: getDataQualityTestRunList
