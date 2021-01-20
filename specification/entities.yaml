@@ -39,14 +39,11 @@ components:
                 - DATASET_TABLE
                 - DATASET_FILE
                 - DATASET_FEATURE_GROUP
+                - DATASET_TOPIC
             fieldList:
               type: array
               items:
-                $ref: '#/components/schemas/DataSetField'            
-            dataSetList:
-              type: array
-              items:
-                $ref: '#/components/schemas/DataSet'
+                $ref: '#/components/schemas/DataSetField'
           required:
             - description
             - subtype
@@ -251,14 +248,6 @@ components:
           type: string
         isNullable:
           type: boolean
-        key:
-          $ref: '#/components/schemas/DataSetFieldType'
-        value:
-          $ref: '#/components/schemas/DataSetFieldType'
-        fieldList:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataSetField'
       required:
         - type
         - isNullable
@@ -268,10 +257,16 @@ components:
         - $ref: '#/components/schemas/BaseObject'
         - type: object
           properties:
+            parent_field:
+              type: string
             name:
               type: string
             type:
               $ref: '#/components/schemas/DataSetFieldType'
+            isKey:
+              type: boolean
+            isValue:
+              type: boolean            
             defaultValue:
               type: string
             description:

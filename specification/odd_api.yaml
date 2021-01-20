@@ -10,7 +10,7 @@ paths:
   /ingestion/{datasourceOddrn}/datasets:
     post:
       description: Provides list of available datasets
-      operationId: getDataSetList
+      operationId: postDataSetList
       tags:
         - OpenDataDiscovery
       parameters:
@@ -30,7 +30,7 @@ paths:
   /ingestion/{datasourceOddrn}/transformers:
     post:
       description: Provides list of available transformers
-      operationId: getDataTransformerList
+      operationId: postDataTransformerList
       tags:
         - OpenDataDiscovery
       parameters:
@@ -51,7 +51,7 @@ paths:
   /ingestion/{datasourceOddrn}/transformers/runs:
     post:
       description: Provides list of runs for all transformers
-      operationId: getDataTransformerRunList
+      operationId: postDataTransformerRunList
       tags:
         - OpenDataDiscovery
       parameters:
@@ -72,7 +72,7 @@ paths:
   /ingestion/{datasourceOddrn}/consumers:
     post:
       description: Provides list of available consumers
-      operationId: getDataConsumerList
+      operationId: postDataConsumerList
       tags:
         - OpenDataDiscovery
       parameters:
@@ -92,7 +92,7 @@ paths:
   /ingestion/{datasourceOddrn}/inputs:
     post:
       description: Provides list of available inputs
-      operationId: getDataInputList
+      operationId: postDataInputList
       tags:
         - OpenDataDiscovery
       parameters:
@@ -113,7 +113,7 @@ paths:
   /ingestion/{datasourceOddrn}/qualitytests:
     post:
       description: Provides list of available data quality tests
-      operationId: getDataQualityTestList
+      operationId: postDataQualityTestList
       tags:
         - OpenDataDiscovery
       parameters:
@@ -134,7 +134,7 @@ paths:
   /ingestion/{datasourceOddrn}/qualitytests/runs:
     post:
       description: Provides list of available data quality tests runs
-      operationId: getDataQualityTestRunList
+      operationId: postDataQualityTestRunList
       tags:
         - OpenDataDiscovery
       parameters:
