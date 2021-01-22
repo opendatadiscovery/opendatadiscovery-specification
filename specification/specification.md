@@ -12,12 +12,27 @@ Metadata discovery process is very simular to metrics/logs/traces gathering proc
 
 ### Pull model
 
-Pulling metadata directly from the source seems is the most straightforward way to gather metadata, but it may become a nightmare to develope and maintain a centralized fleet of domain-specific crawlers. OpenDataDiscovery introduces new entity: OpenDataDiscovery Adapater. The main goal of these adapaters are to be source specific and expose only information could be gathered from certain data source.s
+Pulling metadata directly from the source seems is the most straightforward way to gather metadata, but it may become a nightmare to develope and maintain a centralized fleet of domain-specific crawlers. OpenDataDiscovery introduces new entity: OpenDataDiscovery Adapater. The main goal of these adapaters are to be source specific and expose only information could be gathered from certain data source.
+
+![Pull model](assets/pull.png)
+
+Preferred if:
+
+* Latency on index update is ok
+* There is already an adpater
 
 ### Push model
 
-It supports for individual metadata providers push the information to the central repository via APIs.
+It supports for individual metadata providers to push the information in the central repository via APIs.
 This could be more prefered way for certain use cases. For example Airflow jobs runs and quality check runs.
+
+![Push model](assets/push.png)
+
+Preferred if:
+
+* Near-realtime index is important
+* There is no implemented adpater
+* Information could be gathered only during job time
 
 ## DataModel
 
