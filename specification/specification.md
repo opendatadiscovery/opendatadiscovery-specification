@@ -10,6 +10,8 @@ OpenDataDiscovery specification is intentionally agnostic about the specifics of
 
 Metadata discovery process is very simular to metrics/logs/traces gathering process. We might have pull or push model. Both of them is better for their use cases.
 
+![Architecture](assets/arc.png)
+
 ### Pull model
 
 Pulling metadata directly from the source seems is the most straightforward way to gather metadata, but it may become a nightmare to develope and maintain a centralized fleet of domain-specific crawlers. OpenDataDiscovery introduces new entity: OpenDataDiscovery Adapater. The main goal of these adapaters are to be source specific and expose only information could be gathered from certain data source.
