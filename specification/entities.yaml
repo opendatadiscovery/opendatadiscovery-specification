@@ -257,7 +257,7 @@ components:
         - $ref: '#/components/schemas/BaseObject'
         - type: object
           properties:
-            parent_field:
+            parentFieldOddrn:
               type: string
             name:
               type: string
