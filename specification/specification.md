@@ -48,7 +48,7 @@ Is a source of your data, it could be described as a web site url, external s3 b
 DataInput:
     properties:
         oddrn:
-            example: //aws/glue/{account_id}/{database}/{tablename}
+            example: //http/www.amazon.com/goods
             type: string
         name:
             type: string
@@ -97,10 +97,6 @@ DataSet:
             items:
             $ref: '#/components/schemas/DataSetField'
             type: array
-        dataSetList:
-            items:
-            $ref: '#/components/schemas/DataSet'
-            type: array
     required:
         - description
 
@@ -131,16 +127,6 @@ DataSetFieldType:
             type: boolean
         isMap:
             type: boolean
-        keyType:
-            $ref: '#/components/schemas/DataSetFieldType'
-        valueType:
-            $ref: '#/components/schemas/DataSetFieldType'
-        stats:
-            $ref: '#/components/schemas/DataSetFieldStat'
-        fieldList:
-            type: array
-            items:
-            $ref: '#/components/schemas/DataSetFieldType'
         required:
         - type
         - isNullable
