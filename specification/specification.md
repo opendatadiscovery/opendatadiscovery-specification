@@ -234,3 +234,51 @@ Example url: ```//tableu/{host}/{path}/{dashboard_id}```
 
 ### DataSetQualityTests
 
+```yaml
+    DataQualityTest:
+        type: object
+        properties:
+            description:
+                type: string
+            datasetList:
+                type: array
+                items:
+                    type: string
+            suiteUrl:
+                type: string
+            linkedUrlList:
+                type: array
+                items:
+                    $ref: '#/components/schemas/LinkedUrl'
+        required:
+            - description
+            - datasetList
+
+    DataQualityTestRun:  
+        type: object
+        properties:
+            dataQualityTestOddrn:
+              type: string
+            startTime:
+              type: string
+              format: date-time
+            endTime:        
+              type: string
+              format: date-time
+            statusReason:
+              type: string
+            status:
+              type: string
+              enum:
+                - SUCCESS
+                - FAIL
+                - ABORTED
+                - OTHER
+        required:
+            - dataQualityTestOddrn
+            - startTime
+            - endTime
+            - status
+
+```
+
