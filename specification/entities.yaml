@@ -33,6 +33,9 @@ components:
             updatedAt:
               type: string
               format: date-time
+            rowsNumber:
+              type: integer
+              format: int64
             subtype:
               type: string
               enum: 
