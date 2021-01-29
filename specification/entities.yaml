@@ -274,7 +274,8 @@ components:
         isNullable:
           type: boolean
       required:
-        - schema
+        - type
+        - isNullable
 
 
     DataSetList:
