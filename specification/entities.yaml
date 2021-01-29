@@ -229,29 +229,6 @@ components:
         - rowsCount
         - uniqueRows
 
-    DataSetFieldSchema:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-            - TYPE_STRING
-            - TYPE_NUMBER
-            - TYPE_INTEGER
-            - TYPE_BOOLEAN
-            - TYPE_DATETIME
-            - TYPE_STRUCT
-            - TYPE_BINARY
-            - TYPE_LIST
-            - TYPE_MAP
-        logicalType:
-          type: string
-        isNullable:
-          type: boolean
-      required:
-        - type
-        - isNullable
-
     DataSetField:
       allOf:
         - $ref: '#/components/schemas/BaseObject'
@@ -271,6 +248,8 @@ components:
               type: string
             description:
               type: string
+            stats:
+              $ref: '#/components/schemas/DataSetFieldStat'
           required:
             - name
             - type
@@ -278,10 +257,22 @@ components:
     DataSetFieldType:
       type: object
       properties:
-        schema:
-          $ref: '#/components/schemas/DataSetFieldSchema'
-        stats:
-          $ref: '#/components/schemas/DataSetFieldStat'
+        type:
+          type: string
+          enum:
+            - TYPE_STRING
+            - TYPE_NUMBER
+            - TYPE_INTEGER
+            - TYPE_BOOLEAN
+            - TYPE_DATETIME
+            - TYPE_STRUCT
+            - TYPE_BINARY
+            - TYPE_LIST
+            - TYPE_MAP
+        logicalType:
+          type: string
+        isNullable:
+          type: boolean
       required:
         - schema
 
