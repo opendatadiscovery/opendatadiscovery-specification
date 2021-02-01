@@ -17,7 +17,6 @@ components:
           additionalProperties: 
             type: string
       required:
-        - oddrn
         - name
         - owner
                 
@@ -48,7 +47,6 @@ components:
               items:
                 $ref: '#/components/schemas/DataSetField'
           required:
-            - description
             - subtype
             - fieldList
 
@@ -312,7 +310,6 @@ components:
                 - DATATRANSFORMER_EXPERIMENT
                 - DATATRANSFORMER_ML_MODEL_TRAINING
           required:
-            - description
             - inputs
             - outputs
             - subtype
@@ -339,7 +336,6 @@ components:
                 - DATACONSUMER_DASHBOARD
                 - DATACONSUMER_ML_MODEL               
           required:
-            - description
             - subtype
     
     DataConsumerList:
