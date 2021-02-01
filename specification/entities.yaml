@@ -17,8 +17,8 @@ components:
           additionalProperties: 
             type: string
       required:
+        - oddrn
         - name
-        - owner
                 
     DataSet:
       allOf:
