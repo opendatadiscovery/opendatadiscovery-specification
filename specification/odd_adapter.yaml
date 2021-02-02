@@ -55,7 +55,7 @@ paths:
         - OpenDataDiscovery
       parameters:
         - in: query
-          name: from
+          name: period_from
           schema:
             type: string
             format: datetime
