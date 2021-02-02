@@ -237,8 +237,6 @@ components:
           properties:
             parentFieldOddrn:
               type: string
-            name:
-              type: string
             type:
               $ref: '#/components/schemas/DataSetFieldType'
             isKey:
