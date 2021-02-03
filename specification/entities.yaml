@@ -250,7 +250,6 @@ components:
             stats:
               $ref: '#/components/schemas/DataSetFieldStat'
           required:
-            - name
             - type
 
     DataSetFieldType:
