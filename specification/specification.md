@@ -8,7 +8,7 @@ OpenDataDiscovery specification is intentionally agnostic about the specifics of
 
 ## Discovery process
 
-Metadata discovery process is very simular to metrics/logs/traces gathering process. We might have pull or push model. Both of them is better for their use cases.
+Metadata discovery process is very simular to metrics/logs/traces gathering process. We might have pull or push model. Both of them are appropriate for specific use cases.
 
 ![Architecture](assets/arc.png)
 
