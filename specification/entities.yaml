@@ -53,8 +53,6 @@ components:
     DataSetFieldStat:
       type: object
       properties:
-        name:
-          type: string
         complexStats:
           $ref: '#/components/schemas/ComplexFieldStat'
         booleanStats:
@@ -69,8 +67,6 @@ components:
           $ref: '#/components/schemas/BinaryFieldStat'
         dateTimeStats:
           $ref: '#/components/schemas/DateTimeFieldStat'
-      required:
-        - name
     
     BooleanFieldStat:
       type: object
