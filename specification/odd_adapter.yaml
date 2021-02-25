@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: OpenDataDiscovery Adapter Contract
+  title: OpenDataDiscoveryAdapter Adapter Contract
   version: 0.0.1
-  description: OpenDataDiscovery Adapter Contract
+  description: OpenDataDiscoveryAdapter Adapter Contract
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -12,7 +12,7 @@ paths:
       description: Provides list of supported entities
       operationId: getSupportedEntities
       tags:
-        - OpenDataDiscovery        
+        - OpenDataDiscoveryAdapter
       responses:
         '200':
           description: OK
@@ -25,7 +25,7 @@ paths:
       description: Provides list of available datasets
       operationId: getDataSetList
       tags:
-        - OpenDataDiscovery        
+        - OpenDataDiscoveryAdapter
       responses:
         '200':
           description: OK
@@ -38,7 +38,7 @@ paths:
       description: Provides list of available transformers
       operationId: getDataTransformerList
       tags:
-        - OpenDataDiscovery
+        - OpenDataDiscoveryAdapter
       responses:
         '200':
           description: OK
@@ -46,13 +46,13 @@ paths:
             application/json:
               schema:
                 $ref: './entities.yaml/#/components/schemas/DataTransformerList'
-                
+
   /transformers/runs:
     get:
       description: Provides list of runs for all transformers
       operationId: getDataTransformerRunList
       tags:
-        - OpenDataDiscovery
+        - OpenDataDiscoveryAdapter
       parameters:
         - in: query
           name: period_from
@@ -73,7 +73,7 @@ paths:
       description: Provides list of available consumers
       operationId: getDataConsumerList
       tags:
-        - OpenDataDiscovery
+        - OpenDataDiscoveryAdapter
       responses:
         '200':
           description: OK
@@ -86,7 +86,7 @@ paths:
       description: Provides list of available inputs
       operationId: getDataInputList
       tags:
-        - OpenDataDiscovery
+        - OpenDataDiscoveryAdapter
       responses:
         '200':
           description: OK
@@ -99,7 +99,7 @@ paths:
       description: Provides list of available data quality tests
       operationId: getDataQualityTestList
       tags:
-        - OpenDataDiscovery
+        - OpenDataDiscoveryAdapter
       responses:
         '200':
           description: OK
@@ -113,7 +113,7 @@ paths:
       description: Provides list of available data quality tests runs
       operationId: getDataQualityTestRunList
       tags:
-        - OpenDataDiscovery
+        - OpenDataDiscoveryAdapter
       responses:
         '200':
           description: OK
