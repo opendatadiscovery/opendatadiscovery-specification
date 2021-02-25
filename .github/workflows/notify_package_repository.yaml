@@ -18,7 +18,7 @@ jobs:
           --header 'content-type: application/json' \
           --data '{"ref": "main"}'
 
-  notify_contract_package_repo_job:
+  notify_client_package_repo_job:
     name: Notify client package repository
     runs-on: ubuntu-18.04
     steps:
