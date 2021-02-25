@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: OpenDataDiscoveryIngestion API Contract
+  title: OpenDataDiscovery API Contract
   version: 0.0.1
-  description: OpenDataDiscoveryIngestion API Contract
+  description: OpenDataDiscovery API Contract
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
