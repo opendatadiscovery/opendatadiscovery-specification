@@ -12,7 +12,7 @@ paths:
       description: Provides list of available datasets
       operationId: postDataSetList
       tags:
-        - OpenDataDiscovery
+        - OpenDataDiscoveryIngestion
       parameters:
         - in: path
           name: datasourceOddrn
@@ -26,13 +26,13 @@ paths:
               $ref: './entities.yaml/#/components/schemas/DataSetList'
       responses:
         '200':
-          description: OK                              
+          description: OK
   /ingestion/{datasourceOddrn}/transformers:
     post:
       description: Provides list of available transformers
       operationId: postDataTransformerList
       tags:
-        - OpenDataDiscovery
+        - OpenDataDiscoveryIngestion
       parameters:
         - in: path
           name: datasourceOddrn
@@ -47,13 +47,13 @@ paths:
       responses:
         '200':
           description: OK
-                
+
   /ingestion/{datasourceOddrn}/transformers/runs:
     post:
       description: Provides list of runs for all transformers
       operationId: postDataTransformerRunList
       tags:
-        - OpenDataDiscovery
+        - OpenDataDiscoveryIngestion
       parameters:
         - in: path
           name: datasourceOddrn
@@ -74,7 +74,7 @@ paths:
       description: Provides list of available consumers
       operationId: postDataConsumerList
       tags:
-        - OpenDataDiscovery
+        - OpenDataDiscoveryIngestion
       parameters:
         - in: path
           name: datasourceOddrn
@@ -94,7 +94,7 @@ paths:
       description: Provides list of available inputs
       operationId: postDataInputList
       tags:
-        - OpenDataDiscovery
+        - OpenDataDiscoveryIngestion
       parameters:
         - in: path
           name: datasourceOddrn
@@ -115,7 +115,7 @@ paths:
       description: Provides list of available data quality tests
       operationId: postDataQualityTestList
       tags:
-        - OpenDataDiscovery
+        - OpenDataDiscoveryIngestion
       parameters:
         - in: path
           name: datasourceOddrn
@@ -136,7 +136,7 @@ paths:
       description: Provides list of available data quality tests runs
       operationId: postDataQualityTestRunList
       tags:
-        - OpenDataDiscovery
+        - OpenDataDiscoveryIngestion
       parameters:
         - in: path
           name: datasourceOddrn
@@ -151,4 +151,3 @@ paths:
       responses:
         '200':
           description: OK
-
