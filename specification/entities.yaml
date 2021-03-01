@@ -46,6 +46,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/DataSetField'
+            extensionList:
+              type: array
+              items: 
+                $ref: "../extensions.yaml/#/components/schemas/XODDDataSetExtension"
           required:
             - subtype
             - fieldList
@@ -245,6 +249,10 @@ components:
               type: string
             stats:
               $ref: '#/components/schemas/DataSetFieldStat'
+            extensionList:
+              type: array
+              items: 
+                $ref: "../extensions.yaml/#/components/schemas/XODDDataSetFieldExtension"
           required:
             - type
 
@@ -305,6 +313,10 @@ components:
                 - DATATRANSFORMER_JOB
                 - DATATRANSFORMER_EXPERIMENT
                 - DATATRANSFORMER_ML_MODEL_TRAINING
+            extensionList:
+              type: array
+              items: 
+                $ref: "../extensions.yaml/#/components/schemas/XODDDataTransformerExtension"
           required:
             - inputs
             - outputs
@@ -330,7 +342,11 @@ components:
               type: string
               enum: 
                 - DATACONSUMER_DASHBOARD
-                - DATACONSUMER_ML_MODEL               
+                - DATACONSUMER_ML_MODEL
+            extensionList:
+              type: array
+              items: 
+                $ref: "../extensions.yaml/#/components/schemas/XODDDataConsumerExtension"
           required:
             - subtype
     
@@ -371,6 +387,10 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/LinkedUrl'
+            extensionList:
+              type: array
+              items: 
+                $ref: "../extensions.yaml/#/components/schemas/XODDDataQualityTestExtension"
           required:
             - description
             - datasetList
@@ -413,6 +433,10 @@ components:
                 - FAIL
                 - ABORTED
                 - OTHER
+            extensionList:
+              type: array
+              items: 
+                $ref: "../extensions.yaml/#/components/schemas/XODDDataTransformerRunExtension"
           required:
             - transformerOddrn
             - startTime
@@ -447,6 +471,10 @@ components:
                 - FAIL
                 - ABORTED
                 - OTHER
+            extensionList:
+              type: array
+              items: 
+                $ref: "../extensions.yaml/#/components/schemas/XODDDataQualityTestRunExtension"
           required:
             - dataQualityTestOddrn
             - startTime
@@ -482,3 +510,5 @@ components:
       required:
         - name
         - path
+
+          
