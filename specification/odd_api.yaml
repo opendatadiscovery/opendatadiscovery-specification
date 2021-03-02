@@ -20,10 +20,11 @@ paths:
             type: string
           required: true
       requestBody:
+        required: true
         content:
           application/json:
             schema:
               $ref: './entities.yaml/#/components/schemas/DataEntityList'
       responses:
         '201':
-          description: OK
+          description: Created
