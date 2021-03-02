@@ -32,9 +32,9 @@ components:
             data_transformer_run:
               $ref: '#/components/schemas/DataTransformerRun'
             data_quality_test:
-              $ref: '#/components/schemas/DataTransformer'
+              $ref: '#/components/schemas/DataQualityTest'
             data_quality_test_run:
-              $ref: '#/components/schemas/DataTransformerRun'
+              $ref: '#/components/schemas/DataQualityTestRun'
             data_input:
               $ref: '#/components/schemas/DataInput'
             data_consumer:
@@ -407,7 +407,6 @@ components:
         - end_time
         - status
 
-    
     DataQualityTestRun:  
       type: object
       properties:
@@ -448,6 +447,3 @@ components:
       required:
         - schema_url
         - metadata
-
-
-          

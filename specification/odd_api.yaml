@@ -25,5 +25,5 @@ paths:
             schema:
               $ref: './entities.yaml/#/components/schemas/DataEntityList'
       responses:
-        '200':
+        '201':
           description: OK
