@@ -7,117 +7,23 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 paths:
-  /supported:
+  /entities:
     get:
-      description: Provides list of supported entities
-      operationId: getSupportedEntities
-      tags:
-        - OpenDataDiscoveryAdapter
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: './entities.yaml/#/components/schemas/SupportedEntityList'
-  /datasets:
-    get:
-      description: Provides list of available datasets
-      operationId: getDataSetList
-      tags:
-        - OpenDataDiscoveryAdapter
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: './entities.yaml/#/components/schemas/DataSetList'
-  /transformers:
-    get:
-      description: Provides list of available transformers
-      operationId: getDataTransformerList
-      tags:
-        - OpenDataDiscoveryAdapter
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: './entities.yaml/#/components/schemas/DataTransformerList'
-
-  /transformers/runs:
-    get:
-      description: Provides list of runs for all transformers
-      operationId: getDataTransformerRunList
+      description: Provides list of available entities
+      operationId: getDataEntities
       tags:
         - OpenDataDiscoveryAdapter
       parameters:
         - in: query
-          name: period_from
+          name: changed_since
           schema:
             type: string
-            format: datetime
-          required: true
+            format: date-time
+          description: Get data enitites updated after changed_since date
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: './entities.yaml/#/components/schemas/DataTransformerRunList'
-
-  /consumers:
-    get:
-      description: Provides list of available consumers
-      operationId: getDataConsumerList
-      tags:
-        - OpenDataDiscoveryAdapter
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: './entities.yaml/#/components/schemas/DataConsumerList'
-  /inputs:
-    get:
-      description: Provides list of available inputs
-      operationId: getDataInputList
-      tags:
-        - OpenDataDiscoveryAdapter
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: './entities.yaml/#/components/schemas/DataInputList'
-  /qualitytests:
-    get:
-      description: Provides list of available data quality tests
-      operationId: getDataQualityTestList
-      tags:
-        - OpenDataDiscoveryAdapter
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: './entities.yaml/#/components/schemas/DataQualityTestList'
-
-  /qualitytests/runs:
-    get:
-      description: Provides list of available data quality tests runs
-      operationId: getDataQualityTestRunList
-      tags:
-        - OpenDataDiscoveryAdapter
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: './entities.yaml/#/components/schemas/DataQualityTestRunList'
+                $ref: './entities.yaml/#/components/schemas/DataEntityList'

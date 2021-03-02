@@ -7,10 +7,10 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 paths:
-  /ingestion/{datasourceOddrn}/datasets:
+  /ingestion/{datasourceOddrn}/entities:
     post:
       description: Provides list of available datasets
-      operationId: postDataSetList
+      operationId: postDataEntityList
       tags:
         - OpenDataDiscoveryIngestion
       parameters:
@@ -23,131 +23,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './entities.yaml/#/components/schemas/DataSetList'
-      responses:
-        '200':
-          description: OK
-  /ingestion/{datasourceOddrn}/transformers:
-    post:
-      description: Provides list of available transformers
-      operationId: postDataTransformerList
-      tags:
-        - OpenDataDiscoveryIngestion
-      parameters:
-        - in: path
-          name: datasourceOddrn
-          schema:
-            type: string
-          required: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: './entities.yaml/#/components/schemas/DataTransformerList'
-      responses:
-        '200':
-          description: OK
-
-  /ingestion/{datasourceOddrn}/transformers/runs:
-    post:
-      description: Provides list of runs for all transformers
-      operationId: postDataTransformerRunList
-      tags:
-        - OpenDataDiscoveryIngestion
-      parameters:
-        - in: path
-          name: datasourceOddrn
-          schema:
-            type: string
-          required: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: './entities.yaml/#/components/schemas/DataTransformerRunList'
-      responses:
-        '200':
-          description: OK
-
-  /ingestion/{datasourceOddrn}/consumers:
-    post:
-      description: Provides list of available consumers
-      operationId: postDataConsumerList
-      tags:
-        - OpenDataDiscoveryIngestion
-      parameters:
-        - in: path
-          name: datasourceOddrn
-          schema:
-            type: string
-          required: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: './entities.yaml/#/components/schemas/DataConsumerList'
-      responses:
-        '200':
-          description: OK
-  /ingestion/{datasourceOddrn}/inputs:
-    post:
-      description: Provides list of available inputs
-      operationId: postDataInputList
-      tags:
-        - OpenDataDiscoveryIngestion
-      parameters:
-        - in: path
-          name: datasourceOddrn
-          schema:
-            type: string
-          required: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: './entities.yaml/#/components/schemas/DataInputList'
-      responses:
-        '200':
-          description: OK
-
-  /ingestion/{datasourceOddrn}/qualitytests:
-    post:
-      description: Provides list of available data quality tests
-      operationId: postDataQualityTestList
-      tags:
-        - OpenDataDiscoveryIngestion
-      parameters:
-        - in: path
-          name: datasourceOddrn
-          schema:
-            type: string
-          required: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: './entities.yaml/#/components/schemas/DataQualityTestList'
-      responses:
-        '200':
-          description: OK
-
-  /ingestion/{datasourceOddrn}/qualitytests/runs:
-    post:
-      description: Provides list of available data quality tests runs
-      operationId: postDataQualityTestRunList
-      tags:
-        - OpenDataDiscoveryIngestion
-      parameters:
-        - in: path
-          name: datasourceOddrn
-          schema:
-            type: string
-          required: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: './entities.yaml/#/components/schemas/DataQualityTestRunList'
+              $ref: './entities.yaml/#/components/schemas/DataEntityList'
       responses:
         '200':
           description: OK

@@ -13,246 +13,261 @@ components:
           type: string
           example: "//aws/iam/{account_id}/user/name"
         metadata:
-          type: object
-          additionalProperties: 
-            type: string
+          type: array
+          items: 
+            $ref: "#/components/schemas/MetadataExtension"
       required:
         - oddrn
         - name
-                
-    DataSet:
+
+    DataEntity:
       allOf:
         - $ref: '#/components/schemas/BaseObject'
         - type: object
           properties:
-            parentOddrn:
-              type: string
-            description:
-              type: string
-            updatedAt:
-              type: string
-              format: date-time
-            rowsNumber:
-              type: integer
-              format: int64
-            subtype:
-              type: string
-              enum: 
-                - DATASET_TABLE
-                - DATASET_FILE
-                - DATASET_FEATURE_GROUP
-                - DATASET_TOPIC
-            fieldList:
-              type: array
-              items:
-                $ref: '#/components/schemas/DataSetField'
-            extensionList:
-              type: array
-              items: 
-                $ref: "../extensions.yaml/#/components/schemas/XODDDataSetExtension"
-          required:
-            - subtype
-            - fieldList
+            dataset:
+              $ref: '#/components/schemas/DataSet'
+            data_transformer:
+              $ref: '#/components/schemas/DataTransformer'
+            data_transformer_run:
+              $ref: '#/components/schemas/DataTransformerRun'
+            data_quality_test:
+              $ref: '#/components/schemas/DataTransformer'
+            data_quality_test_run:
+              $ref: '#/components/schemas/DataTransformerRun'
+            data_input:
+              $ref: '#/components/schemas/DataInput'
+            data_consumer:
+              $ref: '#/components/schemas/DataConsumer'   
+
+    DataEntityList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DataEntity'            
+            
+    DataSet:
+      type: object
+      properties:
+        parent_oddrn:
+          type: string
+        description:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+        rows_number:
+          type: integer
+          format: int64
+        subtype:
+          type: string
+          enum: 
+            - DATASET_TABLE
+            - DATASET_FILE
+            - DATASET_FEATURE_GROUP
+            - DATASET_TOPIC
+        field_list:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSetField'
+      required:
+        - subtype
+        - field_list
 
     DataSetFieldStat:
       type: object
       properties:
-        complexStats:
+        complex_stats:
           $ref: '#/components/schemas/ComplexFieldStat'
-        booleanStats:
+        boolean_stats:
           $ref: '#/components/schemas/BooleanFieldStat'
-        integerStats:
+        integer_stats:
           $ref: '#/components/schemas/IntegerFieldStat'
-        numberStats:
+        number_stats:
           $ref: '#/components/schemas/NumberFieldStat'
-        stringStats:
+        string_stats:
           $ref: '#/components/schemas/StringFieldStat'
-        binaryStats:
+        binary_stats:
           $ref: '#/components/schemas/BinaryFieldStat'
-        dateTimeStats:
+        datetime_stats:
           $ref: '#/components/schemas/DateTimeFieldStat'
     
     BooleanFieldStat:
       type: object
       properties:
-        trueCount:
+        true_count:
           type: integer
           format: int64 
-        falseCount:
+        false_count:
           type: integer
           format: int64 
-        nullsCount:
+        nulls_count:
           type: integer
           format: int64 
       required:
-        - trueCount
-        - falseCount
-        - nullsCount
+        - true_count
+        - false_count
+        - nulls_count
 
     ComplexFieldStat:
       type: object
       properties:
-        nullsCount:
+        nulls_count:
           type: integer
           format: int64
-        uniqueCount:
+        unique_count:
           type: integer
           format: int64
       required:
-        - nullsCount
-        - uniqueCount
+        - nulls_count
+        - unique_count
 
     NumberFieldStat:
       type: object
       properties:
-        lowValue:
+        low_value:
           type: number
-        highValue:
+        high_value:
           type: number
-        meanValue:
+        mean_value:
           type: number
-        medianValue:
+        median_value:
           type: number
-        nullsCount:
+        nulls_count:
           type: integer
           format: int64
-        uniqueCount:
+        unique_count:
           type: integer
           format: int64
       required:
-        - lowValue
-        - highValue
-        - nullsCount
-        - uniqueCount
+        - low_value
+        - high_value
+        - nulls_count
+        - unique_count
 
     StringFieldStat:
       type: object
       properties:
-        maxLength:
+        max_length:
           type: integer
-        avgLength:
+        avg_length:
           type: number
-        nullsCount:
+        nulls_count:
           type: integer
           format: int64
-        uniqueCount:
+        unique_count:
           type: integer
           format: int64
       required:
-        - maxLength
-        - avgLength
-        - nullsCount
-        - uniqueCount          
+        - max_length
+        - avg_length
+        - nulls_count
+        - unique_count          
     
     BinaryFieldStat:
       type: object
       properties:
-        maxLength:
+        max_length:
           type: integer
-        avgLength:
+        avg_length:
           type: number
-        nullsCount:
+        nulls_count:
           type: integer
           format: int64
-        uniqueCount:
+        unique_count:
           type: integer
           format: int64
       required:
-        - maxLength
-        - avgLength
-        - nullsCount
-        - uniqueCount          
+        - max_length
+        - avg_length
+        - nulls_count
+        - unique_count          
 
     IntegerFieldStat:
       type: object
       properties:
-        lowValue:
+        low_value:
           type: integer
           format: int64
-        highValue:
+        high_value:
           type: integer
           format: int64
-        meanValue:
+        mean_value:
           type: integer
           format: int64
-        medianValue:
+        median_value:
           type: integer
           format: int64         
-        nullsCount:
+        nulls_count:
           type: integer
           format: int64
-        uniqueCount:
+        unique_count:
           type: integer
           format: int64
       required:
-        - lowValue
-        - highValue
-        - nullsCount
-        - uniqueCount          
+        - low_value
+        - high_value
+        - nulls_count
+        - unique_count          
 
     DateTimeFieldStat:
       type: object
       properties:
-        lowValue:
+        low_value:
           type: string
           format: date-time
-        highValue:
+        high_value:
           type: string
           format: date-time
-        meanValue:
+        mean_value:
           type: string
           format: date-time
-        medianValue:
+        median_value:
           type: string
           format: date-time
-        nullsCount:
+        nulls_count:
           type: integer
           format: int64
-        uniqueCount:
+        unique_count:
           type: integer
           format: int64
       required:
-        - lowValue
-        - highValue
-        - nullsCount
-        - uniqueCount          
+        - low_value
+        - high_value
+        - nulls_count
+        - unique_count          
 
     DataSetStat:
       type: object
       properties:
-        rowsCount: 
+        rows_count: 
           type: integer
           format: int64 
-        uniqueRows:
+        rows_unique:
           type: integer
           format: int64
       required:
-        - rowsCount
-        - uniqueRows
+        - rows_count
+        - rows_unique
 
     DataSetField:
       allOf:
         - $ref: '#/components/schemas/BaseObject'
         - type: object
           properties:
-            parentFieldOddrn:
+            parent_field_oddrn:
               type: string
             type:
               $ref: '#/components/schemas/DataSetFieldType'
-            isKey:
+            is_key:
               type: boolean
-            isValue:
+            is_value:
               type: boolean            
-            defaultValue:
+            default_value:
               type: string
             description:
               type: string
             stats:
               $ref: '#/components/schemas/DataSetFieldStat'
-            extensionList:
-              type: array
-              items: 
-                $ref: "../extensions.yaml/#/components/schemas/XODDDataSetFieldExtension"
           required:
             - type
 
@@ -274,131 +289,86 @@ components:
             - TYPE_MAP
             - TYPE_UNION
             - TYPE_DURATION
-        logicalType:
+        logical_type:
           type: string
-        isNullable:
+        is_nullable:
           type: boolean
       required:
         - type
-        - isNullable
-
-
-    DataSetList:
-      type: array
-      items:
-        $ref: '#/components/schemas/DataSet'
+        - is_nullable
 
     DataTransformer:
-      allOf:
-        - $ref: '#/components/schemas/BaseObject'
-        - type: object
-          properties:
-            description:
-              type: string
-            sourceCodeUrl:
-              type: string
-            sql:
-              type: string                        
-            inputs:
-              type: array
-              items:
-                type: string            
-            outputs:
-              type: array
-              items:
-                type: string
-            subtype:
-              type: string
-              enum: 
-                - DATATRANSFORMER_JOB
-                - DATATRANSFORMER_EXPERIMENT
-                - DATATRANSFORMER_ML_MODEL_TRAINING
-            extensionList:
-              type: array
-              items: 
-                $ref: "../extensions.yaml/#/components/schemas/XODDDataTransformerExtension"
-          required:
-            - inputs
-            - outputs
-            - subtype
+      type: object
+      properties:
+        description:
+          type: string
+        source_code_url:
+          type: string
+        sql:
+          type: string                        
+        inputs:
+          type: array
+          items:
+            type: string            
+        outputs:
+          type: array
+          items:
+            type: string
+        subtype:
+          type: string
+          enum: 
+            - DATATRANSFORMER_JOB
+            - DATATRANSFORMER_EXPERIMENT
+            - DATATRANSFORMER_ML_MODEL_TRAINING
+      required:
+        - inputs
+        - outputs
+        - subtype
     
-    DataTransformerList:
-      type: array
-      items:
-        $ref: '#/components/schemas/DataTransformer'
-
     DataConsumer:
-      allOf:
-        - $ref: '#/components/schemas/BaseObject'
-        - type: object
-          properties:
-            description:
-              type: string
-            inputs:
-              type: array
-              items: 
-                type: string
-            subtype:
-              type: string
-              enum: 
-                - DATACONSUMER_DASHBOARD
-                - DATACONSUMER_ML_MODEL
-            extensionList:
-              type: array
-              items: 
-                $ref: "../extensions.yaml/#/components/schemas/XODDDataConsumerExtension"
-          required:
-            - subtype
-    
-    DataConsumerList:
-      type: array
-      items:
-        $ref: '#/components/schemas/DataConsumer'
-    
+      type: object
+      properties:
+        description:
+          type: string
+        inputs:
+          type: array
+          items: 
+            type: string
+        subtype:
+          type: string
+          enum: 
+            - DATACONSUMER_DASHBOARD
+            - DATACONSUMER_ML_MODEL
+      required:
+        - subtype
+        
     DataInput:
-      allOf:
-        - $ref: '#/components/schemas/BaseObject'
-        - type: object
-          properties:
-            description:
-              type: string
-          required:
-            - description
+      type: object
+      properties:
+        description:
+          type: string
+      required:
+        - description
     
-    DataInputList:
-      type: array
-      items:
-        $ref: '#/components/schemas/DataInput'
     
     DataQualityTest:
-      allOf:
-        - $ref: '#/components/schemas/BaseObject'
-        - type: object
-          properties:
-            description:
-              type: string
-            datasetList:
-              type: array
-              items:
-                type: string
-            suiteUrl:
-              type: string
-            linkedUrlList:
-                type: array
-                items:
-                  $ref: '#/components/schemas/LinkedUrl'
-            extensionList:
-              type: array
-              items: 
-                $ref: "../extensions.yaml/#/components/schemas/XODDDataQualityTestExtension"
-          required:
-            - description
-            - datasetList
-
-    DataQualityTestList:
-      type: array
-      items:
-        $ref: '#/components/schemas/DataQualityTest'
+      type: object
+      properties:
+        description:
+          type: string
+        dataset_list:
+          type: array
+          items:
+            type: string
+        suite_url:
+          type: string
+        linked_url_list:
+            type: array
+            items:
+              $ref: '#/components/schemas/LinkedUrl'
+      required:
+        - description
+        - dataset_list
 
     LinkedUrl:
       type: object
@@ -412,103 +382,72 @@ components:
         - url
 
     DataTransformerRun:
-      allOf:
-        - $ref: '#/components/schemas/BaseObject'
-        - type: object
-          properties:
-            transformerOddrn:
-              type: string
-            startTime:
-              type: string
-              format: date-time
-            endTime:        
-              type: string
-              format: date-time
-            statusReason:
-              type: string
-            status:
-              type: string
-              enum:
-                - SUCCESS
-                - FAIL
-                - ABORTED
-                - OTHER
-            extensionList:
-              type: array
-              items: 
-                $ref: "../extensions.yaml/#/components/schemas/XODDDataTransformerRunExtension"
-          required:
-            - transformerOddrn
-            - startTime
-            - endTime
-            - status
-
-  
-    DataTransformerRunList:
-      type: array
-      items:
-        $ref: '#/components/schemas/DataTransformerRun'
-  
-    DataQualityTestRun:  
-      allOf:
-        - $ref: '#/components/schemas/BaseObject'
-        - type: object
-          properties:
-            dataQualityTestOddrn:
-              type: string
-            startTime:
-              type: string
-              format: date-time
-            endTime:        
-              type: string
-              format: date-time
-            statusReason:
-              type: string
-            status:
-              type: string
-              enum:
-                - SUCCESS
-                - FAIL
-                - ABORTED
-                - OTHER
-            extensionList:
-              type: array
-              items: 
-                $ref: "../extensions.yaml/#/components/schemas/XODDDataQualityTestRunExtension"
-          required:
-            - dataQualityTestOddrn
-            - startTime
-            - endTime
-            - status
-    
-    DataQualityTestRunList:
-      type: array
-      items:
-        $ref: '#/components/schemas/DataQualityTestRun'
-
-    SupportedEntityList:
-      type: array
-      items:
-        $ref: '#/components/schemas/SupportedEntity'
-        
-    SupportedEntity:
       type: object
       properties:
-        name: 
+        transformer_oddrn:
           type: string
-          enum: 
-            - ENTITY_DATASET
-            - ENTITY_TRANSFORMER
-            - ENTITY_TRANSFORMER_RUN
-            - ENTITY_CONSUMER
-            - ENTITY_INPUT
-            - ENTITY_QUALITY_TEST
-            - ENTITY_QUALITY_TEST_RUN
-        path:
+        start_time:
           type: string
-          example: "/datasets"
+          format: date-time
+        end_time:        
+          type: string
+          format: date-time
+        status_reason:
+          type: string
+        status:
+          type: string
+          enum:
+            - SUCCESS
+            - FAIL
+            - ABORTED
+            - OTHER
       required:
-        - name
-        - path
+        - transformer_oddrn
+        - start_time
+        - end_time
+        - status
+
+    
+    DataQualityTestRun:  
+      type: object
+      properties:
+        data_quality_test_oddrn:
+          type: string
+        start_time:
+          type: string
+          format: date-time
+        end_time:        
+          type: string
+          format: date-time
+        status_reason:
+          type: string
+        status:
+          type: string
+          enum:
+            - SUCCESS
+            - FAIL
+            - ABORTED
+            - OTHER
+      required:
+        - data_quality_test_oddrn
+        - start_time
+        - end_time
+        - status
+    
+    MetadataExtension:
+      type: object
+      properties:
+        schema_url:
+          description: "The JSON Pointer (https://tools.ietf.org/html/rfc6901) URL to the corresponding version of the schema definition for this extension"
+          example: https://raw.githubusercontent.com/opendatadiscovery/opendatadiscovery-specification/main/specification/glue.json#/definitions/GlueDataSetExtension
+          type: string
+          format: uri
+        metadata:
+          type: object
+          additionalProperties: true
+      required:
+        - schema_url
+        - metadata
+
 
           
