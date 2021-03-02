@@ -1,22 +1,23 @@
 {
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
     "definitions": {
         "GlueDataSetExtension": {
             "properties": {
-                "databaseName": {
+                "database_name": {
                     "type": "string"
                 },
-                "createTime": {
+                "create_time": {
                     "type": "string",
                     "format": "date-time"
                 },
-                "lastAccessTime": {
+                "last_access_time": {
                     "type": "string",
                     "format": "date-time"
                 },
                 "retention": {
                     "type": "string"
                 },
-                "storageDescriptor": {
+                "storage_descriptor": {
                     "$ref": "#/definitions/GlueStorageDescriptor"
                 },
                 "parameters": {
@@ -25,22 +26,22 @@
                         "type": "string"
                     }
                 },
-                "partitionKeys": {
+                "partition_keys": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
-                "tableType": {
+                "table_type": {
                     "type": "string"
                 },
-                "createdBy": {
+                "created_by": {
                     "type": "string"
                 },
-                "isRegisteredWithLakeFormation": {
+                "is_registered_with_lake_formation": {
                     "type": "boolean"
                 },
-                "catalogId": {
+                "catalog_id": {
                     "type": "string"
                 }
             }
@@ -51,31 +52,31 @@
                 "location": {
                     "type": "string"
                 },
-                "inputFormat": {
+                "input_format": {
                     "type": "string"
                 },
-                "outputFormat": {
+                "output_format": {
                     "type": "string"
                 },
                 "compressed": {
                     "type": "string"
                 },
-                "numberOfBuckets": {
+                "number_of_buckets": {
                     "type": "integer"
                 },
-                "bucketColumns": {
+                "bucket_columns": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
-                "sortColumns": {
+                "sort_columns": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
-                "storedAsSubDirectories": {
+                "stored_as_sub_directories": {
                     "type": "boolean"
                 }
             }
