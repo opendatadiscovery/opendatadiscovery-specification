@@ -439,7 +439,7 @@ components:
       properties:
         schema_url:
           description: "The JSON Pointer (https://tools.ietf.org/html/rfc6901) URL to the corresponding version of the schema definition for this extension"
-          example: https://raw.githubusercontent.com/opendatadiscovery/opendatadiscovery-specification/main/specification/glue.json#/definitions/GlueDataSetExtension
+          example: https://raw.githubusercontent.com/opendatadiscovery/opendatadiscovery-specification/main/specification/extensions/glue.json#/definitions/GlueDataSetExtension
           type: string
           format: uri
         metadata:
