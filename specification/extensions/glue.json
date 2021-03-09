@@ -2,6 +2,7 @@
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "definitions": {
         "GlueDataSetExtension": {
+            "type": "object",
             "properties": {
                 "database_name": {
                     "type": "string"
@@ -78,6 +79,76 @@
                 },
                 "stored_as_sub_directories": {
                     "type": "boolean"
+                }
+            }
+        },
+        "GlueDataTransformerExtension": {
+            "type": "object",
+            "properties": {
+                "role": {
+                    "type": "string"
+                },
+                "created_on": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "last_modified_on": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "max_retries": {
+                    "type": "integer"
+                },
+                "max_capacity": {
+                    "type": "number"
+                },
+                "worker_type": {
+                    "type": "string"
+                },
+                "number_of_workers": {
+                    "type": "integer"
+                },
+                "glue_version": {
+                    "type": "string"
+                }
+            }
+        },
+        "GlueDataTransformerRunExtension": {
+            "type": "object",
+            "properties": {
+                "attempt": {
+                    "type": "integer"
+                },
+                "previous_run_id": {
+                    "type": "string"
+                },
+                "trigger_name": {
+                    "type": "string"
+                },
+                "last_modified_on": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "execution_time": {
+                    "type": "integer"
+                },
+                "timeout": {
+                    "type": "integer"
+                },
+                "max_capacity": {
+                    "type": "number"
+                },
+                "log_group_name": {
+                    "type": "string"
+                },
+                "worker_type": {
+                    "type": "string"
+                },
+                "number_of_workers": {
+                    "type": "integer"
+                },
+                "glue_version": {
+                    "type": "string"
                 }
             }
         }
