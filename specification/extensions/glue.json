@@ -7,10 +7,6 @@
                 "database_name": {
                     "type": "string"
                 },
-                "create_time": {
-                    "type": "string",
-                    "format": "date-time"
-                },
                 "last_access_time": {
                     "type": "string",
                     "format": "date-time"
@@ -87,10 +83,6 @@
             "properties": {
                 "role": {
                     "type": "string"
-                },
-                "created_on": {
-                    "type": "string",
-                    "format": "date-time"
                 },
                 "last_modified_on": {
                     "type": "string",

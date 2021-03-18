@@ -8,13 +8,13 @@ components:
           example: "//aws/glue/{account_id}/{database}/{tablename}"
         name:
           type: string
-          example: 
+          example:
         owner:
           type: string
           example: "//aws/iam/{account_id}/user/name"
         metadata:
           type: array
-          items: 
+          items:
             $ref: "#/components/schemas/MetadataExtension"
       required:
         - oddrn
@@ -25,6 +25,12 @@ components:
         - $ref: '#/components/schemas/BaseObject'
         - type: object
           properties:
+            updated_at:
+              type: string
+              format: date-time
+            created_at:
+              type: string
+              format: date-time
             dataset:
               $ref: '#/components/schemas/DataSet'
             data_transformer:
@@ -38,13 +44,13 @@ components:
             data_input:
               $ref: '#/components/schemas/DataInput'
             data_consumer:
-              $ref: '#/components/schemas/DataConsumer'   
+              $ref: '#/components/schemas/DataConsumer'
 
     DataEntityList:
       type: array
       items:
-        $ref: '#/components/schemas/DataEntity'            
-            
+        $ref: '#/components/schemas/DataEntity'
+
     DataSet:
       type: object
       properties:
@@ -52,15 +58,12 @@ components:
           type: string
         description:
           type: string
-        updated_at:
-          type: string
-          format: date-time
         rows_number:
           type: integer
           format: int64
         subtype:
           type: string
-          enum: 
+          enum:
             - DATASET_TABLE
             - DATASET_FILE
             - DATASET_FEATURE_GROUP
@@ -90,19 +93,19 @@ components:
           $ref: '#/components/schemas/BinaryFieldStat'
         datetime_stats:
           $ref: '#/components/schemas/DateTimeFieldStat'
-    
+
     BooleanFieldStat:
       type: object
       properties:
         true_count:
           type: integer
-          format: int64 
+          format: int64
         false_count:
           type: integer
-          format: int64 
+          format: int64
         nulls_count:
           type: integer
-          format: int64 
+          format: int64
       required:
         - true_count
         - false_count
@@ -161,8 +164,8 @@ components:
         - max_length
         - avg_length
         - nulls_count
-        - unique_count          
-    
+        - unique_count
+
     BinaryFieldStat:
       type: object
       properties:
@@ -180,7 +183,7 @@ components:
         - max_length
         - avg_length
         - nulls_count
-        - unique_count          
+        - unique_count
 
     IntegerFieldStat:
       type: object
@@ -196,7 +199,7 @@ components:
           format: int64
         median_value:
           type: integer
-          format: int64         
+          format: int64
         nulls_count:
           type: integer
           format: int64
@@ -207,7 +210,7 @@ components:
         - low_value
         - high_value
         - nulls_count
-        - unique_count          
+        - unique_count
 
     DateTimeFieldStat:
       type: object
@@ -234,14 +237,14 @@ components:
         - low_value
         - high_value
         - nulls_count
-        - unique_count          
+        - unique_count
 
     DataSetStat:
       type: object
       properties:
-        rows_count: 
+        rows_count:
           type: integer
-          format: int64 
+          format: int64
         rows_unique:
           type: integer
           format: int64
@@ -261,7 +264,7 @@ components:
             is_key:
               type: boolean
             is_value:
-              type: boolean            
+              type: boolean
             default_value:
               type: string
             description:
@@ -305,18 +308,18 @@ components:
         source_code_url:
           type: string
         sql:
-          type: string                        
+          type: string
         inputs:
           type: array
           items:
-            type: string            
+            type: string
         outputs:
           type: array
           items:
             type: string
         subtype:
           type: string
-          enum: 
+          enum:
             - DATATRANSFORMER_JOB
             - DATATRANSFORMER_EXPERIMENT
             - DATATRANSFORMER_ML_MODEL_TRAINING
@@ -324,7 +327,7 @@ components:
         - inputs
         - outputs
         - subtype
-    
+
     DataConsumer:
       type: object
       properties:
@@ -332,16 +335,16 @@ components:
           type: string
         inputs:
           type: array
-          items: 
+          items:
             type: string
         subtype:
           type: string
-          enum: 
+          enum:
             - DATACONSUMER_DASHBOARD
             - DATACONSUMER_ML_MODEL
       required:
         - subtype
-        
+
     DataInput:
       type: object
       properties:
@@ -349,8 +352,8 @@ components:
           type: string
       required:
         - description
-    
-    
+
+
     DataQualityTest:
       type: object
       properties:
@@ -373,7 +376,7 @@ components:
     LinkedUrl:
       type: object
       properties:
-        name: 
+        name:
           type: string
         url:
           type: string
@@ -389,7 +392,7 @@ components:
         start_time:
           type: string
           format: date-time
-        end_time:        
+        end_time:
           type: string
           format: date-time
         status_reason:
@@ -407,7 +410,7 @@ components:
         - end_time
         - status
 
-    DataQualityTestRun:  
+    DataQualityTestRun:
       type: object
       properties:
         data_quality_test_oddrn:
@@ -415,7 +418,7 @@ components:
         start_time:
           type: string
           format: date-time
-        end_time:        
+        end_time:
           type: string
           format: date-time
         status_reason:
@@ -432,7 +435,7 @@ components:
         - start_time
         - end_time
         - status
-    
+
     MetadataExtension:
       type: object
       properties:
