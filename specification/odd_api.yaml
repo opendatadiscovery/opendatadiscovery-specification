@@ -13,12 +13,6 @@ paths:
       operationId: postDataEntityList
       tags:
         - OpenDataDiscoveryIngestion
-      parameters:
-        - in: path
-          name: datasourceOddrn
-          schema:
-            type: string
-          required: true
       requestBody:
         required: true
         content:
