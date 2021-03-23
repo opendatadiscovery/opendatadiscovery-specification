@@ -26,4 +26,4 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './entities.yaml/#/components/schemas/DataEntityResponse'
+                $ref: './entities.yaml/#/components/schemas/DataEntityList'
