@@ -46,6 +46,15 @@ components:
             data_consumer:
               $ref: '#/components/schemas/DataConsumer'
 
+    DataEntityResponse:
+      type: object
+      properties:
+        data_source_oddrn:
+          type: string
+          example: //aws/glue/123456789010/
+        data_entities:
+            $ref: '#/components/schemas/DataEntityList'
+
     DataEntityList:
       type: array
       items:
