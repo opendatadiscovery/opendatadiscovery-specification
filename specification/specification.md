@@ -238,12 +238,20 @@ Example url: ```//tableu/{host}/{path}/{dashboard_id}```
     DataQualityTest:
         type: object
         properties:
-            description:
+            suit_name:
+                type: string
+            test_name:
                 type: string
             datasetList:
                 type: array
                 items:
                     type: string
+            expectation:
+                type: object
+                expectation_type:
+                    type: string
+                    params:
+                        type: array
             suiteUrl:
                 type: string
             linkedUrlList:
@@ -251,8 +259,10 @@ Example url: ```//tableu/{host}/{path}/{dashboard_id}```
                 items:
                     $ref: '#/components/schemas/LinkedUrl'
         required:
-            - description
-            - datasetList
+            - test_name
+            - suit_name
+            - expectation
+            - dataset_list
 
     DataQualityTestRun:  
         type: object

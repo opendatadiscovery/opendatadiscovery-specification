@@ -364,12 +364,20 @@ components:
     DataQualityTest:
       type: object
       properties:
-        description:
+        suit_name:
+          type: string
+        test_name:
           type: string
         dataset_list:
           type: array
           items:
             type: string
+        expectation:
+          type: object
+          expectation_type:
+            type: string
+          params:
+            type: array
         suite_url:
           type: string
         linked_url_list:
@@ -377,7 +385,9 @@ components:
             items:
               $ref: '#/components/schemas/LinkedUrl'
       required:
-        - description
+        - test_name
+        - suit_name
+        - expectation
         - dataset_list
 
     LinkedUrl:
