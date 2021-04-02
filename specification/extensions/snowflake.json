@@ -1,0 +1,31 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "definitions": {
+        "SnowflakeDataSetExtension": {
+            "type": "object",
+            "properties": {
+                "cluster_by": {
+                    "type": "string"
+                },
+                "bytes": {
+                    "type": "int"
+                },
+                "retention_time": {
+                    "type": "int"
+                },
+                "automatic_clustering": {
+                    "type": "string",
+                    "enum": ["OFF", "ON"]
+                },
+                "search_optimization": {
+                    "type": "string",
+                    "enum": ["OFF", "ON"]
+                },
+                "dropped_on": {
+                    "type": "string",
+                    "enum": ["N", "Y"]
+                }
+            }
+        }
+    }
+}
