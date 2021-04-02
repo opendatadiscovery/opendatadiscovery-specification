@@ -14,13 +14,16 @@
                     "type": "string"
                 },
                 "dropped_on": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": ["OFF", "ON"]
                 },
                 "automatic_clustering": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": ["OFF", "ON"]
                 },
                 "search_optimization": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": ["N", "Y"]
                 }
             }
         }
