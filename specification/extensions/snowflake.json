@@ -11,7 +11,7 @@
                     "type": "int"
                 },
                 "retention_time": {
-                    "type": "string"
+                    "type": "int"
                 },
                 "automatic_clustering": {
                     "type": "string",
