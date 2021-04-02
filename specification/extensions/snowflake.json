@@ -21,7 +21,7 @@
                     "type": "string",
                     "enum": ["OFF", "ON"]
                 },
-                "dropped_on": {
+                "is_external": {
                     "type": "string",
                     "enum": ["N", "Y"]
                 }
