@@ -13,15 +13,15 @@
                 "retention_time": {
                     "type": "string"
                 },
-                "dropped_on": {
-                    "type": "string",
-                    "enum": ["OFF", "ON"]
-                },
                 "automatic_clustering": {
                     "type": "string",
                     "enum": ["OFF", "ON"]
                 },
                 "search_optimization": {
+                    "type": "string",
+                    "enum": ["OFF", "ON"]
+                },
+                "dropped_on": {
                     "type": "string",
                     "enum": ["N", "Y"]
                 }
