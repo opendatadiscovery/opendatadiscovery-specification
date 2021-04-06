@@ -317,8 +317,10 @@ components:
           type: string
           enum:
             - DATATRANSFORMER_JOB
+            - DATATRANSFORMER_VIEW
             - DATATRANSFORMER_EXPERIMENT
             - DATATRANSFORMER_ML_MODEL_TRAINING
+            - DATATRANSFORMER_UNKNOWN
       required:
         - inputs
         - outputs
