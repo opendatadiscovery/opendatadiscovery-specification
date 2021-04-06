@@ -71,6 +71,7 @@ components:
           type: string
           enum:
             - DATASET_TABLE
+            - DATASET_VIEW
             - DATASET_FILE
             - DATASET_FEATURE_GROUP
             - DATASET_TOPIC
@@ -245,19 +246,6 @@ components:
         - nulls_count
         - unique_count
 
-    DataSetStat:
-      type: object
-      properties:
-        rows_count:
-          type: integer
-          format: int64
-        rows_unique:
-          type: integer
-          format: int64
-      required:
-        - rows_count
-        - rows_unique
-
     DataSetField:
       allOf:
         - $ref: '#/components/schemas/BaseObject'
@@ -292,6 +280,7 @@ components:
             - TYPE_BOOLEAN
             - TYPE_CHAR
             - TYPE_DATETIME
+            - TYPE_TIME
             - TYPE_STRUCT
             - TYPE_BINARY
             - TYPE_LIST
