@@ -1,0 +1,125 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "definitions": {
+        "RedshiftDataSetExtensionInfo": {
+            "type": "object",
+            "properties": {
+                "database": {
+                    "type": "string"
+                },
+                "schema": {
+                    "type": "string"
+                },
+                "table_id": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 4294967295
+                },
+                "table": {
+                    "type": "string"
+                },
+                "encoded": {
+                    "type": "string",
+                    "enum": ["Y", "N"]
+                },
+                "diststyle": {
+                    "type": "string"
+                },
+                "sortkey1": {
+                    "type": "string"
+                },
+                "max_varchar": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "sortkey1_enc": {
+                    "type": "string"
+                },
+                "sortkey_num": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "size": {
+                    "type": "integer"
+                },
+                "pct_used": {
+                    "type": "number"
+                },
+                "empty": {
+                    "type": "integer"
+                },
+                "unsorted": {
+                    "type": "number"
+                },
+                "stats_off": {
+                    "type": "number"
+                },
+                "tbl_rows": {
+                    "type": "number"
+                },
+                "skew_sortkey1": {
+                    "type": "number"
+                },
+                "skew_rows": {
+                    "type": "number"
+                },
+                "estimated_visible_rows": {
+                    "type": "number"
+                },
+                "risk_event": {
+                    "type": "string"
+                },
+                "vacuum_sort_benefit": {
+                    "type": "number"
+                }
+            }
+        },
+        "RedshiftDataSetFieldExtensionRedshift": {
+            "type": "object",
+            "properties": {
+                "database_name": {
+                    "type": "string"
+                },
+                "schema_name": {
+                    "type": "string"
+                },
+                "table_name": {
+                    "type": "string"
+                },
+                "column_name": {
+                    "type": "string"
+                },
+                "ordinal_position": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 4294967295
+                },
+                "data_type": {
+                    "type": "string"
+                },
+                "column_default": {
+                    "type": "string"
+                },
+                "is_nullable": {
+                    "type": "string",
+                    "enum": ["YES", "NO"]
+                },
+                "encoding": {
+                    "type": "string"
+                },
+                "distkey": {
+                    "type": "boolean"
+                },
+                "sortkey": {
+                    "type": "integer"
+                },
+                "column_acl": {
+                    "type": "string"
+                },
+                "remarks": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
