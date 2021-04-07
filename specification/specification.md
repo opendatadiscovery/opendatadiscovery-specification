@@ -8,44 +8,44 @@ OpenDataDiscovery specification is intentionally agnostic about the specifics of
 
 ## Discovery process
 
-Metadata discovery process is very simular to metrics/logs/traces gathering process. We might have pull or push model. Both of them is better for their use cases.
+Metadata discovery process is very similar to metrics/logs/traces gathering process. We might have pull or push model. Both of them are better for their use cases.
 
 ![Architecture](assets/arc.png)
 
 ### Pull model
 
-Pulling metadata directly from the source seems is the most straightforward way to gather metadata, but it may become a nightmare to develope and maintain a centralized fleet of domain-specific crawlers. OpenDataDiscovery introduces new entity: OpenDataDiscovery Adapater. The main goal of these adapaters are to be source specific and expose only information could be gathered from certain data source.
+Pulling metadata directly from the source seems is the most straightforward way to gather metadata, but it may become a nightmare to develope and maintain a centralized fleet of domain-specific crawlers. OpenDataDiscovery introduces new entity: OpenDataDiscovery Adapter. The main goal of these adapters are to be source specific and expose only information could be gathered from certain data source.
 
 ![Pull model](assets/pull.png)
 
 Preferred if:
 
 * Latency on index update is ok
-* There is already an adpater
+* There is already an adapter
 
 ### Push model
 
 It supports for individual metadata providers to push the information in the central repository via APIs.
-This could be more prefered way for certain use cases. For example Airflow jobs runs and quality check runs.
+This could be more preferred way for certain use cases. For example Airflow jobs runs and quality check runs.
 
 ![Push model](assets/push.png)
 
 Preferred if:
 
 * Near-realtime index is important
-* There is no implemented adpater
+* There is no implemented adapter
 * Information could be gathered only during job time
 
 ## DataModel
 
-Knowledge about data is spread amongst many people and systems. OpenDataDiscovery role is to provide a standard protoocol how metadata can be collected and correlated in as automated fashion as possible.
+Knowledge about data is spread amongst many people and systems. OpenDataDiscovery role is to provide a standard protocol how metadata can be collected and correlated in as automated fashion as possible.
 To enable many different datasources and tools to expose the metadata we need agreement on what data should be exposed and in what format (structures).
 Specification contains of high level entities  DataInputs, DataTransformers, DataSets and DataConsumers.
 Each entity has a unique url describing a place, system and an identifier in this system.
 
 ###  DataInputs
 
-Is a source of your data, it could be described as a web site url, external s3 bucket or real life data place.
+Is a source of your data, it could be described as a website url, external s3 bucket or real life data place.
 ```yaml
 DataInput:
     properties:
@@ -65,76 +65,86 @@ DataInput:
 
 ### DataSets
 
-DataSet is a collectin of data stored in structured, semi-structued or unstructured format.
+DataSet is a collection of data stored in structured, semi-structured or unstructured format.
 It might be a table in relational database, parquet file on s3 bucket, hive catalog table and so on.
 DataSets could have subdatasets. For example Hive table is a dataset itself and it consists of DataSets as a folders/files on HDFS/S3.
 
 ```yaml
-DataSet:
-    type: object
-    properties:
-        oddrn:
-          example: //aws/glue/{account_id}/{database}/{tablename}
+    DataSet:
+      type: object
+      properties:
+        parent_oddrn:
           type: string
-        name:
-          type: string
-        owner:
-          example: //aws/iam/{account_id}/user/name
-          type: string
-        parentOddrn:
-            type: string
-            example: //aws/glue/{account_id}/{database}/{tablename}
         description:
-            type: string
-        updatedAt:
-            format: date-time
-            type: string
+          type: string
+        rows_number:
+          type: integer
+          format: int64
         subtype:
-            enum:
-                - DATASET_TABLE
-                - DATASET_FILE
-                - DATASET_FEATURE_GROUP
-            type: string
-        fieldList:
-            items:
+          type: string
+          enum:
+            - DATASET_TABLE
+            - DATASET_VIEW
+            - DATASET_FILE
+            - DATASET_FEATURE_GROUP
+            - DATASET_TOPIC
+        field_list:
+          type: array
+          items:
             $ref: '#/components/schemas/DataSetField'
-            type: array
-    required:
-        - description
+      required:
+        - subtype
+        - field_list
 
-DataSetField:
-    type: object
-    properties:
+    DataSetField:
+      allOf:
+        - $ref: '#/components/schemas/BaseObject'
+        - type: object
+          properties:
+            parent_field_oddrn:
+              type: string
+            type:
+              $ref: '#/components/schemas/DataSetFieldType'
+            is_key:
+              type: boolean
+            is_value:
+              type: boolean
+            default_value:
+              type: string
+            description:
+              type: string
+            stats:
+              $ref: '#/components/schemas/DataSetFieldStat'
+          required:
+            - type
+
+    DataSetFieldType:
+      type: object
+      properties:
         type:
-            $ref: '#/components/schemas/DataSetFieldType'
-        defaultValue:
-            type: string
-        description:
-            type: string
-        required:
+          type: string
+          enum:
+            - TYPE_STRING
+            - TYPE_NUMBER
+            - TYPE_INTEGER
+            - TYPE_BOOLEAN
+            - TYPE_CHAR
+            - TYPE_DATETIME
+            - TYPE_TIME
+            - TYPE_STRUCT
+            - TYPE_BINARY
+            - TYPE_LIST
+            - TYPE_MAP
+            - TYPE_UNION
+            - TYPE_DURATION
+            - TYPE_UNKNOWN
+        logical_type:
+          type: string
+        is_nullable:
+          type: boolean
+      required:
         - type
-
-DataSetFieldType:
-    type: object
-    properties:
-        name:
-            type: string
-        type:
-            type: string
-        logicalType:
-            type: string
-        isNullable:
-            type: boolean
-        isList:
-            type: boolean
-        isMap:
-            type: boolean
-        required:
-        - type
-        - isNullable
-        - isMap
-        - isList
-
+        - is_nullable
 ```
 
 #### Tables
@@ -176,11 +186,11 @@ Example url:
             inputs:
                 type: array
                 items:
-                type: string            
+                    type: string            
             outputs:
                 type: array
                 items:
-                type: string
+                    type: string
             subtype:
                 type: string
                 enum: 
