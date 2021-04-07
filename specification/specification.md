@@ -254,6 +254,9 @@ Example url: ```//tableu/{host}/{path}/{dashboard_id}```
                     params:
                         type: array
                         items:
+                          example:
+                            max_value: 975
+                            min_value: 798
                           type: object
             suiteUrl:
                 type: string
