@@ -48,9 +48,6 @@
                 "schema": {
                     "type": "string"
                 },
-                "reserved": {
-                    "type": null
-                },
                 "is_secure": {
                     "type": "boolean"
                 },
