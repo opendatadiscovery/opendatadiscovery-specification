@@ -73,9 +73,6 @@
                     "minimum": 0,
                     "maximum": 4294967295
                 },
-                "data_type": {
-                    "type": "string"
-                },
                 "encoding": {
                     "type": "string"
                 },
