@@ -235,40 +235,39 @@ Example url: ```//tableu/{host}/{path}/{dashboard_id}```
 ### DataSetQualityTests
 
 ```yaml
+    DataQualityTestExpectation:
+      type: object
+      properties:
+        type:
+          type: string
+          example: "expect_table_row_count_to_be_between"
+      additionalProperties:
+        type: string
+
     DataQualityTest:
-        type: object
-        properties:
-            suite_name:
-                type: string
-            test_name:
-                type: string
-            datasetList:
-                type: array
-                items:
-                    type: string
-            expectation:
-                type: object
-                expectation_type:
-                    example: expect_table_row_count_to_be_between
-                    type: string
-                    params:
-                        type: array
-                        items:
-                          example:
-                            max_value: 975
-                            min_value: 798
-                          type: object
-            suiteUrl:
-                type: string
-            linkedUrlList:
-                type: array
-                items:
-                    $ref: '#/components/schemas/LinkedUrl'
-        required:
-            - test_name
-            - suite_name
-            - expectation
-            - dataset_list
+      type: object
+      properties:
+        suite_name:
+          type: string
+        test_name:
+          type: string
+        dataset_list:
+          type: array
+          items:
+            type: string
+        expectation:
+          $ref: '#/components/schemas/DataQualityTestExpectation'
+        suite_url:
+          type: string
+        linked_url_list:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkedUrl'
+      required:
+        - test_name
+        - suite_name
+        - expectation
+        - dataset_list
 
     DataQualityTestRun:  
         type: object
