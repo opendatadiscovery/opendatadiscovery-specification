@@ -8,7 +8,8 @@ components:
           example: "//aws/glue/{account_id}/{database}/{tablename}"
         name:
           type: string
-          example:
+        description:
+          type: string
         owner:
           type: string
           example: "//aws/iam/{account_id}/user/name"
@@ -31,6 +32,8 @@ components:
             created_at:
               type: string
               format: date-time
+            type:
+              $ref: '#/components/schemas/DataEntityType'
             dataset:
               $ref: '#/components/schemas/DataSet'
             data_transformer:
@@ -62,25 +65,14 @@ components:
       properties:
         parent_oddrn:
           type: string
-        description:
-          type: string
         rows_number:
           type: integer
           format: int64
-        subtype:
-          type: string
-          enum:
-            - DATASET_TABLE
-            - DATASET_VIEW
-            - DATASET_FILE
-            - DATASET_FEATURE_GROUP
-            - DATASET_TOPIC
         field_list:
           type: array
           items:
             $ref: '#/components/schemas/DataSetField'
       required:
-        - subtype
         - field_list
 
     DataSetFieldStat:
@@ -261,8 +253,6 @@ components:
               type: boolean
             default_value:
               type: string
-            description:
-              type: string
             stats:
               $ref: '#/components/schemas/DataSetFieldStat'
           required:
@@ -299,8 +289,6 @@ components:
     DataTransformer:
       type: object
       properties:
-        description:
-          type: string
         source_code_url:
           type: string
         sql:
@@ -313,43 +301,20 @@ components:
           type: array
           items:
             type: string
-        subtype:
-          type: string
-          enum:
-            - DATATRANSFORMER_JOB
-            - DATATRANSFORMER_VIEW
-            - DATATRANSFORMER_EXPERIMENT
-            - DATATRANSFORMER_ML_MODEL_TRAINING
-            - DATATRANSFORMER_UNKNOWN
       required:
         - inputs
         - outputs
-        - subtype
 
     DataConsumer:
       type: object
       properties:
-        description:
-          type: string
         inputs:
           type: array
           items:
             type: string
-        subtype:
-          type: string
-          enum:
-            - DATACONSUMER_DASHBOARD
-            - DATACONSUMER_ML_MODEL
-      required:
-        - subtype
 
     DataInput:
       type: object
-      properties:
-        description:
-          type: string
-      required:
-        - description
 
     DataQualityTestExpectation:
       type: object
@@ -447,6 +412,21 @@ components:
         - start_time
         - end_time
         - status
+
+    DataEntityType:
+      type: string
+      enum: 
+        - TABLE
+        - VIEW
+        - FILE
+        - FEATURE_GROUP
+        - KAFKA_TOPIC
+        - JOB
+        - EXPERIMENT
+        - ML_MODEL
+        - ML_MODEL_TRAINING
+        - DASHBOARD
+        - UNKNOWN
 
     MetadataExtension:
       type: object
