@@ -261,6 +261,8 @@ Example url: ```//tableu/{host}/{path}/{dashboard_id}```
           type: string
         test_name:
           type: string
+        description:
+          type: string
         dataset_list:
           type: array
           items:
@@ -277,6 +279,7 @@ Example url: ```//tableu/{host}/{path}/{dashboard_id}```
         - test_name
         - suite_name
         - expectation
+        - description
         - dataset_list
 
     DataQualityTestRun:  

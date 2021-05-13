@@ -367,6 +367,8 @@ components:
           type: string
         test_name:
           type: string
+        description:
+          type: string
         dataset_list:
           type: array
           items:
@@ -383,6 +385,7 @@ components:
         - test_name
         - suite_name
         - expectation
+        - description
         - dataset_list
 
     LinkedUrl:
