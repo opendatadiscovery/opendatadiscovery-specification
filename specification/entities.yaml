@@ -422,6 +422,7 @@ components:
         - FEATURE_GROUP
         - KAFKA_TOPIC
         - JOB
+        - JOB_RUN
         - EXPERIMENT
         - ML_MODEL
         - ML_MODEL_TRAINING
