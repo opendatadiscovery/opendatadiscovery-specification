@@ -330,8 +330,6 @@ components:
       properties:
         suite_name:
           type: string
-        test_name:
-          type: string
         dataset_list:
           type: array
           items:
@@ -345,7 +343,6 @@ components:
           items:
             $ref: '#/components/schemas/LinkedUrl'
       required:
-        - test_name
         - suite_name
         - expectation
         - dataset_list
