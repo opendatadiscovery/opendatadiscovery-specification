@@ -3,9 +3,11 @@
 The goal of this RFC is to provide a vision for the new Open Data Discovery standard and tailor it to the community through comments and discussion.  
 
 
-# Problem 
+
+# Challenge
 
 The rapid growth of data volumes and people dealing with it in organizations creates new challenges that never existed before.
+
 
 <ol>
 <li>Knowledge about data is scattered across numerous systems and owners</li>
@@ -23,7 +25,7 @@ Some open-source initiatives are already trying to address these challenges. For
 
 Marquez's team introduced OpenLineage specification to standardize the data lineage discovery process. However, it doesn’t cover entities outside of Data Lakes / Warehouses world, like Dashboards, Pipelines, and ML Models. It also doesn’t enrich your metadata with quality tests information and results, and data profiling. 
 
-#Solution
+# Proposed Solution
 
 Open Data Discovery is an open standards specification that unifies metadata formats and allows multiple data sources and participants of the data discovery landscape to exchange metadata effectively, transparently, and consistently.   
 
@@ -71,7 +73,7 @@ There are 3 main groups of Clients & Partners of ODD:
 
 Each of the groups can benefit greatly from engagement with and early adoption of ODD.
 
-##Data Catalogs
+## Data Catalogs
 
 **Goal**: wider adoption & market integration, better product for users, market development.
 
@@ -86,7 +88,7 @@ Each of the groups can benefit greatly from engagement with and early adoption o
 </ul>
   
  
-##Data Sources
+## Data Sources
 
 **Goal**: wider adoption & market integration, better product for users, more & better clients, market development. 
 
@@ -97,7 +99,7 @@ Each of the groups can benefit greatly from engagement with and early adoption o
 </ul>
  
 
-##End Users
+## End Users
 
 **Goal**: fast finding & evaluation of trusted data, producing better end products with faster TTM, effective metadata exchange between teams & departments 
 
@@ -112,27 +114,27 @@ Each of the groups can benefit greatly from engagement with and early adoption o
 </ul>
 
  
-#Scope
+# Scope
 
-##ODD Scope
+## ODD Scope
 
 ODD describes the process of gathering metadata from data storages/sources such as data lakes and data warehouses, data discovery processes through push and pull models and APIs that should be provided.  
 
-##Out of ODD Scope
+## Out of ODD Scope
 
 ODD does not describe Data Catalog and how it works: its authentication and authorization, how it provides access to data, etc.
 
-#Discovery Models
+# Discovery Models
 
-##Push and Pull Models
+## Push and Pull Models
 
 The metadata discovery process is very similar to that of gathering metrics/logs/traces. It can be done through a pull or push model (or both). Each of the models has a range of use cases it suits best. ODD uses both models to effectively cover all core use cases.  
 
-###Pull Model
+### Pull Model
 
 Pulling metadata directly from the source is the most straightforward way of gathering it. However, an attempt to develop and maintain a centralized fleet of domain-specific crawlers can easily become a nightmare. Pulling data from multiple sources without having a standard for it means writing multiple source-specific crawlers for each adapter, which would be an overly complex and ineffective solution. ODD solves this issue by providing a universal API adapter (ODD Adapter). 
 
-####ODD Adapter
+#### ODD Adapter
 
 The ODD Adapter entity introduced by ODD is a lightweight service behind a data warehouse. It is a proxy layer for data that allows gathering metadata in a standardized format. ODD Adapter receives requests for data entities and returns those entities. ODD Adapters are designed to be source-specific and expose only the information that could be gathered from a particular data source.
 
@@ -149,7 +151,7 @@ Pull model is preferred when:
 <li>There is already an adapter</li> 
 </ul>
 
-###Push Model
+### Push Model
 
 Push model supports the process where individual metadata providers push the information to the central repository via APIs. The model is more preferred for use cases like Airflow job runs and quality check runs.
 
@@ -157,15 +159,15 @@ Push model supports the process where individual metadata providers push the inf
 <img src="./images/open-data-discovery-push-strategy-odd.jpg" width="600px" alt="open-data-discovery-push-strategy-odd"/>&nbsp;
 </p>
 
-##Data Discovery Federation
+## Data Discovery Federation
 
 Federation allows scraping data entities from other Open Data Discovery servers.
 
-###Use Cases
+### Use Cases
 
 There are many different use cases for federation. Commonly, it is used to either build scalable Data Catalogs or pull related data entities from one ODD server to another.
 
-###Hierarchical Federation
+### Hierarchical Federation
 
 Hierarchical federation allows ODD servers to scale to environments with tens of data centers and millions of nodes. In this use case, the federation topology resembles a tree, with higher-level ODD servers collecting data entities from a larger number of subordinated servers.
 
@@ -175,7 +177,7 @@ For example, a setup might consist of many per-datacenter ODD servers that colle
 <img src="./images/open-data-discovery-hierarchical-federation.jpg" width="600px" alt="open-data-discovery-hierarchical-federation"/>&nbsp;
 </p>
 
-###Cross-Service Federation
+### Cross-Service Federation
 
 In the case of the cross-service federation, an ODD server of one service is configured to scrape selected data from another service's ODD server to enable queries against both datasets within a single server.
 
@@ -183,7 +185,7 @@ In the case of the cross-service federation, an ODD server of one service is con
 <img src="./images/open-data-discovery-cross-service-federation.jpg" width="600px" alt="open-data-discovery-cross-service-federation"/>&nbsp;
 </p>
 
-#Data Model Specification
+# Data Model Specification
 
 The goal of ODD is to provide a standard protocol on how metadata can be collected and correlated in the most automated way possible.
 
@@ -264,7 +266,7 @@ MetadataExtension:
        - schema_url
        - metadata
 ```  
-##Data Inputs
+## Data Inputs
 
 **DataInputs** are sources of your data. They can be website URLs, external S3 bucket, or real-life data places.
 
@@ -301,7 +303,7 @@ Example:
 }
 ```  
 
-##DataSets
+## DataSets
 
 A **DataSet** is a collection of data stored in a structured, semi-structured, or unstructured format. It might be a table in a relational database, a parquet file on an S3 bucket, a Hive catalog table, and so on.
 
@@ -381,7 +383,7 @@ DataSetFieldType:
    - isNullable
 ```  
 
-###Tables
+### Tables
 
 Example ODDRN:
 
@@ -445,7 +447,7 @@ Example ODDRN:
 }
 ```  
 
-###Files
+### Files
 
 Example ODDRN: 
 
@@ -508,7 +510,7 @@ Example ODDRN:
     ]
 }
 ```  
-###Feature Groups
+### Feature Groups
 
 Feature Groups are entities provided by Feature Stores. They are similar to a table in a database but can expose additional information. 
 
@@ -518,7 +520,7 @@ Example ODDRN:
 //feast/host/{namespace}/{featuregroup}
 ```  
 
-##DataTransformers
+## DataTransformers
 
 Data transformers are any entities that can consume data and produce any other object. For example ETL job, ML Experiment, ML Training.
 
@@ -581,7 +583,7 @@ required:
 
 ```  
 
-###ETL Jobs
+### ETL Jobs
 
 
 Example ODDRN: 
@@ -590,7 +592,7 @@ Example ODDRN:
 //airflow/{host}/{path}/{dag_id}/{job_id} 
 ```  
 
-###ML Training Jobs
+### ML Training Jobs
 
 Example ODDRN: 
 
@@ -598,7 +600,7 @@ Example ODDRN:
 //kubeflow/{host}/{path}/{job_id}
 ```  
 
-##DataConsumers
+## DataConsumers
 
 Any data entity built with one or many datasets, for example Dashboards, ML Models.
 
@@ -622,7 +624,7 @@ DataConsumer:
    - subtype
 ```  
 
-###ML Models
+### ML Models
 
 Example ODDRN: 
 
@@ -630,7 +632,7 @@ Example ODDRN:
 //aws/sagemaker/{account_id}/{model_id}
 ```  
 
-###BI Dashboards
+### BI Dashboards
 
 Example ODDRN: 
 
@@ -638,7 +640,7 @@ Example ODDRN:
 //tableau/{host}/{path}/{dashboard_id}
 ```  
 
-##DataQualityTests
+## DataQualityTests
 
 Data Quality Tests are assertions for data. They are the workhorse abstractions covering all kinds of common data issues. Each dataset could be linked to a test suite (like Jira ticket, Confluence page, or any other URL), which should be linked to one or many datasets. **DataQualityTestRun** describes test run status.
 
@@ -695,30 +697,30 @@ DataQualityTest:
             - status
 ```  
 
-#Glossary
+# Glossary
 
 
-<b>Data Discovery<b> - the first step of working with data - finding the right data and evaluating it. 
+<b>Data Discovery</b> - the first step of working with data - finding the right data and evaluating it. 
 
-<b>Open Data Discovery (ODD) Spec<b> - a specification for the data discovery process. 
+<b>Open Data Discovery (ODD) Spec</b>  - a specification for the data discovery process. 
 
-<b>Open Data Discovery (ODD) Catalog<b> - a reference implementation of the ODD Standard built upon it.  
+<b>Open Data Discovery (ODD) Catalog</b>  - a reference implementation of the ODD Standard built upon it.  
 
-<b>ODD Adapter API<b> - an open API specification of the ODD Adapter to provide data to the ODD Puller.
+<b>ODD Adapter API<</b>  - an open API specification of the ODD Adapter to provide data to the ODD Puller.
 
-<b>ODD Adapter<b> - a microservice that implements the ODD Adapter API and provides data source specific entities.
+<b>ODD Adapter</b> - a microservice that implements the ODD Adapter API and provides data source specific entities.
 
-<b>ODD Ingestion API<b> -an open API specification for push strategy ingestion.
+<b>ODD Ingestion API</b>  -an open API specification for push strategy ingestion.
 
-<b>ODD Puller<b> - a service that regularly pulls metadata from ODD Adapters. 
+<b>ODD Puller</b> - a service that regularly pulls metadata from ODD Adapters. 
 
-<b>ODDRN<b> - Open Data Discovery Resource Name (the unique identifier of the data resource).
+<b>ODDRN</b>  - Open Data Discovery Resource Name (the unique identifier of the data resource).
 
-<b>ETL tools<b> - Extract, Transform, Load. These tools play a key role in data integration strategies allowing businesses to gather data from multiple sources and consolidate it into a single centralized location and make different types of data work together. ETLs collect and refine different types of data and deliver it to data warehouses or help to migrate it between different sources. 
+<b>ETL tools</b>  - Extract, Transform, Load. These tools play a key role in data integration strategies allowing businesses to gather data from multiple sources and consolidate it into a single centralized location and make different types of data work together. ETLs collect and refine different types of data and deliver it to data warehouses or help to migrate it between different sources. 
 
-#RFC Status
+# RFC Status
 
-##Proposers
+## Proposers
 
 | Name            | GithHub                                     | 
 |-----------------|---------------------------------------------|
@@ -729,7 +731,7 @@ DataQualityTest:
 |Sofia Shnidman   | [soffest](https://github.com/soffest) |
 
 
-##Commenters
+## Commenters
 
 Please feel free to comment and add yourself as a commenter in the table below. 
 
