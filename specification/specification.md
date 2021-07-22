@@ -41,7 +41,7 @@ Core features:
 </ol>
 
 <p align="center">
-<img src="../images/open-data-discovery-standard-before-after.jpg" width="600px" alt="open-data-discovery-standard-before-and-after"/>&nbsp;
+<img src="../images/open-data-discovery-standard-before-after.jpg" width="900px" alt="open-data-discovery-standard-before-and-after"/>&nbsp;
 </p>
 
 **Diagram 1** shows 1) Currently existing discovery ecosystem, where multiple data sources (feature stores, ETL tools, ML pipelines, data warehouses, data quality tools) and data catalogs exchange data with each other directly. 2) How the process will change with ODD. Various data sources and data catalogs will exchange data in a unified format through a single ODD Adapter. 
