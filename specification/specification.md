@@ -136,7 +136,7 @@ The ODD Adapter entity introduced by ODD is a lightweight service behind a data 
 
 
 <p align="center">
-<img src="./opendatadiscovery-specification/images/open-data-discovery-pull-strategy-odd.jpg" width="600px" alt="open-data-discovery-pull-strategy-odd"/>&nbsp;
+<img src="../images/open-data-discovery-pull-strategy-odd.jpg" width="600px" alt="open-data-discovery-pull-strategy-odd"/>&nbsp;
 </p>
 
 
