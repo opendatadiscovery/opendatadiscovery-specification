@@ -29,7 +29,7 @@ ODD Spec is an open source industry-wide standard for collecting metadata. It pr
 Data catalogs built on ODD Spec would enjoy important opportunities like data federation, real end-to-end lineage, data quality assurance, company-wide observability, and discoverable ML assets.   
 
 <p align="center">
-<img src="../images/open-data-discovery-odd.jpg" width="1000px" alt="oopen-data-discovery-odd"/>&nbsp;
+<img src="./images/open-data-discovery-odd.jpg" width="1000px" alt="open-data-discovery-odd"/>&nbsp;
 </p>
 
 <br>
