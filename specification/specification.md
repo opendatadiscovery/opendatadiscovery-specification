@@ -1,4 +1,5 @@
 # Open Data Discovery Specification
+<br>
 
 # Challenge
 
@@ -6,20 +7,22 @@ The rapid growth of data volumes and people dealing with it in organizations cre
 
 
 <ol>
-<li>Knowledge about data is scattered across numerous systems and owners</li>
-<li>Legacy data catalogs use proprietary not interchangeable metadata formats</li> 
-<li>Legacy data catalogs don’t support building federated systems</li> 
-<li>Legacy data catalogs are limited to static data assets - tables, schemas and so on</li> 
-<li>Legacy data catalogs provide no support of ML Models and data pipelines</li> 
-<li>A centralized fleet of domain-specific crawlers is hard to develop, extend and maintain</li>
-<li>Data discovery eats up to 30% of the time of data teams</li>
-<li>Data discovery/access is the major barrier to applying AI at scale in organizations</li>
+ <li>Knowledge about data is <b>scattered</b> across numerous systems and owners</li>
+<li>Legacy data catalogs use <b>proprietary non-interchangeable metadata formats</b></li> 
+<li>Legacy data catalogs <b>don’t support building federated systems</b></li> 
+<li>Legacy data catalogs are <b>limited to static data assets</b> - tables, schemas and so on</li> 
+<li>Legacy data catalogs provide <b>no support of ML Models and data pipelines</b></li> 
+<li>A centralized fleet of domain-specific crawlers is <b>hard to develop, extend and maintain</b></li>
+<li>Data discovery <b>eats up to 30% of the time of data teams</b></li>
+<li>Data discovery/access is the major <b>barrier to applying AI at scale</b> in organizations</li>
 </ol>
 
 
 Some open-source initiatives are already trying to address these challenges. For example, open-source data catalogs like Amundsen, DataHub, Marquez are built to reduce data discovery time. Their strong and, at the same time weak, side is the monolithic and closed design of the discovery process. It significantly limits the possibilities of reusing discovered metadata across other data discovery products and reduces scalability. These products are successful solutions to problems 1, 6, and 7. However, they don’t cover 2-5 and 8. 
 
 Marquez's team introduced OpenLineage specification to standardize the data lineage discovery process. However, it doesn’t cover entities outside of Data Lakes / Warehouses world, like Dashboards, Pipelines, and ML Models. It also doesn’t enrich your metadata with quality tests information and results, and data profiling. 
+
+<br>
 
 # Proposed Solution
 
@@ -58,7 +61,7 @@ The diagrams are inspired by the [OpenLineage](https://github.com/OpenLineage/Op
 
 **Diagram 2** shows Open Data Discovery process with pull, push, and federation strategies. 
 Any data source including Data Catalog can expose ODD Adapter API or have a specific adapter microservice to be discovered. It may also use a push strategy to be combined with already discovered data entities. ODD Data catalogs intentionally do not have access to the real data and operate only consumed metadata.
-
+<br>
  
 # Engagement Benefits
 
@@ -112,6 +115,7 @@ Each of the groups can benefit greatly from engagement with and early adoption o
 <li>Multi-cloud solution</li> 
 </ul>
 
+<br>
  
 # Scope
 
@@ -122,6 +126,8 @@ ODD describes the process of gathering metadata from data storages/sources such 
 ## Out of ODD Scope
 
 ODD does not describe Data Catalog and how it works: its authentication and authorization, how it provides access to data, etc.
+
+<br>
 
 # Discovery Models
 
@@ -137,14 +143,11 @@ Pulling metadata directly from the source is the most straightforward way of gat
 
 The ODD Adapter entity introduced by ODD is a lightweight service behind a data warehouse. It is a proxy layer for data that allows gathering metadata in a standardized format. ODD Adapter receives requests for data entities and returns those entities. ODD Adapters are designed to be source-specific and expose only the information that could be gathered from a particular data source.
 
-
 <p align="center">
 <img src="../images/open-data-discovery-pull-strategy-odd.jpg" width="600px" alt="open-data-discovery-pull-strategy-odd"/>&nbsp;
 </p>
 
-
 Pull model is preferred when: 
-
 <ul>
 <li>Latency on index update is ok</li>
 <li>There is already an adapter</li> 
@@ -184,6 +187,8 @@ In the case of the cross-service federation, an ODD server of one service is con
 <img src="../images/open-data-discovery-cross-service-federation.jpg" width="600px" alt="open-data-discovery-cross-service-federation"/>&nbsp;
 </p>
 
+<br>
+
 # Data Model Specification
 
 The goal of ODD is to provide a standard protocol on how metadata can be collected and correlated in the most automated way possible.
@@ -202,7 +207,6 @@ It could be any of these entities:
 <li><b>DataQualityTest</b> (describe tests for particular DataSets)</li>
 <li><b>DataQualityTestRun</b> (execution of quality test)</li>
 </ol>
-
  
 Each entity has: 
 
@@ -696,6 +700,8 @@ DataQualityTest:
             - status
 ```  
 
+<br>
+
 # Glossary
 
 
@@ -716,8 +722,10 @@ DataQualityTest:
 <b>ODDRN</b>  - Open Data Discovery Resource Name (the unique identifier of the data resource).
 
 <b>ETL tools</b>  - Extract, Transform, Load. These tools play a key role in data integration strategies allowing businesses to gather data from multiple sources and consolidate it into a single centralized location and make different types of data work together. ETLs collect and refine different types of data and deliver it to data warehouses or help to migrate it between different sources. 
+ 
+<br>
 
-# RFC Status
+# Specification Status
 
 ## Proposers
 
