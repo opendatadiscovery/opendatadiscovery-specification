@@ -185,7 +185,7 @@ For example, a setup might consist of many per-datacenter ODD servers that colle
 In the case of the cross-service federation, an ODD server of one service is configured to scrape selected data from another service's ODD server to enable queries against both datasets within a single server.
 
 <p align="center">
-<img src="../images/open-data-discovery-cross-service-federation.jpg" width="500px" alt="open-data-discovery-cross-service-federation"/>&nbsp;
+<img src="../images/open-data-discovery-cross-service-federation.jpg" width="400px" alt="open-data-discovery-cross-service-federation"/>&nbsp;
 </p>
 
 <br>
