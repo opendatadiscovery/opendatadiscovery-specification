@@ -61,6 +61,7 @@ The diagrams are inspired by the [OpenLineage](https://github.com/OpenLineage/Op
 
 **Diagram 2** shows Open Data Discovery process with pull, push, and federation strategies. 
 Any data source including Data Catalog can expose ODD Adapter API or have a specific adapter microservice to be discovered. It may also use a push strategy to be combined with already discovered data entities. ODD Data catalogs intentionally do not have access to the real data and operate only consumed metadata.
+
 <br>
  
 # Engagement Benefits
