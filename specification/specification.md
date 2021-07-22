@@ -170,7 +170,7 @@ Hierarchical federation allows ODD servers to scale to environments with tens of
 For example, a setup might consist of many per-datacenter ODD servers that collect data in high detail (instance-level drill-down), and a set of global ODD servers that collect and store from those local servers. 
 
 <p align="center">
-<img src="./images/open-data-discovery-hierarchical-federation.jpg" width="600px" alt="open-data-discovery-hierarchical-federation"/>&nbsp;
+<img src="../images/open-data-discovery-hierarchical-federation.jpg" width="600px" alt="open-data-discovery-hierarchical-federation"/>&nbsp;
 </p>
 
 ### Cross-Service Federation
