@@ -18,7 +18,7 @@
 ## Specification
 
 * :point_right:  [`specification.md`](./specification/specification.md) is a versioned description of the current OpenDataDiscovery standard. 
-* :point_right:  Here is a reference implementation of Open Data Spec (ODD Spec): [Open Data Platform](https://github.com/opendatadiscovery/odd-platform) (ODD Platform).
+* :point_right:  Here is a reference implementation of Open Data Discovery Specification: [Open Data Platform](https://github.com/opendatadiscovery/odd-platform) (ODD Platform).
 
 <br>
 
