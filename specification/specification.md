@@ -56,7 +56,7 @@ The diagrams are inspired by the [OpenLineage](https://github.com/OpenLineage/Op
 <br>
 
 <p align="center">
-<img src="../images/open-data-discovery-reference-catalog-implementation.jpg" width="900px" alt="open-data-discovery-reference-catalog-implementation"/>&nbsp;
+<img src="../images/open-data-discovery-reference-catalog-implementation.jpg" width="800px" alt="open-data-discovery-reference-catalog-implementation"/>&nbsp;
 </p>
 
 **Diagram 2** shows Open Data Discovery process with pull, push, and federation strategies. 
