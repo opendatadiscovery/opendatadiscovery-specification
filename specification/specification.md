@@ -737,13 +737,3 @@ DataQualityTest:
 |Elena Goydina    | [Evanto](https://github.com/Evanto)         |
 |Nikita Dementyev | [DementevNikita](https://github.com/DementevNikita) |
 |Sofia Shnidman   | [soffest](https://github.com/soffest) |
-
-
-## Commenters
-
-Please feel free to comment and add yourself as a commenter in the table below. 
-
-| Name | GithHub | 
-|------|---------|
-|      |         | 
-|      |         | 
