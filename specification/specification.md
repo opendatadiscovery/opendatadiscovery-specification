@@ -1,8 +1,4 @@
-# Open Data Discovery RFC
-
-The goal of this RFC is to provide a vision for the new Open Data Discovery standard and tailor it to the community through comments and discussion.  
-
-
+# Open Data Discovery Specification
 
 # Challenge
 
