@@ -41,7 +41,7 @@ Core features:
 </ol>
 
 <p align="center">
-<img src="./images/open-data-discovery-standard-before-after.jpg" width="600px" alt="open-data-discovery-standard-before-and-after"/>&nbsp;
+<img src="../images/open-data-discovery-standard-before-after.jpg" width="600px" alt="open-data-discovery-standard-before-and-after"/>&nbsp;
 </p>
 
 **Diagram 1** shows 1) Currently existing discovery ecosystem, where multiple data sources (feature stores, ETL tools, ML pipelines, data warehouses, data quality tools) and data catalogs exchange data with each other directly. 2) How the process will change with ODD. Various data sources and data catalogs will exchange data in a unified format through a single ODD Adapter. 
@@ -50,7 +50,7 @@ The diagrams are inspired by the [OpenLineage](https://github.com/OpenLineage/Op
 
 
 <p align="center">
-<img src="./images/open-data-discovery-reference-catalog-implementation.jpg" width="600px" alt="open-data-discovery-reference-catalog-implementation"/>&nbsp;
+<img src="../images/open-data-discovery-reference-catalog-implementation.jpg" width="600px" alt="open-data-discovery-reference-catalog-implementation"/>&nbsp;
 </p>
 
 **Diagram 2** shows Open Data Discovery process with pull, push, and federation strategies. 
@@ -152,7 +152,7 @@ Pull model is preferred when:
 Push model supports the process where individual metadata providers push the information to the central repository via APIs. The model is more preferred for use cases like Airflow job runs and quality check runs.
 
 <p align="center">
-<img src="./images/open-data-discovery-push-strategy-odd.jpg" width="600px" alt="open-data-discovery-push-strategy-odd"/>&nbsp;
+<img src="../images/open-data-discovery-push-strategy-odd.jpg" width="600px" alt="open-data-discovery-push-strategy-odd"/>&nbsp;
 </p>
 
 ## Data Discovery Federation
@@ -178,7 +178,7 @@ For example, a setup might consist of many per-datacenter ODD servers that colle
 In the case of the cross-service federation, an ODD server of one service is configured to scrape selected data from another service's ODD server to enable queries against both datasets within a single server.
 
 <p align="center">
-<img src="./images/open-data-discovery-cross-service-federation.jpg" width="600px" alt="open-data-discovery-cross-service-federation"/>&nbsp;
+<img src="../images/open-data-discovery-cross-service-federation.jpg" width="600px" alt="open-data-discovery-cross-service-federation"/>&nbsp;
 </p>
 
 # Data Model Specification
