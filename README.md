@@ -1,4 +1,4 @@
-<p align="center">
+<p>
 <img src="./images/open-discovery-spec-odd-logo.png" width="600px" alt="open-data-discovery-specification-logo"/>&nbsp;
 </p>
 
