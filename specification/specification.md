@@ -40,24 +40,27 @@ Core features:
 <li><b>Community-driven</b> to achieve better compatibility with a wide list of integrations</li>
 </ol>
 
+<br>
+
 <p align="center">
-<img src="../images/open-data-discovery-standard-before-after.jpg" width="900px" alt="open-data-discovery-standard-before-and-after"/>&nbsp;
+<img src="../images/open-data-discovery-standard-before-after.jpg" width="1000px" alt="open-data-discovery-standard-before-and-after"/>&nbsp;
 </p>
 
 **Diagram 1** shows 1) Currently existing discovery ecosystem, where multiple data sources (feature stores, ETL tools, ML pipelines, data warehouses, data quality tools) and data catalogs exchange data with each other directly. 2) How the process will change with ODD. Various data sources and data catalogs will exchange data in a unified format through a single ODD Adapter. 
 
 The diagrams are inspired by the [OpenLineage](https://github.com/OpenLineage/OpenLineage) documentation. 
 
+<br>
 
 <p align="center">
-<img src="../images/open-data-discovery-reference-catalog-implementation.jpg" width="600px" alt="open-data-discovery-reference-catalog-implementation"/>&nbsp;
+<img src="../images/open-data-discovery-reference-catalog-implementation.jpg" width="1000px" alt="open-data-discovery-reference-catalog-implementation"/>&nbsp;
 </p>
 
 **Diagram 2** shows Open Data Discovery process with pull, push, and federation strategies. 
 Any data source including Data Catalog can expose ODD Adapter API or have a specific adapter microservice to be discovered. It may also use a push strategy to be combined with already discovered data entities. ODD Data catalogs intentionally do not have access to the real data and operate only consumed metadata.
 
  
- #Engagement Benefits
+# Engagement Benefits
 
 There are 3 main groups of Clients & Partners of ODD: 
 
