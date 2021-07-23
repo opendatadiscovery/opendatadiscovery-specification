@@ -736,4 +736,4 @@ DataQualityTest:
 |German Osin      | [germanosin](https://github.com/germanosin) |
 |Elena Goydina    | [Evanto](https://github.com/Evanto)         |
 |Nikita Dementyev | [DementevNikita](https://github.com/DementevNikita) |
-|Sofia Shnidman   | [soffest](https://github.com/soffest) |
+|Sofia Shnaidman   | [soffest](https://github.com/soffest) |
