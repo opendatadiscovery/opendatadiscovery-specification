@@ -48,6 +48,8 @@ components:
               $ref: '#/components/schemas/DataInput'
             data_consumer:
               $ref: '#/components/schemas/DataConsumer'
+          required:
+            - type
 
     DataEntityList:
       type: object
@@ -59,6 +61,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DataEntity'
+      required:
+        - data_source_oddrn
 
     DataSet:
       type: object
@@ -361,7 +365,7 @@ components:
     DataTransformerRun:
       type: object
       properties:
-        transformer_oddrn:
+        data_transformer_oddrn:
           type: string
         start_time:
           type: string
@@ -375,13 +379,14 @@ components:
           type: string
           enum:
             - SUCCESS
-            - FAIL
+            - FAILED
+            - SKIPPED
+            - BROKEN
             - ABORTED
-            - OTHER
+            - UNKNOWN
       required:
         - transformer_oddrn
         - start_time
-        - end_time
         - status
 
     DataQualityTestRun:
@@ -405,7 +410,7 @@ components:
             - SKIPPED
             - BROKEN
             - ABORTED
-            - OTHER
+            - UNKNOWN
       required:
         - data_quality_test_oddrn
         - start_time
