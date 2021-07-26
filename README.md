@@ -8,7 +8,7 @@
 [![Maintenance](https://img.shields.io/maintenance/yes/2021?style=for-the-badge)]()
 [![GitHub contributors](https://img.shields.io/github/contributors/opendatadiscovery/odd-platform?style=for-the-badge)](https://github.com/opendatadiscovery/odd-platform/graphs/contributors)
 [![Slack](https://img.shields.io/badge/chat-on_slack-purple.svg?style=for-the-badge&logo=slack)](https://join.slack.com/t/opendatadiscovery/shared_invite/zt-tgdhil90-1kcAuGBo9psX3CJbSsUJ4g)
-[![GitHub issues by-label](https://img.shields.io/github/issues/opendatadiscovery/opendatadiscovery-specification/good%20first%20issue?style=for-the-badge)](https://github.com/opendatadiscovery/odd-platform/contribute) 
+[![GitHub issues by-label](https://img.shields.io/github/issues/opendatadiscovery/opendatadiscovery-specification/good%20first%20issue?style=for-the-badge)](https://github.com/opendatadiscovery/opendatadiscovery-specification/contribute) 
 <br>
 
 # Open Data Discovery Specification (ODD Spec): A Universal Standard for Metadata Collection 
@@ -44,7 +44,7 @@ To ensure equal and positive communication, we adhere to our [Code of Conduct](.
 
 Please before contributing check out our [Contributing Guide](./CONTRIBUTING.md) and issues labeled "good first issue": 
 
-[![GitHub issues by-label](https://img.shields.io/github/issues/opendatadiscovery/opendatadiscovery-specification/good%20first%20issue?style=for-the-badge)](https://github.com/opendatadiscovery/odd-platform/contribute)
+[![GitHub issues by-label](https://img.shields.io/github/issues/opendatadiscovery/opendatadiscovery-specification/good%20first%20issue?style=for-the-badge)](https://github.com/opendatadiscovery/opendatadiscovery-specification/contribute)
 
 <br>
 
