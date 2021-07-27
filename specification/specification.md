@@ -706,21 +706,21 @@ DataQualityTest:
 # Glossary
 
 
-<b>Data Discovery</b> - the first step of working with data - finding the right data and evaluating it. 
+<b>Data Discovery</b> - the first step of working with data: finding the right data and evaluating it. 
 
-<b>Open Data Discovery (ODD) Spec</b>  - a specification for the data discovery process. 
+<b>Open Data Discovery (ODD) Spec</b> - a specification for the data discovery process. 
 
-<b>Open Data Discovery (ODD) Catalog</b>  - a reference implementation of the ODD Standard built upon it.  
+<b>Open Data Discovery (ODD) Platform</b> - a reference implementation of the ODD Standard built upon it.  
 
-<b>ODD Adapter API<</b>  - an open API specification of the ODD Adapter to provide data to the ODD Puller.
+<b>ODD Adapter API</b> - an open API specification of the ODD Adapter to provide data to the ODD Puller.
 
 <b>ODD Adapter</b> - a microservice that implements the ODD Adapter API and provides data source specific entities.
 
-<b>ODD Ingestion API</b>  -an open API specification for push strategy ingestion.
+<b>ODD Ingestion API</b> - an open API specification for push strategy ingestion.
 
 <b>ODD Puller</b> - a service that regularly pulls metadata from ODD Adapters. 
 
-<b>ODDRN</b>  - Open Data Discovery Resource Name (the unique identifier of the data resource).
+<b>ODDRN</b> - Open Data Discovery Resource Name (the unique identifier of the data resource).
 
 <b>ETL tools</b>  - Extract, Transform, Load. These tools play a key role in data integration strategies allowing businesses to gather data from multiple sources and consolidate it into a single centralized location and make different types of data work together. ETLs collect and refine different types of data and deliver it to data warehouses or help to migrate it between different sources. 
  
