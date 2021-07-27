@@ -203,10 +203,10 @@ It could be any of these entities:
 <li><b>DataInput</b> (sources of data)</li>
 <li><b>DataSet</b> (collections of data)</li> 
 <li><b>DataTransformer</b> (transformers of data: ETL or ML training jobs)</li> 
-<li><b>DataTransformerRun</b> execution of: ETL or ML training jobs)</li> 
+<li><b>DataTransformerRun</b> (executions of ETL or ML training jobs)</li> 
 <li><b>DataConsumers</b> (consumers of data: ML model artifacts or BI dashboards)</li> 
-<li><b>DataQualityTest</b> (describe tests for particular DataSets)</li>
-<li><b>DataQualityTestRun</b> (execution of quality test)</li>
+<li><b>DataQualityTest</b> (describes tests for particular DataSets)</li>
+<li><b>DataQualityTestRun</b> (executions of data quality tests)</li>
 </ol>
  
 Each entity has: 
