@@ -212,7 +212,7 @@ It could be any of these entities:
 Each entity has: 
 
 <ul>
-<li><b>ODDRN</b> (Open Data Discovery Resource Name) - a unique URL describing its place, system, and identifyer in this system</li>
+<li><b>ODDRN</b> (Open Data Discovery Resource Name) - a unique URL describing its place, system, and identifier in this system</li>
 <li>A human-friendly name</li> 
 <li>List of metadata extension objects</li> 
 </ul>
