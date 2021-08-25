@@ -1,0 +1,97 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "definitions": {
+        "SagemakerFeaturestoreExtension": {
+            "type": "object",
+            "properties": {
+                "event_time_feature_name": {
+                    "type": "string"
+                },
+                "feature_group_arn": {
+                    "type": "string"
+                },
+                "feature_group_status": {
+                    "type": "string"
+                },
+                "offline_store_config": {
+                    "type": "object",
+                    "properties": {
+                        "data_catalog_config": {
+                            "type": "object",
+                            "properties": {
+                                "catalog": {
+                                    "type": "string"
+                                },
+                                "database": {
+                                    "type": "string"
+                                },
+                                "table_name": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "disable_glue_table_creation": {
+                            "type": "boolean"
+                        },
+                        "s3_storage_config": {
+                            "type": "object",
+                            "properties": {
+                                "resolved_output_s3_uri": {
+                                    "type": "string"
+                                },
+                                "s3_uri": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "online_store_config": {
+                    "type": "object",
+                    "properties": {
+                        "enable_online_store": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "record_identifier_feature_name": {
+                    "type": "string"
+                },
+                "response_metadata": {
+                    "type": "object",
+                    "properties": {
+                        "http_headers": {
+                            "type": "object",
+                            "properties": {
+                                "content-length": {
+                                    "type": "string"
+                                },
+                                "content-type": {
+                                    "type": "string"
+                                },
+                                "date": {
+                                    "type": "string"
+                                },
+                                "x-amzn-requestid": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "http_status_code": {
+                            "type": "integer"
+                        },
+                        "request_id": {
+                            "type": "string"
+                        },
+                        "retry_attempts": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "role_arn": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
