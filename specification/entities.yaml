@@ -155,8 +155,10 @@ components:
       properties:
         max_length:
           type: integer
+          format: int64
         avg_length:
-          type: number
+          type: integer
+          format: int64
         nulls_count:
           type: integer
           format: int64
