@@ -383,6 +383,7 @@ components:
             - SKIPPED
             - BROKEN
             - ABORTED
+            - RUNNING
             - UNKNOWN
       required:
         - transformer_oddrn
@@ -410,6 +411,7 @@ components:
             - SKIPPED
             - BROKEN
             - ABORTED
+            - RUNNING
             - UNKNOWN
       required:
         - data_quality_test_oddrn
