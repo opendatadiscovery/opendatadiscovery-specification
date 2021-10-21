@@ -576,9 +576,12 @@ properties:
     type: string
     enum:
       - SUCCESS
-      - FAIL
+      - FAILED
+      - SKIPPED
+      - BROKEN
       - ABORTED
-      - OTHER
+      - RUNNING
+      - UNKNOWN
 required:
   - transformerOddrn
   - startTime
@@ -691,9 +694,12 @@ DataQualityTest:
               type: string
               enum:
                 - SUCCESS
-                - FAIL
+                - FAILED
+                - SKIPPED
+                - BROKEN
                 - ABORTED
-                - OTHER
+                - RUNNING
+                - UNKNOWN
         required:
             - dataQualityTestOddrn
             - startTime
