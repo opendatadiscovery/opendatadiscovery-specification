@@ -48,6 +48,8 @@ components:
               $ref: '#/components/schemas/DataInput'
             data_consumer:
               $ref: '#/components/schemas/DataConsumer'
+            data_entity_group:
+              $ref: '#/components/schemas/DataEntityGroup'
           required:
             - type
 
@@ -320,6 +322,19 @@ components:
     DataInput:
       type: object
 
+    DataEntityGroup:
+      type: object
+      properties:
+        entities_list:
+          type: array
+          items:
+            type: string
+        group_oddrn:
+          type: string
+      required:
+        - entities_list
+        - group_oddrn
+
     DataQualityTestExpectation:
       type: object
       properties:
@@ -429,10 +444,11 @@ components:
         - KAFKA_TOPIC
         - JOB
         - JOB_RUN
-        - EXPERIMENT
         - ML_MODEL
         - ML_MODEL_TRAINING
         - DASHBOARD
+        - DAG
+        - ML_EXPERIMENT
         - UNKNOWN
 
     MetadataExtension:
