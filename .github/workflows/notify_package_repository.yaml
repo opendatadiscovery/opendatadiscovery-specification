@@ -1,32 +1,32 @@
-name: Notify PyPi contract package repository
+name: Notify dependent repositories
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  notify_contract_package_repo_job:
-    name: Notify contract package repository
+  notify_models_package_repo_job:
+    name: Notify odd-models-package repository
     runs-on: ubuntu-18.04
     steps:
-      - name: Notify contract package repository via GitHub REST API
+      - name: Notify package repository via GitHub REST API
         run: |
           curl \
           --request POST \
-          --url https://api.github.com/repos/opendatadiscovery/odd-contract-package/actions/workflows/6112466/dispatches \
+          --url https://api.github.com/repos/opendatadiscovery/odd-models-package/actions/workflows/6112466/dispatches \
           --header 'authorization: token ${{ secrets.OPENDATADISCOVERY_BOT_PAT }}' \
           --header 'content-type: application/json' \
           --data '{"ref": "main"}'
 
-  notify_client_package_repo_job:
-    name: Notify client package repository
+  notify_ingestion_contract_package_repo_job:
+    name: Notify odd-platform-ingestion-contract repository
     runs-on: ubuntu-18.04
     steps:
-      - name: Notify client package repository via GitHub REST API
+      - name: Notify package repository via GitHub REST API
         run: |
           curl \
           --request POST \
-          --url https://api.github.com/repos/opendatadiscovery/odd-client-package/actions/workflows/6160294/dispatches \
+          --url https://api.github.com/repos/opendatadiscovery/odd-platform-ingestion-contract/actions/workflows/14881393/dispatches \
           --header 'authorization: token ${{ secrets.OPENDATADISCOVERY_BOT_PAT }}' \
           --header 'content-type: application/json' \
           --data '{"ref": "main"}'
