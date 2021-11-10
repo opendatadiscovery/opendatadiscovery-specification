@@ -449,6 +449,7 @@ components:
         - DASHBOARD
         - DAG
         - ML_EXPERIMENT
+        - GRAPH_NODE
         - UNKNOWN
 
     MetadataExtension:
