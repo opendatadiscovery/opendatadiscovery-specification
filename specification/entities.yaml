@@ -450,7 +450,6 @@ components:
         - DAG
         - ML_EXPERIMENT
         - GRAPH_NODE
-        - GRAPH_RELATION
         - UNKNOWN
 
     MetadataExtension:
