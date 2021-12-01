@@ -321,6 +321,12 @@ components:
 
     DataInput:
       type: object
+      properties:
+        outputs:
+          type: array
+          items:
+            type: string
+
 
     DataEntityGroup:
       type: object
@@ -450,6 +456,7 @@ components:
         - ML_EXPERIMENT
         - GRAPH_NODE
         - UNKNOWN
+        - MICROSERVICE
 
     MetadataExtension:
       type: object

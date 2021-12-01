@@ -277,20 +277,19 @@ MetadataExtension:
 ```yaml
 DataInput:
     properties:
-        owner:
-            example: //aws/iam/{account_id}/user/name
-            type: string
-        description:
-            type: string
+      outputs:
+        type: array
+        items:
+          type: string    
     required:
-        - description
+        - outputs
 ```  
 
 Example:
 
 ```yaml
 {
-    "oddrn": "//http/www.amazon.com/goods",
+    "oddrn": "//http/host/www.amazon.com/path/goods",
     "name": "Amazon Goods Website",
     "metadata": [
         {
@@ -318,42 +317,34 @@ ODD Dataset:
 ```yaml
 DataSet:
  properties:
-   parentOddrn:
+   parent_oddrn:
      type: string
    description:
      type: string
-   updatedAt:
+   updated_at:
      type: string
      format: date-time
-   subtype:
-     type: string
-     enum:
-       - DATASET_TABLE
-       - DATASET_FILE
-       - DATASET_FEATURE_GROUP
-       - DATASET_TOPIC
-   fieldList:
+   field_list:
      type: array
      items:
        $ref: '#/components/schemas/DataSetField'
  required:
    - description
-   - subtype
-   - fieldList
+   - field_list
 
 
 DataSetField:
  type: object
  properties:
-   parentFieldOddrn:
+   parent_field_osddrn:
      type: string
    type:
      $ref: '#/components/schemas/DataSetFieldType'
-   isKey:
+   is_key:
      type: boolean
-   isValue:
+   is_value:
      type: boolean           
-   defaultValue:
+   default_value:
      type: string
    description:
      type: string
@@ -369,22 +360,27 @@ DataSetFieldType:
    type:
      type: string
      enum:
-       - TYPE_STRING
-       - TYPE_NUMBER
-       - TYPE_INTEGER
-       - TYPE_BOOLEAN
-       - TYPE_DATETIME
-       - TYPE_STRUCT
-       - TYPE_BINARY
-       - TYPE_LIST
-       - TYPE_MAP
-   logicalType:
+        - TYPE_STRING
+        - TYPE_NUMBER
+        - TYPE_INTEGER
+        - TYPE_BOOLEAN
+        - TYPE_CHAR
+        - TYPE_DATETIME
+        - TYPE_TIME
+        - TYPE_STRUCT
+        - TYPE_BINARY
+        - TYPE_LIST
+        - TYPE_MAP
+        - TYPE_UNION
+        - TYPE_DURATION
+        - TYPE_UNKNOWN
+   logical_type:
      type: string
-   isNullable:
+   is_nullable:
      type: boolean
  required:
    - type
-   - isNullable
+   - is_nullable
 ```  
 
 ### Tables
@@ -394,19 +390,18 @@ Example ODDRN:
 
 ```yaml
 {
-    "oddrn": "//postgresql/pg.sandbox.datacompany.domain/goods/public/items",
+    "oddrn": "//postgresql/host/pg.sandbox.datacompany.domain/database/goods/schemas/public/tables/items",
     "name": "public.items",
     "owner": "root",
     "metadata": {
         "location": "internet",        
     },
-    "parentOddrn": null,    
+    "parent_oddrn": null,    
     "description": "Amazon Goods table",
-    "updatedAt": "2021-02-11T00:01:00Z",
-    "subtype": "DATASET_TABLE",
+    "updated_at": "2021-02-11T00:01:00Z",
     "fieldList": [
         {
-           "oddrn": "//postgresql/pg.sandbox.datacompany.domain/goods/public/items/id",
+           "oddrn": "//postgresql/host/pg.sandbox.datacompany.domain/database/goods/schemas/public/tables/items/columns/id",
            "name": "id",
            "owner": "root",
            "metadata": {},
@@ -428,7 +423,7 @@ Example ODDRN:
            }
         },
         {
-           "oddrn": "//postgresql/pg.sandbox.datacompany.domain/goods/public/items/name",
+           "oddrn": "//postgresql/host/pg.sandbox.datacompany.domain/database/goods/schemas/public/tables/items/columns/name",
            "name": "name",
            "owner": "root",
            "metadata": {},
@@ -481,7 +476,7 @@ Example ODDRN:
            "defaultValue": null,
            "description": "Unique identifier field",
            "stats": {
-               "numberStats": {
+               "number_stats": {
                    "lowValue": 1,
                    "highValue": 10000,
                    "meanValue": 5000,
@@ -503,7 +498,7 @@ Example ODDRN:
            "defaultValue": null,
            "description": "Goods name",
            "stats": {
-               "stringStats": {
+               "string_stats": {
                    "maxLength": 120,
                    "avgLength": 52,
                    "nullsCount": 0,
@@ -535,7 +530,7 @@ DataTransformer:
  properties:
    description:
        type: string
-   sourceCodeUrl:
+   source_code_url:
        type: string
    sql:
        type: string                       
@@ -547,30 +542,22 @@ DataTransformer:
        type: array
        items:
        type: string
-   subtype:
-       type: string
-       enum:
-       - DATATRANSFORMER_JOB
-       - DATATRANSFORMER_EXPERIMENT
-       - DATATRANSFORMER_ML_MODEL_TRAINING
-       - DATATRANSFORMER_ML_MODEL_INSTANCE
  required:
  - description
  - inputs
  - outputs
- - subtype
 
 DataTransformerRun:
 properties:
-  transformerOddrn:
+  transformer_oddrn:
     type: string
-  startTime:
-    type: string
-    format: date-time
-  endTime:      
+  start_time:
     type: string
     format: date-time
-  statusReason:
+  end_time:      
+    type: string
+    format: date-time
+  status_reason:
     type: string
   status:
     type: string
@@ -583,9 +570,9 @@ properties:
       - RUNNING
       - UNKNOWN
 required:
-  - transformerOddrn
-  - startTime
-  - endTime
+  - transformer_oddrn
+  - start_time
+  - end_tsime
   - status
 
 ```  
@@ -596,7 +583,7 @@ required:
 Example ODDRN: 
 
 ``` 
-//airflow/{host}/{path}/{dag_id}/{job_id} 
+//airflow/host/{host}/paths/{path}/dags/{dag_id}/jobs/{job_id} 
 ```  
 
 ### ML Training Jobs
@@ -604,7 +591,7 @@ Example ODDRN:
 Example ODDRN: 
 
 ``` 
-//kubeflow/{host}/{path}/{job_id}
+//kubeflow/host/{host}/paths/{path}/jobs/{job_id}
 ```  
 
 ## DataConsumers
@@ -621,14 +608,9 @@ DataConsumer:
      type: array
      items:
        type: string
-   subtype:
-     type: string
-     enum:
-       - DATACONSUMER_DASHBOARD
-       - DATACONSUMER_ML_MODEL_ARTIFACT              
  required:
    - description
-   - subtype
+   - inputs
 ```  
 
 ### ML Models
@@ -678,15 +660,15 @@ DataQualityTest:
     DataQualityTestRun:  
         type: object
         properties:
-            dataQualityTestOddrn:
+            data_quality_test_oddrn:
               type: string
-            startTime:
-              type: string
-              format: date-time
-            endTime:        
+            start_time:
               type: string
               format: date-time
-            statusReason:
+            end_time:        
+              type: string
+              format: date-time
+            status_reason:
               type: string
             description:
               type: string
@@ -701,9 +683,9 @@ DataQualityTest:
                 - RUNNING
                 - UNKNOWN
         required:
-            - dataQualityTestOddrn
-            - startTime
-            - endTime
+            - data_quality_test_oddrn
+            - start_time
+            - end_time
             - status
 ```  
 
