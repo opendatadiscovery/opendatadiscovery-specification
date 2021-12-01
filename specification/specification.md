@@ -330,8 +330,7 @@ DataSet:
        $ref: '#/components/schemas/DataSetField'
  required:
    - description
-   - subtype
-   - fieldList
+   - field_list
 
 
 DataSetField:
@@ -381,7 +380,7 @@ DataSetFieldType:
      type: boolean
  required:
    - type
-   - isNullable
+   - is_nullable
 ```  
 
 ### Tables
@@ -531,7 +530,7 @@ DataTransformer:
  properties:
    description:
        type: string
-   sourceCodeUrl:
+   source_code_url:
        type: string
    sql:
        type: string                       
@@ -572,8 +571,8 @@ properties:
       - UNKNOWN
 required:
   - transformer_oddrn
-  - startTime
-  - endTime
+  - start_time
+  - end_tsime
   - status
 
 ```  
@@ -611,6 +610,7 @@ DataConsumer:
        type: string
  required:
    - description
+   - inputs
 ```  
 
 ### ML Models
@@ -684,8 +684,8 @@ DataQualityTest:
                 - UNKNOWN
         required:
             - data_quality_test_oddrn
-            - startTime
-            - endTime
+            - start_time
+            - end_time
             - status
 ```  
 
