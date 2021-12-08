@@ -457,6 +457,7 @@ components:
         - GRAPH_NODE
         - UNKNOWN
         - MICROSERVICE
+        - API_CALL
 
     MetadataExtension:
       type: object
