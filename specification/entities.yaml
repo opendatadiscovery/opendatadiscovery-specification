@@ -458,6 +458,9 @@ components:
         - UNKNOWN
         - MICROSERVICE
         - API_CALL
+        - DATABASE_SERVICE
+        - API_SERVICE
+        - KAFKA_SERVICE
 
     MetadataExtension:
       type: object
