@@ -8,6 +8,8 @@ components:
           example: "//aws/glue/{account_id}/{database}/{tablename}"
         name:
           type: string
+        version:
+          type: string
         description:
           type: string
         owner:
