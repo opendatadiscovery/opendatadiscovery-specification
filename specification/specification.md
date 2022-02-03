@@ -336,7 +336,7 @@ DataSet:
 DataSetField:
  type: object
  properties:
-   parent_field_osddrn:
+   parent_field_oddrn:
      type: string
    type:
      $ref: '#/components/schemas/DataSetFieldType'
