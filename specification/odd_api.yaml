@@ -9,7 +9,7 @@ info:
 paths:
   /ingestion/entities:
     post:
-      description: Provides list of available datasets
+      description: Ingests list of data entities
       operationId: postDataEntityList
       tags:
         - OpenDataDiscoveryIngestion
@@ -19,6 +19,21 @@ paths:
           application/json:
             schema:
               $ref: './entities.yaml/#/components/schemas/DataEntityList'
+      responses:
+        '201':
+          description: Created
+  
+  /ingestion/datasources:
+    post:
+      description: Creates data sources in the target catalog
+      operationId: createDataSource
+      tags:
+        - OpenDataDiscoveryIngestion
+      requestBody: 
+        content:
+          application/json:
+            schema:
+              $ref: './entities.yaml/#/components/schemas/DataSourceList'
       responses:
         '201':
           description: Created

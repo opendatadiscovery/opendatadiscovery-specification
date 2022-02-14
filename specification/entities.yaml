@@ -478,3 +478,21 @@ components:
       required:
         - schema_url
         - metadata
+
+    DataSource:
+      type: object
+      properties:
+        oddrn:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+      required:
+        - oddrn
+        - name
+
+    DataSourceList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DataSource'
