@@ -488,8 +488,6 @@ components:
           type: string
         description:
           type: string
-        namespace:
-          type: string
       required:
         - oddrn
         - name
