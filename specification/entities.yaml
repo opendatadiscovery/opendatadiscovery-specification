@@ -383,6 +383,17 @@ components:
       required:
         - name
         - url
+    
+    JobRunStatus:
+      type: string
+      enum:
+        - SUCCESS
+        - FAILED
+        - SKIPPED
+        - BROKEN
+        - ABORTED
+        - RUNNING
+        - UNKNOWN
 
     DataTransformerRun:
       type: object
@@ -398,15 +409,7 @@ components:
         status_reason:
           type: string
         status:
-          type: string
-          enum:
-            - SUCCESS
-            - FAILED
-            - SKIPPED
-            - BROKEN
-            - ABORTED
-            - RUNNING
-            - UNKNOWN
+          $ref: '#/components/schemas/JobRunStatus'
       required:
         - transformer_oddrn
         - start_time
@@ -426,15 +429,7 @@ components:
         status_reason:
           type: string
         status:
-          type: string
-          enum:
-            - SUCCESS
-            - FAILED
-            - SKIPPED
-            - BROKEN
-            - ABORTED
-            - RUNNING
-            - UNKNOWN
+          $ref: '#/components/schemas/JobRunStatus'
       required:
         - data_quality_test_oddrn
         - start_time
