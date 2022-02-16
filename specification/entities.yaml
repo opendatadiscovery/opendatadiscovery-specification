@@ -395,6 +395,17 @@ components:
         - RUNNING
         - UNKNOWN
 
+    QualityRunStatus:
+      type: string
+      enum:
+        - SUCCESS
+        - FAILED
+        - SKIPPED
+        - BROKEN
+        - ABORTED
+        - RUNNING
+        - UNKNOWN
+
     DataTransformerRun:
       type: object
       properties:
@@ -429,7 +440,7 @@ components:
         status_reason:
           type: string
         status:
-          $ref: '#/components/schemas/JobRunStatus'
+          $ref: '#/components/schemas/QualityRunStatus'
       required:
         - data_quality_test_oddrn
         - start_time
