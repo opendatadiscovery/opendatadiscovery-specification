@@ -1,0 +1,38 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "definitions": {
+        "S3DataSetExtension": {
+            "type": "object",
+            "properties": {
+                "Files": {
+                    "type": "int"
+                },
+                "Bucket": {
+                    "type": "string"
+                },
+                "Key": {
+                    "type": "string"
+                },
+                "Region": {
+                    "type": "string"
+                },
+                "Avg. file size": {
+                    "type": "int"
+                },
+                "Estimated dataset size": {
+                    "type": "string"
+                },
+                "File format": {
+                    "type": "string"
+                },
+                "Partition style": {
+                    "type": "string"
+                },
+                "Partitioning columns": {
+                    "type": "array"
+                }
+            }
+        
+        }
+    }
+}
