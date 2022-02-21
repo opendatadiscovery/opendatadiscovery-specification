@@ -4,31 +4,31 @@
         "S3DataSetExtension": {
             "type": "object",
             "properties": {
-                "Files": {
+                "files": {
                     "type": "int"
                 },
-                "Bucket": {
+                "bucket": {
                     "type": "string"
                 },
-                "Key": {
+                "key": {
                     "type": "string"
                 },
-                "Region": {
+                "region": {
                     "type": "string"
                 },
-                "Avg. file size": {
+                "avgFileSize": {
                     "type": "int"
                 },
-                "Estimated dataset size": {
+                "estimatedDatasetSize": {
                     "type": "string"
                 },
-                "File format": {
+                "fileFormat": {
                     "type": "string"
                 },
-                "Partition style": {
+                "partitionStyle": {
                     "type": "string"
                 },
-                "Partitioning columns": {
+                "partitioningColumns": {
                     "type": "array"
                 }
             }
