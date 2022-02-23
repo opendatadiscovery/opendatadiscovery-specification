@@ -23,10 +23,12 @@
                     "type": "string"
                 },
                 "fileFormat": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": ["csv", "tsv", "parquet"]
                 },
                 "partitionStyle": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": ["Directory partitioned", "Hive style partitioned"]
                 },
                 "partitioningColumns": {
                     "type": "array"
