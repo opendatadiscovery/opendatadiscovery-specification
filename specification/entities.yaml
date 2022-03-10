@@ -499,6 +499,14 @@ components:
         - name
 
     DataSourceList:
-      type: array
-      items:
-        $ref: '#/components/schemas/DataSource'
+      type: object
+      properties:
+        provider_oddrn:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSource'
+      required:
+        - provider_oddrn
+        - items
