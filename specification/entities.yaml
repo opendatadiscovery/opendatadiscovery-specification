@@ -495,10 +495,12 @@ components:
     DataSourceList:
       type: object
       properties:
-        registrar_oddrn:
+        provider_oddrn:
           type: string
         items:
-          $ref: '#/components/schemas/DataSource'
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSource'
       required:
-        - registrar_oddrn
+        - provider_oddrn
         - items
