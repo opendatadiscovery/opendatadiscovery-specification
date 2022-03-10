@@ -26,7 +26,7 @@ jobs:
         run: |
           curl \
           --request POST \
-          --url https://api.github.com/repos/opendatadiscovery/odd-platform-ingestion-contract/actions/workflows/14881393/dispatches \
+          --url https://api.github.com/repos/opendatadiscovery/opendatadiscovery-specification-contracts/actions/workflows/15836628/dispatches \
           --header 'authorization: token ${{ secrets.OPENDATADISCOVERY_BOT_PAT }}' \
           --header 'content-type: application/json' \
           --data '{"ref": "main"}'
