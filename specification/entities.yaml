@@ -501,8 +501,6 @@ components:
     DataSourceList:
       type: object
       properties:
-        provider_oddrn:
-          type: string
         items:
           type: array
           items:
