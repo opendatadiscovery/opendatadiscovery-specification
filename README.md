@@ -5,10 +5,8 @@
 <br>
 
 [![Apache2](https://img.shields.io/badge/license-Apache2-green.svg?style=for-the-badge)](https://www.apache.org/licenses/LICENSE-2.0)
-[![Maintenance](https://img.shields.io/maintenance/yes/2021?style=for-the-badge)]()
 [![GitHub contributors](https://img.shields.io/github/contributors/opendatadiscovery/odd-platform?style=for-the-badge)](https://github.com/opendatadiscovery/odd-platform/graphs/contributors)
 [![Slack](https://img.shields.io/badge/chat-on_slack-purple.svg?style=for-the-badge&logo=slack)](https://go.opendatadiscovery.org/slack)
-[![GitHub issues by-label](https://img.shields.io/github/issues/opendatadiscovery/opendatadiscovery-specification/good%20first%20issue?style=for-the-badge)](https://github.com/opendatadiscovery/opendatadiscovery-specification/contribute) 
 <br>
 
 # Open Data Discovery Specification (ODD Spec): A Universal Standard for Metadata Collection 
