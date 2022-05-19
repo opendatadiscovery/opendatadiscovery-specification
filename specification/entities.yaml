@@ -257,6 +257,8 @@ components:
               $ref: '#/components/schemas/DataSetFieldType'
             is_primary_key:
               type: boolean
+            is_sort_key:
+              type: boolean
             is_key:
               type: boolean
             is_value:
