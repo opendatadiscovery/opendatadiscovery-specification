@@ -448,7 +448,6 @@ components:
       required:
         - data_quality_test_oddrn
         - start_time
-        - end_time
         - status
 
     DataEntityType:
