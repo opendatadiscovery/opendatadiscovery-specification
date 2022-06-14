@@ -19,6 +19,10 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/MetadataExtension"
+        tags:
+          type: array
+          items:
+            type: string
       required:
         - oddrn
         - name
