@@ -19,6 +19,10 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/MetadataExtension"
+        tags:
+          type: array
+          items:
+            $ref: "#/components/schemas/Tag"
       required:
         - oddrn
         - name
@@ -67,6 +71,14 @@ components:
             $ref: '#/components/schemas/DataEntity'
       required:
         - data_source_oddrn
+    
+    Tag:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
 
     DataSet:
       type: object
