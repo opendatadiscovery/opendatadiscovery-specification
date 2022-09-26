@@ -521,5 +521,41 @@ components:
           items:
             $ref: '#/components/schemas/DataSource'
       required:
-        - provider_oddrn
         - items
+
+    IngestionAlertType:
+      type: string
+      enum:
+        - DATA_SOURCE_CONNECTION_ERROR
+        - GENERIC_ERROR
+
+    IngestionAlert:
+      type: object
+      properties:
+        description:
+          type: string
+        type:
+          $ref: '#/components/schemas/IngestionAlertType'
+        related_data_entity_oddrn:
+          type: string
+        required:
+          - description
+          - type
+
+    IngestionAlertList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/IngestionAlert'
+      required:
+        - items
+
+    OddrnList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
