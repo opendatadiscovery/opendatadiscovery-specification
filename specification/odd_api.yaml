@@ -37,3 +37,38 @@ paths:
       responses:
         '201':
           description: Created
+
+  /ingestion/alerts:
+    post:
+      description: Alerts target catalog about ingestion issues
+      operationId: createAlerts
+      tags:
+        - OpenDataDiscoveryIngestion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './entities.yaml/#/components/schemas/IngestionAlertList'
+      responses:
+        '201':
+          description: Created
+  
+  /ingestion/dataentities:
+    get:
+      description: Searches for data entities in the target catalog by oddrn of a DEG oddrn they are currently part of
+      operationId: getDataEntitiesByDEGOddrn
+      tags:
+        - OpenDataDiscoveryIngestion
+      parameters:
+        - name: deg_oddrn
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './entities.yaml/#/components/schemas/OddrnList'
