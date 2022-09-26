@@ -538,9 +538,9 @@ components:
           $ref: '#/components/schemas/IngestionAlertType'
         related_data_entity_oddrn:
           type: string
-        required:
-          - description
-          - type
+      required:
+        - description
+        - type
 
     IngestionAlertList:
       type: object
@@ -559,3 +559,5 @@ components:
           type: array
           items:
             type: string
+      required:
+        - items
