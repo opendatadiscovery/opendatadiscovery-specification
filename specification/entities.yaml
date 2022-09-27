@@ -572,6 +572,6 @@ components:
         items:
           type: array
           items:
-            '#/components/schemas/CompactDataEntity'
+            $ref: '#/components/schemas/CompactDataEntity'
       required:
         - items
