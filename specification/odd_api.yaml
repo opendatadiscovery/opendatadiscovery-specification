@@ -71,4 +71,4 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './entities.yaml/#/components/schemas/OddrnList'
+                $ref: './entities.yaml/#/components/schemas/CompactDataEntityList'
