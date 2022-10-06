@@ -110,7 +110,7 @@ components:
     DataSetFieldStat:
       type: object
       properties:
-        oddrn:
+        field_oddrn:
           type: string
           example: "//aws/glue/{account_id}/{database}/{tablename}/columns/{column_name}"
         complex_stats:
