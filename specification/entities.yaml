@@ -113,7 +113,7 @@ components:
         field_oddrn:
           type: string
           example: "//aws/glue/{account_id}/{database}/{tablename}/columns/{column_name}"
-        labels:
+        tags:
           type: array
           items:
             $ref: "#/components/schemas/Tag"          
