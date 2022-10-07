@@ -113,6 +113,10 @@ components:
         field_oddrn:
           type: string
           example: "//aws/glue/{account_id}/{database}/{tablename}/columns/{column_name}"
+        labels:
+          type: array
+          items:
+            $ref: "#/components/schemas/Tag"          
         complex_stats:
           $ref: '#/components/schemas/ComplexFieldStat'
         boolean_stats:
@@ -127,6 +131,8 @@ components:
           $ref: '#/components/schemas/BinaryFieldStat'
         datetime_stats:
           $ref: '#/components/schemas/DateTimeFieldStat'
+      required:
+        - field_oddrn            
 
     BooleanFieldStat:
       type: object
