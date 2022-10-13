@@ -22,7 +22,23 @@ paths:
       responses:
         '201':
           description: Created
-  
+
+  /ingestion/entities/datasets/stats:
+    post:
+      description: Ingests list of stats for data sets
+      operationId: postDataSetStatsList
+      tags:
+        - OpenDataDiscoveryIngestion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './entities.yaml/#/components/schemas/DatasetStatisticsList'
+      responses:
+        '201':
+          description: Created
+
   /ingestion/datasources:
     post:
       description: Creates data sources in the target catalog
@@ -53,14 +69,14 @@ paths:
         '201':
           description: Created
   
-  /ingestion/dataentities:
+  /ingestion/entities/degs/children:
     get:
-      description: Searches for data entities in the target catalog by oddrn of a DEG oddrn they are currently part of
+      description: Searches for data entities in the target catalog by oddrn of a DEG they are currently part of
       operationId: getDataEntitiesByDEGOddrn
       tags:
         - OpenDataDiscoveryIngestion
       parameters:
-        - name: deg_oddrn
+        - name: oddrn
           in: query
           required: true
           schema:
