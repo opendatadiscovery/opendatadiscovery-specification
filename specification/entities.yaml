@@ -42,8 +42,6 @@ components:
               $ref: '#/components/schemas/DataEntityType'
             dataset:
               $ref: '#/components/schemas/DataSet'
-            dataset_statistics:
-              $ref: '#/components/schemas/DataSetStatistics' 
             data_transformer:
               $ref: '#/components/schemas/DataTransformer'
             data_transformer_run:
@@ -73,7 +71,17 @@ components:
             $ref: '#/components/schemas/DataEntity'
       required:
         - data_source_oddrn
-    
+
+    DatasetStatisticsList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSetStatistics'
+      required:
+        - items
+
     Tag:
       type: object
       properties:
@@ -100,19 +108,22 @@ components:
     DataSetStatistics:
       type: object
       properties:
-        field_list:
-          type: array
-          items:
+        dataset_oddrn:
+          type: string
+        fields: 
+          type: object
+          additionalProperties:
             $ref: '#/components/schemas/DataSetFieldStat'
+          description: >
+            key is a field oddrn.
+            For example: "//aws/glue/{account_id}/{database}/{tablename}/columns/{column_name}"
       required:
-        - field_list        
+        - dataset_oddrn
+        - fields        
 
     DataSetFieldStat:
       type: object
       properties:
-        field_oddrn:
-          type: string
-          example: "//aws/glue/{account_id}/{database}/{tablename}/columns/{column_name}"
         tags:
           type: array
           items:
@@ -298,6 +309,8 @@ components:
               type: boolean
             default_value:
               type: string
+            stats:
+              $ref: "#/components/schemas/DataSetFieldStat"
           required:
             - type
 
