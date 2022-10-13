@@ -7,7 +7,7 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 paths:
-  /ingestion/entities:    
+  /ingestion/entities:
     post:
       description: Ingests list of data entities
       operationId: postDataEntityList
@@ -38,7 +38,6 @@ paths:
       responses:
         '201':
           description: Created
-
 
   /ingestion/datasources:
     post:
