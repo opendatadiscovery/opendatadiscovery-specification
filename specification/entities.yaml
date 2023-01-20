@@ -142,8 +142,8 @@ components:
           $ref: '#/components/schemas/BinaryFieldStat'
         datetime_stats:
           $ref: '#/components/schemas/DateTimeFieldStat'
-      required:
-        - field_oddrn            
+        custom_stats:
+          $ref: '#/components/schemas/CustomFieldStat'
 
     BooleanFieldStat:
       type: object
@@ -289,6 +289,11 @@ components:
         - high_value
         - nulls_count
         - unique_count
+
+    CustomFieldStat:
+      type: object
+      additionalProperties:
+        type: number
 
     DataSetField:
       allOf:
