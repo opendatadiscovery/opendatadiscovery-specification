@@ -102,6 +102,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DataSetField'
+        custom_stats:
+          $ref: '#/components/schemas/CustomFieldStat'
       required:
         - field_list
 
@@ -293,7 +295,18 @@ components:
     CustomFieldStat:
       type: object
       additionalProperties:
-        type: number
+        $ref: '#/components/schemas/CustomFieldStatValue'
+
+    CustomFieldStatValue:
+      type: object
+      properties:
+        value:
+          type: number
+        unit:
+          type: string
+      required:
+        - value
+        - unit
 
     DataSetField:
       allOf:
