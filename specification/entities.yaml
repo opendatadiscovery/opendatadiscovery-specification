@@ -117,6 +117,8 @@ components:
           description: >
             key is a field oddrn.
             For example: "//aws/glue/{account_id}/{database}/{tablename}/columns/{column_name}"
+        custom_stats:
+          $ref: '#/components/schemas/CustomFieldStat'
       required:
         - dataset_oddrn
         - fields        
