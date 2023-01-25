@@ -102,8 +102,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DataSetField'
-        custom_stats:
-          $ref: '#/components/schemas/CustomFieldStat'
       required:
         - field_list
 
