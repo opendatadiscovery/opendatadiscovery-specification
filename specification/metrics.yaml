@@ -1,0 +1,209 @@
+components:
+  schemas:
+    MetricSetList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricSet'
+      required:
+        - items
+    MetricSet:
+      type: object
+      properties:
+        oddrn:
+          type: string
+          description: The ODDRN of data entity or dataset field
+        metric_families:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricFamily'
+      required:
+        - oddrn
+        - metric_families
+    MetricFamily:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/MetricType'
+        unit:
+          type: string
+        help:
+          type: string
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Metric'
+      required:
+        - name
+        - type
+        - unit
+        - metrics
+    MetricType:
+      type: string
+      enum:
+        - UNKNOWN
+        - GAUGE
+        - COUNTER
+        - STATE_SET
+        - INFO
+        - HISTOGRAM
+        - GAUGE_HISTOGRAM
+        - SUMMARY
+    Metric:
+      type: object
+      properties:
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Label'
+        metric_points:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricPoint'
+      required:
+        - metric_points
+    Label:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+      required:
+        - name
+        - value
+    MetricPoint:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+        unknown_value:
+          $ref: '#/components/schemas/UnknownValue'
+        gauge_value:
+          $ref: '#/components/schemas/GaugeValue'
+        counter_value:
+          $ref: '#/components/schemas/CounterValue'
+        histogram_value:
+          $ref: '#/components/schemas/HistogramValue'
+        state_set_value:
+          $ref: '#/components/schemas/StateSetValue'
+        info_value:
+          $ref: '#/components/schemas/InfoValue'
+        summary_value:
+          $ref: '#/components/schemas/SummaryValue'
+    UnknownValue:
+      type: object
+      properties:
+        value:
+          type: number
+      required:
+        - value
+    GaugeValue:
+      type: object
+      properties:
+        value:
+          type: number
+      required:
+        - value
+    CounterValue:
+      type: object
+      properties:
+        total:
+          type: number
+        created:
+          type: integer
+        exemplar:
+          $ref: '#/components/schemas/Exemplar'
+      required:
+        - total
+    HistogramValue:
+      type: object
+      properties:
+        sum:
+          type: number
+        count:
+          type: integer
+          format: int64
+        created:
+          type: integer
+        buckets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Bucket'
+    StateSetValue:
+      type: object
+      properties:
+        states:
+          type: array
+          items:
+            $ref: '#/components/schemas/State'
+    InfoValue:
+      type: object
+      properties:
+        info:
+          type: array
+          items:
+            $ref: '#/components/schemas/Label'
+    SummaryValue:
+      type: object
+      properties:
+        sum:
+          type: number
+        count:
+          type: integer
+          format: int64
+        created:
+          type: integer
+        quantile:
+          type: array
+          items:
+            $ref: '#/components/schemas/Quantile'
+    Exemplar:
+      type: object
+      properties:
+        value:
+          type: number
+        timestamp:
+          type: integer
+        label:
+          type: array
+          items:
+            $ref: '#/components/schemas/Label'
+      required:
+        - value
+    Bucket:
+      type: object
+      properties:
+        upper_bound:
+          type: number
+        count:
+          type: integer
+          format: int64
+        exemplar:
+          $ref: '#/components/schemas/Exemplar'
+      required:
+        - count
+    State:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        name:
+          type: string
+      required:
+        - enabled
+        - name
+    Quantile:
+      type: object
+      properties:
+        quantile:
+          type: number
+        value:
+          type: number
+      required:
+        - quantile
+        - value
