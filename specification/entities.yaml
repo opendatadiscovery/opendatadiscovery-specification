@@ -290,6 +290,19 @@ components:
         - nulls_count
         - unique_count
 
+    DataSetFieldEnumValue:
+      type: object
+      properties:
+        label:
+          type: string
+        sort_position:
+          type: integer
+          format: int32
+        description:
+          type: string
+      required:
+        - label
+
     DataSetField:
       allOf:
         - $ref: '#/components/schemas/BaseObject'
@@ -311,6 +324,10 @@ components:
               type: string
             stats:
               $ref: "#/components/schemas/DataSetFieldStat"
+            enum_values:
+              type: array
+              items:
+                $ref: "#/components/schemas/DataSetFieldEnumValue"
           required:
             - type
 
@@ -333,6 +350,7 @@ components:
             - TYPE_MAP
             - TYPE_UNION
             - TYPE_DURATION
+            - TYPE_ENUM
             - TYPE_UNKNOWN
         logical_type:
           type: string
