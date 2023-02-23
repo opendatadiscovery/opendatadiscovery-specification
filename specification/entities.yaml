@@ -293,7 +293,7 @@ components:
     DataSetFieldEnumValue:
       type: object
       properties:
-        label:
+        value:
           type: string
         sort_position:
           type: integer
@@ -301,7 +301,7 @@ components:
         description:
           type: string
       required:
-        - label
+        - value
 
     DataSetField:
       allOf:
@@ -350,7 +350,6 @@ components:
             - TYPE_MAP
             - TYPE_UNION
             - TYPE_DURATION
-            - TYPE_ENUM
             - TYPE_UNKNOWN
         logical_type:
           type: string
