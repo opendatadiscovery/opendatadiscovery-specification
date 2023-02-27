@@ -290,6 +290,16 @@ components:
         - nulls_count
         - unique_count
 
+    DataSetFieldEnumValue:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+      required:
+        - name
+
     DataSetField:
       allOf:
         - $ref: '#/components/schemas/BaseObject'
@@ -311,6 +321,10 @@ components:
               type: string
             stats:
               $ref: "#/components/schemas/DataSetFieldStat"
+            enum_values:
+              type: array
+              items:
+                $ref: "#/components/schemas/DataSetFieldEnumValue"
           required:
             - type
 
