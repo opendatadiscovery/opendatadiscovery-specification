@@ -293,12 +293,12 @@ components:
     DataSetFieldEnumValue:
       type: object
       properties:
-        value:
+        name:
           type: string
         description:
           type: string
       required:
-        - value
+        - name
 
     DataSetField:
       allOf:
