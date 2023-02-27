@@ -295,9 +295,6 @@ components:
       properties:
         value:
           type: string
-        sort_position:
-          type: integer
-          format: int32
         description:
           type: string
       required:
