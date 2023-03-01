@@ -88,3 +88,19 @@ paths:
             application/json:
               schema:
                 $ref: './entities.yaml/#/components/schemas/CompactDataEntityList'
+
+  /ingestion/metrics:
+    post:
+      description: Ingests list of metrics
+      operationId: ingestMetrics
+      tags:
+        - OpenDataDiscoveryIngestion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './metrics.yaml/#/components/schemas/MetricSetList'
+      responses:
+        '201':
+          description: Created
