@@ -317,6 +317,8 @@ components:
               type: boolean
             is_value:
               type: boolean
+            reference_oddrn:
+              type: string
             default_value:
               type: string
             stats:
@@ -347,6 +349,7 @@ components:
             - TYPE_MAP
             - TYPE_UNION
             - TYPE_DURATION
+            - TYPE_REFERENCE
             - TYPE_UNKNOWN
         logical_type:
           type: string
