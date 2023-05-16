@@ -7,7 +7,7 @@ on:
 jobs:
   notify_models_package_repo_job:
     name: Notify odd-models-package repository
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Notify package repository via GitHub REST API
         run: |
@@ -20,7 +20,7 @@ jobs:
 
   notify_ingestion_contract_package_repo_job:
     name: Notify odd-platform-ingestion-contract repository
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Notify package repository via GitHub REST API
         run: |
