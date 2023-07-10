@@ -127,7 +127,13 @@ components:
         tags:
           type: array
           items:
-            $ref: "#/components/schemas/Tag"          
+            $ref: "#/components/schemas/Tag"         
+        field_oddrn: 
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/DataSetFields/parent_field_oddrn'
+          description: >
+            For example: "//aws/S3/{account_id}/{database}/{tablename}/columns/{column_name}"
         complex_stats:
           $ref: '#/components/schemas/ComplexFieldStat'
         boolean_stats:
