@@ -576,23 +576,21 @@ components:
       type: string
       enum:
         - DATA_SOURCE_CONNECTION_ERROR
-        - DATA_SOURCE_GENERIC_ERROR
+        - AGENT_ERROR
 
     IngestionAlert:
       type: object
       properties:
-        description:
+        data_source_oddrn:
+          type: string
+        message:
           type: string
         type:
           $ref: '#/components/schemas/IngestionAlertType'
-        related_data_source_oddrn:
-          type: string
-        related_data_entity_oddrn:
-          type: string
       required:
-        - description
+        - data_source_oddrn
+        - message
         - type
-        - related_data_source_oddrn
 
     IngestionAlertList:
       type: object
