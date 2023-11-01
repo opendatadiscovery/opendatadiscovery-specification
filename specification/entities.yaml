@@ -407,12 +407,23 @@ components:
       required:
         - entities_list
 
+    DataQualityTestExpectationCategory:
+        type: string
+        enum:
+          - ASSERTION
+          - VOLUME_ANOMALY
+          - FRESHNESS_ANOMALY
+          - COLUMN_VALUES_ANOMALY
+          - SCHEMA_CHANGE
+
     DataQualityTestExpectation:
       type: object
       properties:
         type:
           type: string
           example: "expect_table_row_count_to_be_between"
+        category:
+          $ref: '#/components/schemas/DataQualityTestExpectationCategory'
       additionalProperties:
         type: string
 
