@@ -350,6 +350,7 @@ components:
             - TYPE_UNION
             - TYPE_DURATION
             - TYPE_REFERENCE
+            - TYPE_VECTOR
             - TYPE_UNKNOWN
         logical_type:
           type: string
@@ -544,6 +545,7 @@ components:
         - DATABASE_SERVICE
         - API_SERVICE
         - KAFKA_SERVICE
+        - VECTOR_STORE
 
     MetadataExtension:
       type: object

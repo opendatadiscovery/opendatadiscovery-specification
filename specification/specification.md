@@ -373,6 +373,8 @@ DataSetFieldType:
         - TYPE_MAP
         - TYPE_UNION
         - TYPE_DURATION
+        - TYPE_REFERENCE
+        - TYPE_VECTOR
         - TYPE_UNKNOWN
    logical_type:
      type: string
