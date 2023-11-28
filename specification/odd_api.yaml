@@ -9,6 +9,7 @@ info:
 paths:
   /ingestion/entities:
     post:
+      summary: Ingests list of data entities
       description: Ingests list of data entities
       operationId: postDataEntityList
       tags:
@@ -25,6 +26,7 @@ paths:
 
   /ingestion/entities/datasets/stats:
     post:
+      summary: Ingests list of stats for data sets
       description: Ingests list of stats for data sets
       operationId: postDataSetStatsList
       tags:
@@ -41,6 +43,7 @@ paths:
 
   /ingestion/datasources:
     post:
+      summary: Creates data sources in the target catalog
       description: Creates data sources in the target catalog
       operationId: createDataSource
       tags:
@@ -56,6 +59,7 @@ paths:
 
   /ingestion/alerts:
     post:
+      summary: Alerts target catalog about ingestion issues
       description: Alerts target catalog about ingestion issues
       operationId: createAlerts
       tags:
@@ -71,6 +75,7 @@ paths:
   
   /ingestion/entities/degs/children:
     get:
+      summary: Get data entity by oddrn in Data Entity Groups
       description: Searches for data entities in the target catalog by oddrn of a DEG they are currently part of
       operationId: getDataEntitiesByDEGOddrn
       tags:
@@ -91,6 +96,7 @@ paths:
 
   /ingestion/metrics:
     post:
+      summary: Ingests list of metrics
       description: Ingests list of metrics
       operationId: ingestMetrics
       tags:
