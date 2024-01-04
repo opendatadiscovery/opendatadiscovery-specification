@@ -102,8 +102,70 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DataSetField'
+        relationship_list:
+          type: array
+          items:
+            $ref: '#/components/schemas/Relationship'
       required:
         - field_list
+
+    Relationship:
+      type: object
+      properties:
+        begin_dataset_oddrn:
+          type: string
+        end_dataset_oddrn:
+          type: string
+        common_relationship:
+          $ref: '#/components/schemas/CommonRelationship'
+        graph_nodes_relationship:
+          $ref: '#/components/schemas/GraphNodesRelationships'
+      required:
+        - begin_dataset_oddrn
+        - end_dataset_oddrn
+
+    CommonRelationship:
+      type: object
+      properties:
+        begin_dataset_field_oddrn:
+          type: string
+        end_dataset_field_oddrn:
+          type: string
+        is_identifying:
+          type: boolean
+        cardinality:
+          $ref: '#/components/schemas/CardinalityType'
+      required:
+        - is_identifying
+        - cardinality
+
+    GraphNodesRelationships:
+      type: object
+      properties:
+        relationship_type:
+          type: string
+        direction:
+          $ref: '#/components/schemas/DirectionType'
+        attributes:
+          type: object
+          additionalProperties: true
+      required:
+        - direction
+
+    CardinalityType:
+      type: string
+      enum:
+        - ONE_TO_ZERO_ONE_OR_MORE
+        - ONE_TO_ONE_OR_MORE
+        - ONE_TO_ZERO_OR_ONE
+        - ONE_TO_EXACTLY_ONE
+
+    DirectionType:
+      type: string
+      enum:
+        - LEFT
+        - RIGHT
+        - NONE
 
     DataSetStatistics:
       type: object
