@@ -110,36 +110,42 @@ components:
         - field_list
 
     Relationship:
-      type: object
-      properties:
-        begin_dataset_oddrn:
-          type: string
-        end_dataset_oddrn:
-          type: string
-        common_relationship:
-          $ref: '#/components/schemas/CommonRelationship'
-        graph_nodes_relationship:
-          $ref: '#/components/schemas/GraphNodesRelationships'
-      required:
-        - begin_dataset_oddrn
-        - end_dataset_oddrn
+      allOf:
+        - $ref: '#/components/schemas/BaseObject'
+        - type: object
+          properties:
+            source_dataset_oddrn:
+              type: string
+            target_dataset_oddrn:
+              type: string
+            erd_relationship:
+              $ref: '#/components/schemas/ERDRelationship'
+            graph_relationship:
+              $ref: '#/components/schemas/GraphRelationship'
+          required:
+            - source_dataset_oddrn
+            - target_dataset_oddrn
 
-    CommonRelationship:
+    ERDRelationship:
       type: object
       properties:
-        begin_dataset_field_oddrn:
-          type: string
-        end_dataset_field_oddrn:
-          type: string
+        source_dataset_field_oddrn:
+          type: array
+          items:
+            type: string
+        target_dataset_field_oddrn:
+          type: array
+          items:
+            type: string
         is_identifying:
           type: boolean
         cardinality:
           $ref: '#/components/schemas/CardinalityType'
       required:
-        - is_identifying
-        - cardinality
+        - source_dataset_field_oddrn
+        - target_dataset_field_oddrn
 
-    GraphNodesRelationships:
+    GraphRelationship:
       type: object
       properties:
         relationship_type:
