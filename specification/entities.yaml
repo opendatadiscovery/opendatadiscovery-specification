@@ -150,13 +150,11 @@ components:
       properties:
         relationship_type:
           type: string
-        direction:
-          $ref: '#/components/schemas/DirectionType'
+        is_directed:
+          type: boolean
         attributes:
           type: object
           additionalProperties: true
-      required:
-        - direction
 
     CardinalityType:
       type: string
@@ -165,13 +163,6 @@ components:
         - ONE_TO_ONE_OR_MORE
         - ONE_TO_ZERO_OR_ONE
         - ONE_TO_EXACTLY_ONE
-
-    DirectionType:
-      type: string
-      enum:
-        - LEFT
-        - RIGHT
-        - NONE
 
     DataSetStatistics:
       type: object
