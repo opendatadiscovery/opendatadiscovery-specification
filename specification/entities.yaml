@@ -98,11 +98,11 @@ components:
         rows_number:
           type: integer
           format: int64
-        field_list:
+        fields_list:
           type: array
           items:
             $ref: '#/components/schemas/DataSetField'
-        relationship_list:
+        relationships_list:
           type: array
           items:
             $ref: '#/components/schemas/Relationship'
@@ -129,11 +129,11 @@ components:
     ERDRelationship:
       type: object
       properties:
-        source_dataset_field_oddrn:
+        source_dataset_field_oddrns_list:
           type: array
           items:
             type: string
-        target_dataset_field_oddrn:
+        target_dataset_field_oddrns_list:
           type: array
           items:
             type: string
@@ -142,8 +142,8 @@ components:
         cardinality:
           $ref: '#/components/schemas/CardinalityType'
       required:
-        - source_dataset_field_oddrn
-        - target_dataset_field_oddrn
+        - source_dataset_field_oddrns_list
+        - target_dataset_field_oddrns_list
 
     GraphRelationship:
       type: object
