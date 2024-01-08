@@ -148,8 +148,6 @@ components:
     GraphRelationship:
       type: object
       properties:
-        relationship_type:
-          type: string
         is_directed:
           type: boolean
         attributes:
