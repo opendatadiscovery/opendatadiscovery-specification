@@ -98,12 +98,69 @@ components:
         rows_number:
           type: integer
           format: int64
-        field_list:
+        fields_list:
           type: array
           items:
             $ref: '#/components/schemas/DataSetField'
+        relationships_list:
+          type: array
+          items:
+            $ref: '#/components/schemas/Relationship'
       required:
         - field_list
+
+    Relationship:
+      allOf:
+        - $ref: '#/components/schemas/BaseObject'
+        - type: object
+          properties:
+            source_dataset_oddrn:
+              type: string
+            target_dataset_oddrn:
+              type: string
+            erd_relationship:
+              $ref: '#/components/schemas/ERDRelationship'
+            graph_relationship:
+              $ref: '#/components/schemas/GraphRelationship'
+          required:
+            - source_dataset_oddrn
+            - target_dataset_oddrn
+
+    ERDRelationship:
+      type: object
+      properties:
+        source_dataset_field_oddrns_list:
+          type: array
+          items:
+            type: string
+        target_dataset_field_oddrns_list:
+          type: array
+          items:
+            type: string
+        is_identifying:
+          type: boolean
+        cardinality:
+          $ref: '#/components/schemas/CardinalityType'
+      required:
+        - source_dataset_field_oddrns_list
+        - target_dataset_field_oddrns_list
+
+    GraphRelationship:
+      type: object
+      properties:
+        is_directed:
+          type: boolean
+        attributes:
+          type: object
+          additionalProperties: true
+
+    CardinalityType:
+      type: string
+      enum:
+        - ONE_TO_ZERO_ONE_OR_MORE
+        - ONE_TO_ONE_OR_MORE
+        - ONE_TO_ZERO_OR_ONE
+        - ONE_TO_EXACTLY_ONE
 
     DataSetStatistics:
       type: object
