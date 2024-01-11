@@ -98,7 +98,7 @@ components:
         rows_number:
           type: integer
           format: int64
-        fields_list:
+        field_list:
           type: array
           items:
             $ref: '#/components/schemas/DataSetField'
