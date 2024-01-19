@@ -24,6 +24,23 @@ paths:
         '201':
           description: Created
 
+  /ingestion/relationships:
+    post:
+      summary: Ingests list of relationships
+      description: Ingests list of relationships
+      operationId: postRelationshipList
+      tags:
+        - OpenDataDiscoveryIngestion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './entities.yaml/#/components/schemas/RelationshipList'
+      responses:
+        '201':
+          description: Created
+
   /ingestion/entities/datasets/stats:
     post:
       summary: Ingests list of stats for data sets

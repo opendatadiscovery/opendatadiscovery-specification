@@ -72,6 +72,16 @@ components:
       required:
         - data_source_oddrn
 
+    RelationshipList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Relationship'
+      required:
+        - items
+
     DatasetStatisticsList:
       type: object
       properties:
@@ -102,10 +112,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DataSetField'
-        relationships_list:
-          type: array
-          items:
-            $ref: '#/components/schemas/Relationship'
       required:
         - field_list
 
