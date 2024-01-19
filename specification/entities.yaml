@@ -72,6 +72,19 @@ components:
       required:
         - data_source_oddrn
 
+    RelationshipList:
+      type: object
+      properties:
+        data_source_oddrn:
+          type: string
+          example: //aws/glue/123456789010/
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Relationship'
+      required:
+        - data_source_oddrn
+
     DatasetStatisticsList:
       type: object
       properties:
@@ -102,10 +115,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DataSetField'
-        relationships_list:
-          type: array
-          items:
-            $ref: '#/components/schemas/Relationship'
       required:
         - field_list
 
