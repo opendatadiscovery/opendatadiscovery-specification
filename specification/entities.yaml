@@ -83,7 +83,7 @@ components:
           items:
             $ref: '#/components/schemas/Relationship'
       required:
-        - items
+        - data_source_oddrn
 
     DatasetStatisticsList:
       type: object
