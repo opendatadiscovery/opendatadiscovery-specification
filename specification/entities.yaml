@@ -78,12 +78,18 @@ components:
         data_source_oddrn:
           type: string
           example: //aws/glue/123456789010/
+        relationship_type:
+          type: string
+          enum:
+            - ERD
+            - GRAPH
         items:
           type: array
           items:
             $ref: '#/components/schemas/Relationship'
       required:
         - data_source_oddrn
+        - relationship_type
 
     DatasetStatisticsList:
       type: object
@@ -123,11 +129,6 @@ components:
         - $ref: '#/components/schemas/BaseObject'
         - type: object
           properties:
-            relationship_type:
-              type: string
-              enum:
-                - ERD
-                - GRAPH
             source_dataset_oddrn:
               type: string
             target_dataset_oddrn:
@@ -137,7 +138,6 @@ components:
                 - $ref: '#/components/schemas/ERDRelationship'
                 - $ref: '#/components/schemas/GraphRelationship'
           required:
-            - relationship_type
             - source_dataset_oddrn
             - target_dataset_oddrn
             - details
