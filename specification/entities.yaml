@@ -137,8 +137,10 @@ components:
                 - $ref: '#/components/schemas/ERDRelationship'
                 - $ref: '#/components/schemas/GraphRelationship'
           required:
+            - relationship_type
             - source_dataset_oddrn
             - target_dataset_oddrn
+            - details
 
     ERDRelationship:
       type: object
