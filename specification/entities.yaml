@@ -123,17 +123,24 @@ components:
         - $ref: '#/components/schemas/BaseObject'
         - type: object
           properties:
+            relationship_type:
+              type: string
+              enum:
+                - ERD
+                - GRAPH
             source_dataset_oddrn:
               type: string
             target_dataset_oddrn:
               type: string
-            erd_relationship:
-              $ref: '#/components/schemas/ERDRelationship'
-            graph_relationship:
-              $ref: '#/components/schemas/GraphRelationship'
+            details:
+              oneOf:
+                - $ref: '#/components/schemas/ERDRelationship'
+                - $ref: '#/components/schemas/GraphRelationship'
           required:
+            - relationship_type
             - source_dataset_oddrn
             - target_dataset_oddrn
+            - details
 
     ERDRelationship:
       type: object
