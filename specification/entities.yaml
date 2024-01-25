@@ -137,6 +137,8 @@ components:
               oneOf:
                 - $ref: '#/components/schemas/ERDRelationship'
                 - $ref: '#/components/schemas/GraphRelationship'
+              discriminator:
+                propertyName: relationship_entity_name
           required:
             - source_dataset_oddrn
             - target_dataset_oddrn
@@ -157,6 +159,8 @@ components:
           type: boolean
         cardinality:
           $ref: '#/components/schemas/CardinalityType'
+        relationship_entity_name:
+          type: string
       required:
         - source_dataset_field_oddrns_list
         - target_dataset_field_oddrns_list
@@ -166,6 +170,8 @@ components:
       properties:
         is_directed:
           type: boolean
+        relationship_entity_name:
+          type: string
         attributes:
           type: object
           additionalProperties: true
