@@ -56,6 +56,8 @@ components:
               $ref: '#/components/schemas/DataConsumer'
             data_entity_group:
               $ref: '#/components/schemas/DataEntityGroup'
+            data_entity_relationship:
+              $ref: '#/components/schemas/Relationship'
           required:
             - type
 
@@ -71,25 +73,6 @@ components:
             $ref: '#/components/schemas/DataEntity'
       required:
         - data_source_oddrn
-
-    RelationshipList:
-      type: object
-      properties:
-        data_source_oddrn:
-          type: string
-          example: //aws/glue/123456789010/
-        relationship_type:
-          type: string
-          enum:
-            - ERD
-            - GRAPH
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Relationship'
-      required:
-        - data_source_oddrn
-        - relationship_type
 
     DatasetStatisticsList:
       type: object
@@ -125,24 +108,28 @@ components:
         - field_list
 
     Relationship:
-      allOf:
-        - $ref: '#/components/schemas/BaseObject'
-        - type: object
-          properties:
-            source_dataset_oddrn:
-              type: string
-            target_dataset_oddrn:
-              type: string
-            details:
-              oneOf:
-                - $ref: '#/components/schemas/ERDRelationship'
-                - $ref: '#/components/schemas/GraphRelationship'
-              discriminator:
-                propertyName: relationship_entity_name
-          required:
-            - source_dataset_oddrn
-            - target_dataset_oddrn
-            - details
+      type: object
+      properties:
+        relationship_type:
+          type: string
+          enum:
+            - ERD
+            - GRAPH
+        source_dataset_oddrn:
+          type: string
+        target_dataset_oddrn:
+          type: string
+        details:
+          oneOf:
+            - $ref: '#/components/schemas/ERDRelationship'
+            - $ref: '#/components/schemas/GraphRelationship'
+          discriminator:
+            propertyName: relationship_entity_name
+      required:
+        - relationship_type
+        - source_dataset_oddrn
+        - target_dataset_oddrn
+        - details
 
     ERDRelationship:
       type: object
@@ -626,6 +613,7 @@ components:
         - API_SERVICE
         - KAFKA_SERVICE
         - VECTOR_STORE
+        - RELATIONSHIP
 
     MetadataExtension:
       type: object
