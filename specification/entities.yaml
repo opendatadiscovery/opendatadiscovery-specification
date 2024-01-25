@@ -164,6 +164,7 @@ components:
       required:
         - source_dataset_field_oddrns_list
         - target_dataset_field_oddrns_list
+        - relationship_entity_name
 
     GraphRelationship:
       type: object
@@ -175,6 +176,8 @@ components:
         attributes:
           type: object
           additionalProperties: true
+      required:
+        - relationship_entity_name
 
     CardinalityType:
       type: string
