@@ -614,6 +614,8 @@ components:
         - KAFKA_SERVICE
         - VECTOR_STORE
         - RELATIONSHIP
+        - ENTITY_RELATIONSHIP
+        - GRAPH_RELATIONSHIP
 
     MetadataExtension:
       type: object
