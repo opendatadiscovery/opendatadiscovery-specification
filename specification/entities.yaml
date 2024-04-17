@@ -56,7 +56,7 @@ components:
               $ref: '#/components/schemas/DataConsumer'
             data_entity_group:
               $ref: '#/components/schemas/DataEntityGroup'
-            data_entity_relationship:
+            data_relationship:
               $ref: '#/components/schemas/DataRelationship'
           required:
             - type
