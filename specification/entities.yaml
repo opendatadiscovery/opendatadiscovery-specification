@@ -492,8 +492,7 @@ components:
           example: "expect_table_row_count_to_be_between"
         category:
           $ref: '#/components/schemas/DataQualityTestExpectationCategory'
-      additionalProperties:
-        type: string
+      additionalProperties: true
 
     DataQualityTest:
       type: object
