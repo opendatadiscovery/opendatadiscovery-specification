@@ -599,7 +599,8 @@ components:
         - KAFKA_TOPIC
         - JOB
         - JOB_RUN
-        - ML_MODEL
+        - ML_MODEL_ARTIFACT
+        - ML_MODEL_INSTANCE
         - ML_MODEL_TRAINING
         - DASHBOARD
         - DAG
