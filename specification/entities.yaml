@@ -591,7 +591,13 @@ components:
 
     DataEntityType:
       type: string
-      enum: 
+      description: >-
+        The kind of a data entity. ML lifecycle types: ML_MODEL is the model identity/family, a group of its
+        lifecycle members (like MLflow Registered Model, SageMaker Model Package Group, or DataHub mlModelGroup);
+        ML_MODEL_TRAINING is a training job (a transformer); ML_MODEL_ARTIFACT is a trained model version/artifact
+        (a consumer); ML_MODEL_INSTANCE is a deployed serving instance (a transformer); ML_EXPERIMENT is a group
+        of training runs.
+      enum:
         - TABLE
         - VIEW
         - FILE
@@ -601,6 +607,8 @@ components:
         - JOB_RUN
         - ML_MODEL
         - ML_MODEL_TRAINING
+        - ML_MODEL_ARTIFACT
+        - ML_MODEL_INSTANCE
         - DASHBOARD
         - DAG
         - ML_EXPERIMENT

@@ -207,6 +207,7 @@ It could be any of these entities:
 <li><b>DataConsumers</b> (consumers of data: ML model artifacts or BI dashboards)</li> 
 <li><b>DataQualityTest</b> (describes tests for particular DataSets)</li>
 <li><b>DataQualityTestRun</b> (executions of data quality tests)</li>
+<li><b>DataEntityGroup</b> (a logical grouping of data entities - e.g. an ML model and its lifecycle, an ML experiment, or a DAG)</li>
 </ol>
  
 Each entity has: 
@@ -523,7 +524,7 @@ Example ODDRN:
 
 ## DataTransformers
 
-Data transformers are any entities that can consume data and produce any other object. For example ETL job, ML Experiment, ML Training.
+Data transformers are any entities that can consume data and produce any other object. For example an ETL job, an ML training job (`ML_MODEL_TRAINING`), or a deployed model serving predictions (`ML_MODEL_INSTANCE`). (An ML experiment is a grouping, not a transformer - see [ML entities](#ml-entities).)
 
 
 ```yaml
@@ -598,7 +599,7 @@ Example ODDRN:
 
 ## DataConsumers
 
-Any data entity built with one or many datasets, for example Dashboards, ML Models.
+Any data entity built with one or many datasets, for example BI dashboards or a trained ML model artifact (`ML_MODEL_ARTIFACT`).
 
 ```yaml
 DataConsumer:
@@ -615,7 +616,11 @@ DataConsumer:
    - inputs
 ```  
 
-### ML Models
+### ML model artifacts (`ML_MODEL_ARTIFACT`)
+
+A trained, versioned model object that consumes features at inference. The model *identity* across its
+versions (the group that gathers the artifact, its training jobs, and its serving instances) is `ML_MODEL` -
+see [ML entities](#ml-entities).
 
 Example ODDRN: 
 
@@ -630,6 +635,25 @@ Example ODDRN:
 ``` 
 //tableau/{host}/{path}/{dashboard_id}
 ```  
+
+## ML entities
+
+ODD models the machine-learning lifecycle as an ordered set of data entity types. The **model identity** is a
+group; its lifecycle stages are members of that group. Each maps to a concept ML practitioners already use
+(MLflow, SageMaker, DataHub):
+
+| Type | Class | What it is | Equivalent |
+|---|---|---|---|
+| `ML_MODEL` | DataEntityGroup | the model identity/family: the named, searchable model that groups its training jobs, versioned artifacts, and serving instances | MLflow Registered Model / SageMaker Model Package Group / DataHub mlModelGroup |
+| `ML_MODEL_TRAINING` | DataTransformer | a training job/run that produces a model (features in, model out) | SageMaker Training Job / MLflow run |
+| `ML_MODEL_ARTIFACT` | DataConsumer | a trained, versioned model object (consumes features at inference) | MLflow Model Version / SageMaker Model Package / DataHub mlModel |
+| `ML_MODEL_INSTANCE` | DataTransformer | a deployed/serving instance of a model (requests in, predictions out) | SageMaker Endpoint / DataHub mlModelDeployment |
+| `ML_EXPERIMENT` | DataEntityGroup | a grouping of training runs exploring one problem | MLflow / SageMaker Experiment |
+
+Lifecycle: an `ML_MODEL` (the identity, a group) gathers its `ML_MODEL_TRAINING` jobs, the `ML_MODEL_ARTIFACT`
+versions they produce, and the `ML_MODEL_INSTANCE` deployments those run as; `ML_EXPERIMENT` groups exploratory
+training runs. A collector sends each entity with the type that matches what it is; the platform maps the type
+to its class 1:1.
 
 ## DataQualityTests
 
