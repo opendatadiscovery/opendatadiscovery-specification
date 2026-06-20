@@ -20,6 +20,23 @@
 
 <br>
 
+## Pydantic v2 model generation
+
+Keep examples in the OpenAPI specification as standard `example:` fields so Swagger and OpenAPI tooling can render them correctly. When generating Pydantic v2 models with `datamodel-code-generator`, include `example` as a field extra key so generated models preserve those examples without deprecated `Field(..., example=...)` kwargs:
+
+```bash
+datamodel-codegen \
+  --input specification/entities.yaml \
+  --output /tmp/odd_models_pydantic_v2.py \
+  --input-file-type openapi \
+  --output-model-type pydantic_v2.BaseModel \
+  --field-extra-keys example
+```
+
+Run `python scripts/check_pydantic_v2_codegen.py` to validate that generated Pydantic v2 models import with `PydanticDeprecatedSince20` treated as an error and keep OpenAPI examples as schema metadata.
+
+<br>
+
 ## Overview
 
 ODD Spec is an open source industry-wide standard for collecting metadata. It provides a set of technologies to gather and export metadata from cloud-native applications, infrastructure, and other data sources to let it be discovered. The standard defines a schema for metadata collection and integrates with data tools through endpoints to receive metadata from them. 

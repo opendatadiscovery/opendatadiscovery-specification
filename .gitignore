@@ -2,6 +2,7 @@ build/
 out/
 target/
 venv/
+.venv/
 .idea
 Thumbs.db
 .DS_Store
