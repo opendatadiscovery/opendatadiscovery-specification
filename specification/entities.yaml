@@ -161,10 +161,21 @@ components:
         relationship_entity_name:
           type: string
         attributes:
-          type: object
-          additionalProperties: true
+          type: array
+          items:
+            $ref: '#/components/schemas/GraphRelationshipAttribute'
       required:
         - relationship_entity_name
+
+    GraphRelationshipAttribute:
+      type: object
+      properties:
+        name:
+          type: string
+        data_type:
+          type: string
+      required:
+        - name
 
     CardinalityType:
       type: string
